@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BFED7B001A3DEF2700AE4145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7AFF1A3DEF2700AE4145 /* AppDelegate.swift */; };
+		BFED7B021A3DEF2700AE4145 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7B011A3DEF2700AE4145 /* ViewController.swift */; };
+		BFED7B071A3DEF2700AE4145 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFED7B061A3DEF2700AE4145 /* Images.xcassets */; };
+		BFED7B0A1A3DEF2700AE4145 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFED7B081A3DEF2700AE4145 /* LaunchScreen.xib */; };
+		BFED7B161A3DEF2700AE4145 /* ButterItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7B151A3DEF2700AE4145 /* ButterItTests.swift */; };
+		BFED7B231A3DEF6000AE4145 /* ButterKnife.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7B1F1A3DEF6000AE4145 /* ButterKnife.swift */; };
+		BFED7B241A3DEF6000AE4145 /* ButterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7B201A3DEF6000AE4145 /* ButterView.swift */; };
+		BFED7B251A3DEF6000AE4145 /* ButterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7B211A3DEF6000AE4145 /* ButterViewController.swift */; };
+		BFED7B261A3DEF6000AE4145 /* ToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7B221A3DEF6000AE4145 /* ToastViewController.swift */; };
+		BFED7B281A3DEF8600AE4145 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFED7B271A3DEF8600AE4145 /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BFED7B101A3DEF2700AE4145 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFED7AF21A3DEF2700AE4145 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFED7AF91A3DEF2700AE4145;
+			remoteInfo = ButterIt;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BFED7AFA1A3DEF2700AE4145 /* ButterIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButterIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFED7AFE1A3DEF2700AE4145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFED7AFF1A3DEF2700AE4145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BFED7B011A3DEF2700AE4145 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BFED7B061A3DEF2700AE4145 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BFED7B091A3DEF2700AE4145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		BFED7B0F1A3DEF2700AE4145 /* ButterItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ButterItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFED7B141A3DEF2700AE4145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFED7B151A3DEF2700AE4145 /* ButterItTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButterItTests.swift; sourceTree = "<group>"; };
+		BFED7B1F1A3DEF6000AE4145 /* ButterKnife.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButterKnife.swift; sourceTree = "<group>"; };
+		BFED7B201A3DEF6000AE4145 /* ButterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButterView.swift; sourceTree = "<group>"; };
+		BFED7B211A3DEF6000AE4145 /* ButterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButterViewController.swift; sourceTree = "<group>"; };
+		BFED7B221A3DEF6000AE4145 /* ToastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastViewController.swift; sourceTree = "<group>"; };
+		BFED7B271A3DEF8600AE4145 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BFED7AF71A3DEF2700AE4145 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFED7B0C1A3DEF2700AE4145 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BFED7AF11A3DEF2700AE4145 = {
+			isa = PBXGroup;
+			children = (
+				BFED7AFC1A3DEF2700AE4145 /* ButterIt */,
+				BFED7B121A3DEF2700AE4145 /* ButterItTests */,
+				BFED7AFB1A3DEF2700AE4145 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BFED7AFB1A3DEF2700AE4145 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFED7AFA1A3DEF2700AE4145 /* ButterIt.app */,
+				BFED7B0F1A3DEF2700AE4145 /* ButterItTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFED7AFC1A3DEF2700AE4145 /* ButterIt */ = {
+			isa = PBXGroup;
+			children = (
+				BFED7B271A3DEF8600AE4145 /* Main.storyboard */,
+				BFED7B1F1A3DEF6000AE4145 /* ButterKnife.swift */,
+				BFED7B201A3DEF6000AE4145 /* ButterView.swift */,
+				BFED7B211A3DEF6000AE4145 /* ButterViewController.swift */,
+				BFED7B221A3DEF6000AE4145 /* ToastViewController.swift */,
+				BFED7AFF1A3DEF2700AE4145 /* AppDelegate.swift */,
+				BFED7B011A3DEF2700AE4145 /* ViewController.swift */,
+				BFED7B061A3DEF2700AE4145 /* Images.xcassets */,
+				BFED7B081A3DEF2700AE4145 /* LaunchScreen.xib */,
+				BFED7AFD1A3DEF2700AE4145 /* Supporting Files */,
+			);
+			path = ButterIt;
+			sourceTree = "<group>";
+		};
+		BFED7AFD1A3DEF2700AE4145 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BFED7AFE1A3DEF2700AE4145 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BFED7B121A3DEF2700AE4145 /* ButterItTests */ = {
+			isa = PBXGroup;
+			children = (
+				BFED7B151A3DEF2700AE4145 /* ButterItTests.swift */,
+				BFED7B131A3DEF2700AE4145 /* Supporting Files */,
+			);
+			path = ButterItTests;
+			sourceTree = "<group>";
+		};
+		BFED7B131A3DEF2700AE4145 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BFED7B141A3DEF2700AE4145 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BFED7AF91A3DEF2700AE4145 /* ButterIt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFED7B191A3DEF2700AE4145 /* Build configuration list for PBXNativeTarget "ButterIt" */;
+			buildPhases = (
+				BFED7AF61A3DEF2700AE4145 /* Sources */,
+				BFED7AF71A3DEF2700AE4145 /* Frameworks */,
+				BFED7AF81A3DEF2700AE4145 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ButterIt;
+			productName = ButterIt;
+			productReference = BFED7AFA1A3DEF2700AE4145 /* ButterIt.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BFED7B0E1A3DEF2700AE4145 /* ButterItTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFED7B1C1A3DEF2700AE4145 /* Build configuration list for PBXNativeTarget "ButterItTests" */;
+			buildPhases = (
+				BFED7B0B1A3DEF2700AE4145 /* Sources */,
+				BFED7B0C1A3DEF2700AE4145 /* Frameworks */,
+				BFED7B0D1A3DEF2700AE4145 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFED7B111A3DEF2700AE4145 /* PBXTargetDependency */,
+			);
+			name = ButterItTests;
+			productName = ButterItTests;
+			productReference = BFED7B0F1A3DEF2700AE4145 /* ButterItTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFED7AF21A3DEF2700AE4145 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Team Butter";
+				TargetAttributes = {
+					BFED7AF91A3DEF2700AE4145 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					BFED7B0E1A3DEF2700AE4145 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = BFED7AF91A3DEF2700AE4145;
+					};
+				};
+			};
+			buildConfigurationList = BFED7AF51A3DEF2700AE4145 /* Build configuration list for PBXProject "ButterIt" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BFED7AF11A3DEF2700AE4145;
+			productRefGroup = BFED7AFB1A3DEF2700AE4145 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BFED7AF91A3DEF2700AE4145 /* ButterIt */,
+				BFED7B0E1A3DEF2700AE4145 /* ButterItTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BFED7AF81A3DEF2700AE4145 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFED7B0A1A3DEF2700AE4145 /* LaunchScreen.xib in Resources */,
+				BFED7B071A3DEF2700AE4145 /* Images.xcassets in Resources */,
+				BFED7B281A3DEF8600AE4145 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFED7B0D1A3DEF2700AE4145 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BFED7AF61A3DEF2700AE4145 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFED7B241A3DEF6000AE4145 /* ButterView.swift in Sources */,
+				BFED7B021A3DEF2700AE4145 /* ViewController.swift in Sources */,
+				BFED7B251A3DEF6000AE4145 /* ButterViewController.swift in Sources */,
+				BFED7B231A3DEF6000AE4145 /* ButterKnife.swift in Sources */,
+				BFED7B261A3DEF6000AE4145 /* ToastViewController.swift in Sources */,
+				BFED7B001A3DEF2700AE4145 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFED7B0B1A3DEF2700AE4145 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFED7B161A3DEF2700AE4145 /* ButterItTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BFED7B111A3DEF2700AE4145 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFED7AF91A3DEF2700AE4145 /* ButterIt */;
+			targetProxy = BFED7B101A3DEF2700AE4145 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BFED7B081A3DEF2700AE4145 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFED7B091A3DEF2700AE4145 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BFED7B171A3DEF2700AE4145 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BFED7B181A3DEF2700AE4145 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BFED7B1A1A3DEF2700AE4145 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ButterIt/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BFED7B1B1A3DEF2700AE4145 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ButterIt/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BFED7B1D1A3DEF2700AE4145 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ButterItTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ButterIt.app/ButterIt";
+			};
+			name = Debug;
+		};
+		BFED7B1E1A3DEF2700AE4145 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ButterItTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ButterIt.app/ButterIt";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BFED7AF51A3DEF2700AE4145 /* Build configuration list for PBXProject "ButterIt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFED7B171A3DEF2700AE4145 /* Debug */,
+				BFED7B181A3DEF2700AE4145 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFED7B191A3DEF2700AE4145 /* Build configuration list for PBXNativeTarget "ButterIt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFED7B1A1A3DEF2700AE4145 /* Debug */,
+				BFED7B1B1A3DEF2700AE4145 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BFED7B1C1A3DEF2700AE4145 /* Build configuration list for PBXNativeTarget "ButterItTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFED7B1D1A3DEF2700AE4145 /* Debug */,
+				BFED7B1E1A3DEF2700AE4145 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFED7AF21A3DEF2700AE4145 /* Project object */;
+}
