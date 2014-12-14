@@ -10,9 +10,9 @@ import UIKit
 
 class ButterView: UIImageView {
     var playerNumber = 0 //player numbers are assigned in the ButterViewController in the didLoad functin
-    var scoopAmount = 0 //as a player "scoops" butter, this value goes up
+    var scoopAmount: Double = 0 //as a player "scoops" butter, this value goes up
     var startTime = NSDate() //used in calculating the amount of butter scooped
-    let maxScoopAmount = 100
+    let maxScoopAmount: Double = 100
     
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -33,7 +33,7 @@ class ButterView: UIImageView {
             //scoopAmount++
             let endTime = NSDate()
             let timeInterval: Double = endTime.timeIntervalSinceDate(startTime); //Difference in seconds (double)
-            scoopAmount = scoopAmount + Int(timeInterval)
+            scoopAmount = scoopAmount + timeInterval
         }
         
         println("Butter on player \(playerNumber)'s knife = \(scoopAmount)")
