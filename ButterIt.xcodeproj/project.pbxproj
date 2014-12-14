@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43D9ECF61A3DF29A005E68B5 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D9ECF51A3DF29A005E68B5 /* MasterViewController.swift */; };
+		43D9ECFA1A3DF3CB005E68B5 /* MPCHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D9ECF91A3DF3CB005E68B5 /* MPCHandler.m */; };
+		43D9ECFD1A3DF739005E68B5 /* ConnectUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D9ECFC1A3DF739005E68B5 /* ConnectUsersViewController.swift */; };
+		43D9ECFF1A3DF8C4005E68B5 /* ToastTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D9ECFE1A3DF8C4005E68B5 /* ToastTransitionViewController.swift */; };
 		BFED7B001A3DEF2700AE4145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7AFF1A3DEF2700AE4145 /* AppDelegate.swift */; };
-		BFED7B021A3DEF2700AE4145 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7B011A3DEF2700AE4145 /* ViewController.swift */; };
 		BFED7B071A3DEF2700AE4145 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFED7B061A3DEF2700AE4145 /* Images.xcassets */; };
 		BFED7B0A1A3DEF2700AE4145 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFED7B081A3DEF2700AE4145 /* LaunchScreen.xib */; };
 		BFED7B161A3DEF2700AE4145 /* ButterItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7B151A3DEF2700AE4145 /* ButterItTests.swift */; };
@@ -30,10 +33,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43D9ECF51A3DF29A005E68B5 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		43D9ECF81A3DF3CB005E68B5 /* MPCHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCHandler.h; sourceTree = "<group>"; };
+		43D9ECF91A3DF3CB005E68B5 /* MPCHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCHandler.m; sourceTree = "<group>"; };
+		43D9ECFB1A3DF405005E68B5 /* ButterIt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ButterIt-Bridging-Header.h"; sourceTree = "<group>"; };
+		43D9ECFC1A3DF739005E68B5 /* ConnectUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectUsersViewController.swift; sourceTree = "<group>"; };
+		43D9ECFE1A3DF8C4005E68B5 /* ToastTransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastTransitionViewController.swift; sourceTree = "<group>"; };
 		BFED7AFA1A3DEF2700AE4145 /* ButterIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButterIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFED7AFE1A3DEF2700AE4145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFED7AFF1A3DEF2700AE4145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BFED7B011A3DEF2700AE4145 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BFED7B061A3DEF2700AE4145 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BFED7B091A3DEF2700AE4145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BFED7B0F1A3DEF2700AE4145 /* ButterItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ButterItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +72,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43D9ECF41A3DF168005E68B5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				43D9ECFC1A3DF739005E68B5 /* ConnectUsersViewController.swift */,
+				BFED7B211A3DEF6000AE4145 /* ButterViewController.swift */,
+				BFED7B221A3DEF6000AE4145 /* ToastViewController.swift */,
+				43D9ECF51A3DF29A005E68B5 /* MasterViewController.swift */,
+				43D9ECFE1A3DF8C4005E68B5 /* ToastTransitionViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		43D9ECF71A3DF394005E68B5 /* Objective-C Network/Backend */ = {
+			isa = PBXGroup;
+			children = (
+				43D9ECF81A3DF3CB005E68B5 /* MPCHandler.h */,
+				43D9ECF91A3DF3CB005E68B5 /* MPCHandler.m */,
+				43D9ECFB1A3DF405005E68B5 /* ButterIt-Bridging-Header.h */,
+			);
+			name = "Objective-C Network/Backend";
+			sourceTree = "<group>";
+		};
 		BFED7AF11A3DEF2700AE4145 = {
 			isa = PBXGroup;
 			children = (
@@ -85,13 +115,12 @@
 		BFED7AFC1A3DEF2700AE4145 /* ButterIt */ = {
 			isa = PBXGroup;
 			children = (
+				43D9ECF71A3DF394005E68B5 /* Objective-C Network/Backend */,
+				43D9ECF41A3DF168005E68B5 /* ViewControllers */,
 				BFED7B271A3DEF8600AE4145 /* Main.storyboard */,
 				BFED7B1F1A3DEF6000AE4145 /* ButterKnife.swift */,
 				BFED7B201A3DEF6000AE4145 /* ButterView.swift */,
-				BFED7B211A3DEF6000AE4145 /* ButterViewController.swift */,
-				BFED7B221A3DEF6000AE4145 /* ToastViewController.swift */,
 				BFED7AFF1A3DEF2700AE4145 /* AppDelegate.swift */,
-				BFED7B011A3DEF2700AE4145 /* ViewController.swift */,
 				BFED7B061A3DEF2700AE4145 /* Images.xcassets */,
 				BFED7B081A3DEF2700AE4145 /* LaunchScreen.xib */,
 				BFED7AFD1A3DEF2700AE4145 /* Supporting Files */,
@@ -225,11 +254,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFED7B241A3DEF6000AE4145 /* ButterView.swift in Sources */,
-				BFED7B021A3DEF2700AE4145 /* ViewController.swift in Sources */,
+				43D9ECFF1A3DF8C4005E68B5 /* ToastTransitionViewController.swift in Sources */,
 				BFED7B251A3DEF6000AE4145 /* ButterViewController.swift in Sources */,
+				43D9ECF61A3DF29A005E68B5 /* MasterViewController.swift in Sources */,
 				BFED7B231A3DEF6000AE4145 /* ButterKnife.swift in Sources */,
+				43D9ECFD1A3DF739005E68B5 /* ConnectUsersViewController.swift in Sources */,
 				BFED7B261A3DEF6000AE4145 /* ToastViewController.swift in Sources */,
 				BFED7B001A3DEF2700AE4145 /* AppDelegate.swift in Sources */,
+				43D9ECFA1A3DF3CB005E68B5 /* MPCHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +379,7 @@
 				INFOPLIST_FILE = ButterIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/neeemo/Documents/MobileComputingLab/ButterIt/ButterIt-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -357,6 +390,7 @@
 				INFOPLIST_FILE = ButterIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/neeemo/Documents/MobileComputingLab/ButterIt/ButterIt-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -413,6 +447,7 @@
 				BFED7B1B1A3DEF2700AE4145 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BFED7B1C1A3DEF2700AE4145 /* Build configuration list for PBXNativeTarget "ButterItTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +456,7 @@
 				BFED7B1E1A3DEF2700AE4145 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -14,11 +14,11 @@
 		<string>https://github.com/neeemo/MobileComputingLab.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ButterIt/ButterIt.xcodeproj</string>
+	<string>ButterIt.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A97E5974541501A48E8CA0DC5FF5EF1A21642702</key>
-		<string>../../..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/neeemo/MobileComputingLab.git</string>

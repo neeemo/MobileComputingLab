@@ -41,7 +41,7 @@ class ButterView: UIImageView {
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         println("Player \(playerNumber) has stopped scooping")
-        scoopAmount = 0
+        //scoopAmount = 0
     }
 
 }
