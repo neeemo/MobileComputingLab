@@ -119,11 +119,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButterIttoast.png" translatesAutoresizingMaskIntoConstraints="NO" id="NXb-62-tOS">
                                 <rect key="frame" x="2" y="37" width="316" height="495"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeY-0h-e4U">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeY-0h-e4U" userLabel="holdHereButton">
                                 <rect key="frame" x="118" y="538" width="69" height="30"/>
                                 <state key="normal" title="Hold Here">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="holdHerePressed" destination="vXZ-lx-hvc" eventType="touchDown" id="0Rk-l0-vjZ"/>
+                                    <action selector="holdHereReleased" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5FQ-Hb-HoL"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzk-62-2F3" userLabel="toastView" customClass="UIImageView">
                                 <rect key="frame" x="23" y="148" width="275" height="292"/>
