@@ -13,7 +13,9 @@ class ToastViewController: UIViewController {
     @IBOutlet var toastView: UIImageView!
     @IBOutlet var tempToastView: UIImageView!
     var lastPoint: CGPoint! //for drawing the butter lines
-    var holdHereActive = false //boolean to see if the player is pressing on the Hold Here button
+    var holdHereActive = true //boolean to see if the player is pressing on the Hold Here button
+    
+    var butterKnife = ButterKnife()
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,11 +36,13 @@ class ToastViewController: UIViewController {
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         lastPoint = touches.anyObject()?.locationInView(tempToastView)
+        //temporary line to add butter to knife
+        butterKnife.addButter(100)
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        if holdHereActive == true {
-            var currentPoint = touches.anyObject()?.locationInView(tempToastView)
+        if holdHereActive == true && butterKnife.butterAmount > 0 {
+            var currentPoint: CGPoint! = touches.anyObject()?.locationInView(tempToastView)
             
             //drawing code, draws a line that follows the player's touches
             UIGraphicsBeginImageContext(tempToastView.frame.size)
@@ -53,7 +57,14 @@ class ToastViewController: UIViewController {
             tempToastView.image = UIGraphicsGetImageFromCurrentImageContext()
             tempToastView.alpha = 0.5 //opacity level, set lower so that repeated strokes may overlap
             
+            //code to remove butter from the butterKnife
+            
+            var distance = Double(hypot(currentPoint.x - lastPoint.x, currentPoint.y - lastPoint.y))
+            
             UIGraphicsEndImageContext()
+            
+            butterKnife.removeButter(distance/3)
+            println("Butter amount is \(butterKnife.butterAmount)")
             
             lastPoint = currentPoint
         }
@@ -73,12 +84,12 @@ class ToastViewController: UIViewController {
     }
     
     @IBAction func holdHerePressed() {
-        holdHereActive = true
+        //holdHereActive = true
         println("Button pressed = \(holdHereActive)")
     }
     
     @IBAction func holdHereReleased() {
-        holdHereActive = false
+        //holdHereActive = false
         println("Button pressed = \(holdHereActive)")
     }
 

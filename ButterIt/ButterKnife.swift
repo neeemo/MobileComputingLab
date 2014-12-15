@@ -10,10 +10,10 @@ import UIKit
 
 class ButterKnife {
 
-    var butterAmount: Int = 0
+    var butterAmount: Double = 0
     
-    let maxButterAmount = 1000
-    let minButterAmount = 0
+    let maxButterAmount: Double = 100
+    let minButterAmount: Double = 0
     
     /*init(start _start: CGPoint, end _end: CGPoint) {
         start = _start
@@ -22,7 +22,7 @@ class ButterKnife {
     }*/
     
     //when scooping butter, adds the amount to the knife - returns maxButterAmount when knife can't hold more butter
-    func addButter(addButterAmount: Int) -> Int {
+    func addButter(addButterAmount: Double) -> Double {
         butterAmount = butterAmount + addButterAmount
         
         if butterAmount > maxButterAmount {
@@ -33,7 +33,7 @@ class ButterKnife {
     }
     
     //when spreading butter, removes the amount from the knife / returns minButterAmount (ie 0) when butter used up
-    func removeButter(removeButterAmount: Int) -> Int {
+    func removeButter(removeButterAmount: Double) -> Double {
         butterAmount = butterAmount - removeButterAmount
         
         if butterAmount < minButterAmount {
