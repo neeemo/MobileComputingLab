@@ -17,7 +17,7 @@
 @property (nonatomic, strong) MCNearbyServiceBrowser *nearbyBrowser;
 @property (nonatomic, strong) MCAdvertiserAssistant *advertiser;
 
-
++ (MPCHandler *)sharedInstance;
 
 - (void)setupPeerWithDisplayName:(NSString *)displayName;
 - (void)setupSession;

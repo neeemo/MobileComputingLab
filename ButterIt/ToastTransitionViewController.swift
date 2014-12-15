@@ -40,10 +40,8 @@ class ToastTransitionViewController: UIViewController {
             if state == MCSessionState.Connected.rawValue {
                 statusLabel?.text = "Waiting for host to start game!"
             }
-            
             var peersExist = appDelegate?.mcManager?.session.connectedPeers.count == 0
         }
-        
     }
     
     func didReceiveDataWithNotification(notification: NSNotification){

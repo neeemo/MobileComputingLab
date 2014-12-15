@@ -9,6 +9,25 @@
 #import "MPCHandler.h"
 
 @implementation MPCHandler
+@synthesize session, browser, nearbyBrowser, advertiser;
+
+#pragma mark - Singleton
+
+static MPCHandler *sharedInstance = nil;
+
++ (MPCHandler *)sharedInstance
+{
+    if (sharedInstance == nil)
+    {
+        sharedInstance = [[super allocWithZone:NULL] init];
+    }
+    
+    return sharedInstance;
+}
+
++ (id) allocWithZone:(NSZone *)zone {
+    return [self sharedInstance];
+}
 
 #pragma mark -
 #pragma mark Public Methods
@@ -22,7 +41,7 @@
 }
 
 - (void)setupBrowser {
-    self.browser = [[MCBrowserViewController alloc] initWithServiceType:@"my-game" session:_session];
+    self.browser = [[MCBrowserViewController alloc] initWithServiceType:@"my-game" session:session];
     self.nearbyBrowser = [[MCNearbyServiceBrowser alloc] initWithPeer:self.peerID serviceType:@"my-game"];
 }
 

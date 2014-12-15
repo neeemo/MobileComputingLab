@@ -27,13 +27,7 @@ class ButterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Assign player numbers to each of the butter views
-        butterView1.playerNumber = 1
-        butterView2.playerNumber = 2
-        butterView3.playerNumber = 3
-        butterView4.playerNumber = 4
 
-       
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
     }
     
@@ -53,12 +47,16 @@ class ButterViewController: UIViewController {
             switch (i) {
             case (0):
                 player1Label?.text = player?.displayName;
+                butterView1.playerNumber = i;
             case (1):
                 player2Label?.text = player?.displayName;
+                butterView2.playerNumber = i;
             case (2):
                 player3Label?.text = player?.displayName;
+                butterView3.playerNumber = i;
             case (3):
                 player4Label?.text = player?.displayName;
+                butterView4.playerNumber = i;
             default:
                 println("No connected peers (should not be able to happen)")
             }
