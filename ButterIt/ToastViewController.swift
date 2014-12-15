@@ -18,7 +18,7 @@ class ToastViewController: UIViewController {
     var holdHereActive = true //boolean to see if the player is pressing on the Hold Here button
     
     var butterKnife = ButterKnife()
-    
+
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //tempToastView.backgroundColor = UIColor.blackColor()

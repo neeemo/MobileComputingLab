@@ -89,6 +89,7 @@
 		43D9ECF71A3DF394005E68B5 /* Objective-C Network/Backend */ = {
 			isa = PBXGroup;
 			children = (
+				43D9ED021A3EEC63005E68B5 /* Package.swift */,
 				43D9ECF81A3DF3CB005E68B5 /* MPCHandler.h */,
 				43D9ECF91A3DF3CB005E68B5 /* MPCHandler.m */,
 				43D9ECFB1A3DF405005E68B5 /* ButterIt-Bridging-Header.h */,
@@ -126,7 +127,6 @@
 				BFED7B061A3DEF2700AE4145 /* Images.xcassets */,
 				BFED7B081A3DEF2700AE4145 /* LaunchScreen.xib */,
 				BFED7AFD1A3DEF2700AE4145 /* Supporting Files */,
-				43D9ED021A3EEC63005E68B5 /* Package.swift */,
 			);
 			path = ButterIt;
 			sourceTree = "<group>";

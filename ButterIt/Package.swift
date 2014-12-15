@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class Package: NSObject, NSCoding {
    
     var type_: String
