@@ -12,7 +12,6 @@ import MultipeerConnectivity
 class ButterViewController: UIViewController {
     
     var appDelegate: AppDelegate? = UIApplication.sharedApplication().delegate as? AppDelegate
-    
     @IBOutlet var butterView1: ButterView!
     @IBOutlet var butterView2: ButterView!
     @IBOutlet var butterView3: ButterView!
@@ -28,7 +27,6 @@ class ButterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Assign player numbers to each of the butter views
         butterView1.playerNumber = 1
         butterView2.playerNumber = 2
@@ -39,12 +37,14 @@ class ButterViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        registerPlayerOnLabels()
+    }
+    
     func didReceiveDataWithNotification(notification: NSNotification) {
         var peerID: MCPeerID = notification.userInfo?["peerID"]! as MCPeerID
         var peerDisplayName = peerID.displayName as String
         var receivedData = notification.userInfo?["data"] as NSData
-        
-        
     }
     
     func registerPlayerOnLabels(){
@@ -63,6 +63,28 @@ class ButterViewController: UIViewController {
                 println("No connected peers (should not be able to happen)")
             }
             playersArray?.addObject(player!)
+        }
+        
+    }
+    
+    func callSendEnter(){
+        println("delegate method sendEnter called")
+        sendEnter()
+    }
+    
+    func sendEnter(){
+        var type = "enter"
+        var package = Package(type: type, sender: "butterHost", playBool: true)
+        
+        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
+        var allPeers = appDelegate?.mcManager!.session.connectedPeers
+        //print to see if we have peers connected
+        println(appDelegate?.mcManager!.session.connectedPeers.count)
+       
+        var error: NSError?
+        appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: allPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
+        if(error != nil){
+            println(error?.localizedDescription)
         }
         
     }

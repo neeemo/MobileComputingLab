@@ -23,6 +23,8 @@ class ToastTransitionViewController: UIViewController {
         statusLabel?.text = "Waiting for host to connect you..."
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peerDidChangeStateWithNotification:", name: "ButterIt_DidChangeStateNotification", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -40,6 +42,23 @@ class ToastTransitionViewController: UIViewController {
             }
             
             var peersExist = appDelegate?.mcManager?.session.connectedPeers.count == 0
+        }
+        
+    }
+    
+    func didReceiveDataWithNotification(notification: NSNotification){
+        var peerID = notification.userInfo?["peerID"] as MCPeerID
+        var displayName = peerID.displayName
+        
+        var receivedData = notification.userInfo?["data"] as NSData
+        
+        var receivedPackage: Package = NSKeyedUnarchiver.unarchiveObjectWithData(receivedData) as Package
+        var type = receivedPackage.getType()
+        
+        if(type == "enter"){
+            if(receivedPackage.getSender() == "butterHost" && receivedPackage.getPlayBool()){
+                self.performSegueWithIdentifier("toastPlaySegue", sender: self)
+            }
         }
         
     }

@@ -38,7 +38,8 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peerDidChangeStateWithNotification:", name: "ButterIt_DidChangeStateNotification", object: nil)
         arrConnectedDevices = NSMutableArray()
         
-        playButton?.enabled = false
+        //for testing purposes this is set to true
+        playButton?.enabled = true
         
         //Set up AUTOMATICALLY
         /*var peerID = MCPeerID(displayName: "advertise")
@@ -55,6 +56,11 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
     }
     
     @IBAction func playFunc(sender: UIButton){
+        //Call delegate method
+        var butterVC = ButterViewController()
+        butterVC.callSendEnter()
+        //self.delegate?.callSendEnter()
+        
         self.performSegueWithIdentifier("goPlaySegue", sender: self)
     }
     
@@ -96,10 +102,6 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
             if state == MCSessionState.Connected.rawValue {
                 println("connected")
                 arrConnectedDevices.addObject(displayName)
-                //Call delegate method
-                var firstVC = ButterViewController()
-                //firstVC.callSendEnter()
-                //self.delegate?.callSendEnter()
             }
             else if state == MCSessionState.NotConnected.rawValue && arrConnectedDevices.count > 0{
                 println("not connected")
@@ -117,8 +119,6 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
                 playButton?.enabled = true
             }
             var peersExist = appDelegate?.mcManager?.session.connectedPeers.count == 0
-            //self.dismissViewControllerAnimated(true, completion: nil)
-            //self.navigationController?.popViewControllerAnimated(true)
         }
         
     }
