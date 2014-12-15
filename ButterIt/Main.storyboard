@@ -266,7 +266,7 @@
     </scenes>
     <resources>
         <image name="ButterItjar2.png" width="356" height="368"/>
-        <image name="ButterIttoast.png" width="640" height="960"/>
+        <image name="ButterIttoast.png" width="53" height="332"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

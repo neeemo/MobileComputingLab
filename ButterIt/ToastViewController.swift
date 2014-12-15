@@ -45,15 +45,15 @@ class ToastViewController: UIViewController {
         CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint!.x, currentPoint!.y)
         CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound)   //draws a rounded off line
         CGContextSetLineWidth(UIGraphicsGetCurrentContext(), 50)
-        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1, 1, 0, 0.3) //arguments are RGB value, in this case, yellow
+        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1, 1, 0, 1.0) //arguments are RGB value, in this case, yellow
         CGContextSetBlendMode(UIGraphicsGetCurrentContext(), kCGBlendModeNormal)
         CGContextStrokePath(UIGraphicsGetCurrentContext())
         tempToastView.image = UIGraphicsGetImageFromCurrentImageContext()
+        tempToastView.alpha = 0.5
 
-        
-        
-        
-        CGContextSetAlpha(UIGraphicsGetCurrentContext(), 0.5);
+        //CGContextSetAlpha(UIGraphicsGetCurrentContext(), 0.5);
+        //[self.tempDrawImage setAlpha:opacity];
+        //toastView.alpha = 0.5
         UIGraphicsEndImageContext()
         
         lastPoint = currentPoint
@@ -61,18 +61,15 @@ class ToastViewController: UIViewController {
     
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        /*self.toastView.image?.drawInRect(CGRectMake(0, 0, toastView.frame.size.width, toastView.frame.size.height), blendMode: kCGBlendModeNormal, alpha: 1.0)
+        UIGraphicsBeginImageContext(toastView.frame.size)
+        toastView.image?.drawInRect(CGRectMake(0, 0, toastView.frame.size.width, toastView.frame.size.height), blendMode: kCGBlendModeNormal, alpha: 1.0)
         
-        self.tempToastView.image?.drawInRect(CGRectMake(0, 0, tempToastView.frame.size.width, tempToastView.frame.size.height), blendMode: kCGBlendModeNormal, alpha: 0.5)
+        tempToastView.image?.drawInRect(CGRectMake(0, 0, tempToastView.frame.size.width, tempToastView.frame.size.height), blendMode: kCGBlendModeNormal, alpha: 0.5)
         
-        self.toastView.image = UIGraphicsGetImageFromCurrentImageContext()
-        self.tempToastView.image = nil;
-        UIGraphicsEndImageContext();*/
+        toastView.image = UIGraphicsGetImageFromCurrentImageContext()
+        tempToastView.image = nil;
+        UIGraphicsEndImageContext();
     }
-    
-    
-
-
 
 
 
