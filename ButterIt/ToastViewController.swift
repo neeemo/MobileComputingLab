@@ -12,6 +12,8 @@ class ToastViewController: UIViewController {
 
     @IBOutlet var toastView: UIImageView!
     @IBOutlet var tempToastView: UIImageView!
+    @IBOutlet var debugAmountLabel: UILabel!
+    
     var lastPoint: CGPoint! //for drawing the butter lines
     var holdHereActive = true //boolean to see if the player is pressing on the Hold Here button
     
@@ -25,6 +27,10 @@ class ToastViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount)
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,6 +73,8 @@ class ToastViewController: UIViewController {
             println("Butter amount is \(butterKnife.butterAmount)")
             
             lastPoint = currentPoint
+            
+            debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount)
         }
     }
     
