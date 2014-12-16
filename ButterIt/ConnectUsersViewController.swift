@@ -39,7 +39,7 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
         arrConnectedDevices = NSMutableArray()
         
         //for debugging purposes this is set to true
-        //playButton?.enabled = true
+        playButton?.enabled = true
     }
     
     override func viewDidAppear(animated: Bool) {

@@ -37,27 +37,26 @@ class ButterViewController: UIViewController {
     
     //Register players and set butterView
     //Bad code, needs proper init instead
-    //PlayerNumber is not needed and are just for debugging atm
     func registerPlayerOnLabels(){
         for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
             var player: MCPeerID? = appDelegate?.mcManager?.getConnectedPeer(i)
             switch (i) {
             case (0):
                 player1Label?.text = player?.displayName;
-                butterView1.playerNumber = i;
                 butterView1.setPeerID(player!)
+                butterView1.setName(player!.displayName)
             case (1):
                 player2Label?.text = player?.displayName;
-                butterView2.playerNumber = i;
                 butterView2.setPeerID(player!)
+                butterView2.setName(player!.displayName)
             case (2):
                 player3Label?.text = player?.displayName;
-                butterView3.playerNumber = i;
                 butterView3.setPeerID(player!)
+                butterView3.setName(player!.displayName)
             case (3):
                 player4Label?.text = player?.displayName;
-                butterView4.playerNumber = i;
                 butterView4.setPeerID(player!)
+                butterView4.setName(player!.displayName)
             default:
                 println("No connected peers (should not be able to happen)")
             }

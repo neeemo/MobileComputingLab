@@ -14,8 +14,8 @@ class ButterView: UIImageView {
     var appDelegate: AppDelegate? = UIApplication.sharedApplication().delegate as? AppDelegate
     
     var hostPeerID_: MCPeerID?
+    var displayName_: String = ""
     var peerID_: MCPeerID?
-    var playerNumber = 0 //player numbers are assigned in the ButterViewController in the didLoad functin
     var scoopAmount: Double = 0 //as a player "scoops" butter, this value goes up
     var startTime = NSDate() //used in calculating the amount of butter scooped
     let maxScoopAmount: Double = 100
@@ -30,7 +30,7 @@ class ButterView: UIImageView {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
- 
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
     }
     
@@ -38,8 +38,12 @@ class ButterView: UIImageView {
         peerID_ = peerID
     }
     
+    func setName(displayName: String){
+        displayName_ = displayName
+    }
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        println("This is player \(playerNumber)")
+        //println("This is player \(playerNumber)")
         startTime = NSDate()
     }
     
@@ -52,32 +56,36 @@ class ButterView: UIImageView {
             scoopAmount = scoopAmount + timeInterval
         }
         
-        println("Butter on player \(playerNumber)'s knife = \(scoopAmount)")
+        //println("Butter on player \(playerNumber)'s knife = \(scoopAmount)")
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        println("Player \(playerNumber) has stopped scooping")
+        println("\(displayName_) has stopped scooping")
         //scoopAmount = 0
         
         //Calling sendData method that sends a package with the butteramount - scoopamount
-        println("sending \(scoopAmount) to \(peerID_!)")
-        sendData(peerID_!, butterAmount_: scoopAmount)
+        if(peerID_ != nil){
+            println("sending \(scoopAmount) to \(peerID_!)")
+            sendData(peerID_!, butterAmount_: scoopAmount)
+        }
+
     }
     
     //Send data method to corresponding peerID, set to reliable datatransfer
     func sendData(peerID: MCPeerID, butterAmount_: Double){
-        var type = "butterAmount"
-        var package = Package(type: type, butterAmount: butterAmount_)
-        
-        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
-        var toPeer: NSArray = [peerID_!]
-
-        var error: NSError?
-        appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: toPeer, withMode: MCSessionSendDataMode.Reliable, error: &error)
-        if(error != nil){
-            println(error?.localizedDescription)
+        if(peerID_ != nil){
+            var type = "butterAmount"
+            var package = Package(type: type, butterAmount: butterAmount_)
+            
+            var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
+            var toPeer: NSArray = [peerID_!]
+            
+            var error: NSError?
+            appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: toPeer, withMode: MCSessionSendDataMode.Reliable, error: &error)
+            if(error != nil){
+                println(error?.localizedDescription)
+            }
         }
-        
     }
     
     //This method is called when data is received

@@ -60,6 +60,8 @@ class ToastViewController: UIViewController {
         if(type == "butterAmount"){
             println("Inside butterAmount if-statement!")
             butterKnife.setButter(receivedPackage.getButterAmount())
+            
+            debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount_)
         }
     }
     
