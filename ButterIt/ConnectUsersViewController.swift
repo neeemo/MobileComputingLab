@@ -38,23 +38,16 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peerDidChangeStateWithNotification:", name: "ButterIt_DidChangeStateNotification", object: nil)
         arrConnectedDevices = NSMutableArray()
         
-        //for testing purposes this is set to true
-        playButton?.enabled = true
-        
-        //Set up AUTOMATICALLY
-        /*var peerID = MCPeerID(displayName: "advertise")
-        self.nearbyServiceBrowser = MCNearbyServiceBrowser(peer: peerID, serviceType: "ads-p2p")
-        self.nearbyServiceBrowser.delegate = self
-        self.nearbyServiceBrowser.startBrowsingForPeers()*/
+        //for debugging purposes this is set to true
+        //playButton?.enabled = true
     }
     
     override func viewDidAppear(animated: Bool) {
-        //have a button to browse for devices here later instead of viewdidappear
-        //browserForDevices()
-        
-        
+        //nothing atm
     }
     
+    //Play button called
+    //Prepare butterViewController and perform segue
     @IBAction func playFunc(sender: UIButton){
         //Call delegate method
         var butterVC = ButterViewController()
@@ -69,15 +62,7 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
         browserForDevices()
     }
     
-    /*
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
-        if(segue.identifier == "goPlaySegue"){
-            
-        }
-    }
-    */
-    
-    
+    //Call browser method from MPCHandler.m
     func browserForDevices() {
         appDelegate?.mcManager?.requireDeviceConnected(self)
         appDelegate?.mcManager?.browser?.delegate = self
@@ -92,7 +77,7 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
     }
     
     
-    
+    //If state is changed, update values and interface
     func peerDidChangeStateWithNotification (notification: NSNotification) {
         var peerID = notification.userInfo?["peerID"] as MCPeerID
         var displayName = peerID.displayName

@@ -24,23 +24,20 @@ class ButterViewController: UIViewController {
     
     var playersArray: NSMutableArray?
     
+    var hostPeerID: MCPeerID?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         registerPlayerOnLabels()
     }
     
-    func didReceiveDataWithNotification(notification: NSNotification) {
-        var peerID: MCPeerID = notification.userInfo?["peerID"]! as MCPeerID
-        var peerDisplayName = peerID.displayName as String
-        var receivedData = notification.userInfo?["data"] as NSData
-    }
-    
+    //Register players and set butterView
+    //Bad code, needs proper init instead
+    //PlayerNumber is not needed and are just for debugging atm
     func registerPlayerOnLabels(){
         for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
             var player: MCPeerID? = appDelegate?.mcManager?.getConnectedPeer(i)
@@ -48,15 +45,19 @@ class ButterViewController: UIViewController {
             case (0):
                 player1Label?.text = player?.displayName;
                 butterView1.playerNumber = i;
+                butterView1.setPeerID(player!)
             case (1):
                 player2Label?.text = player?.displayName;
                 butterView2.playerNumber = i;
+                butterView2.setPeerID(player!)
             case (2):
                 player3Label?.text = player?.displayName;
                 butterView3.playerNumber = i;
+                butterView3.setPeerID(player!)
             case (3):
                 player4Label?.text = player?.displayName;
                 butterView4.playerNumber = i;
+                butterView4.setPeerID(player!)
             default:
                 println("No connected peers (should not be able to happen)")
             }
@@ -70,13 +71,16 @@ class ButterViewController: UIViewController {
         sendEnter()
     }
     
+    //When ButterViewController is created, send a package to all Toasts Devices
+    //That game has been started
     func sendEnter(){
         var type = "enter"
         var package = Package(type: type, sender: "butterHost", playBool: true)
         
         var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
         var allPeers = appDelegate?.mcManager!.session.connectedPeers
-        //print to see if we have peers connected
+        
+        //print to see if we have peers connected (debug)
         println(appDelegate?.mcManager!.session.connectedPeers.count)
        
         var error: NSError?

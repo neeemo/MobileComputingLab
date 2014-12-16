@@ -15,6 +15,8 @@ class ToastTransitionViewController: UIViewController {
     
     @IBOutlet weak var statusLabel: UILabel?
     
+    var hostPeerID : MCPeerID?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +24,7 @@ class ToastTransitionViewController: UIViewController {
         appDelegate?.mcManager?.setupSession()
         statusLabel?.text = "Waiting for host to connect you..."
         
+        //Adding observers to this VC
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peerDidChangeStateWithNotification:", name: "ButterIt_DidChangeStateNotification", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
@@ -31,6 +34,7 @@ class ToastTransitionViewController: UIViewController {
         appDelegate?.mcManager?.advertiseSelf(true)
     }
     
+    //This method is called when our notificationCenter receives state changed notification
     func peerDidChangeStateWithNotification (notification: NSNotification) {
         var peerID = notification.userInfo?["peerID"] as MCPeerID
         var displayName = peerID.displayName
@@ -44,15 +48,20 @@ class ToastTransitionViewController: UIViewController {
         }
     }
     
+    //This method is called when our notificationCenter receives a data nofitication
     func didReceiveDataWithNotification(notification: NSNotification){
         var peerID = notification.userInfo?["peerID"] as MCPeerID
         var displayName = peerID.displayName
         
+        hostPeerID = peerID
         var receivedData = notification.userInfo?["data"] as NSData
-        
         var receivedPackage: Package = NSKeyedUnarchiver.unarchiveObjectWithData(receivedData) as Package
         var type = receivedPackage.getType()
         
+        //If package type equals enter,
+        //Sender is from host,
+        //Playbool is set to true
+        //Then game has started and we segue into toastVC
         if(type == "enter"){
             if(receivedPackage.getSender() == "butterHost" && receivedPackage.getPlayBool()){
                 self.performSegueWithIdentifier("toastPlaySegue", sender: self)
@@ -61,6 +70,13 @@ class ToastTransitionViewController: UIViewController {
         
     }
     
+    //Our prepareforsegue method only exist so we can send the correct hostPeerID to our toastVC
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "toastPlaySegue"){
+            var toastVC = segue.destinationViewController as ToastViewController
+            toastVC.hostPeerID = hostPeerID
+        }
+    }
     
     
     override func didReceiveMemoryWarning() {

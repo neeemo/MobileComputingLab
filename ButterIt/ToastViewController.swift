@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class ToastViewController: UIViewController {
 
+    var appDelegate: AppDelegate? = UIApplication.sharedApplication().delegate as? AppDelegate
+    
     @IBOutlet var toastView: UIImageView!
     @IBOutlet var tempToastView: UIImageView!
     @IBOutlet var debugAmountLabel: UILabel!
@@ -17,11 +20,18 @@ class ToastViewController: UIViewController {
     var lastPoint: CGPoint! //for drawing the butter lines
     var holdHereActive = true //boolean to see if the player is pressing on the Hold Here button
     
+    var myPeerID: MCPeerID?
+    var hostPeerID: MCPeerID?
+    
     var butterKnife = ButterKnife()
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //tempToastView.backgroundColor = UIColor.blackColor()
+        
+        myPeerID = appDelegate?.mcManager?.session.myPeerID
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
     }
     
     override func viewDidLoad() {
@@ -30,7 +40,7 @@ class ToastViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount)
+        debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount_)
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,16 +48,30 @@ class ToastViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Update the butterAmount on knife from the Host
+    func didReceiveDataWithNotification(notification: NSNotification) {
+        var peerID: MCPeerID = notification.userInfo?["peerID"]! as MCPeerID
+        var peerDisplayName = peerID.displayName as String
+        var receivedData = notification.userInfo?["data"] as NSData
+        
+        var receivedPackage: Package = NSKeyedUnarchiver.unarchiveObjectWithData(receivedData) as Package
+        var type = receivedPackage.getType()
+  
+        if(type == "butterAmount"){
+            println("Inside butterAmount if-statement!")
+            butterKnife.setButter(receivedPackage.getButterAmount())
+        }
+    }
     
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         lastPoint = touches.anyObject()?.locationInView(tempToastView)
         //temporary line to add butter to knife
-        butterKnife.addButter(100)
+        //butterKnife.addButter(100)
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        if holdHereActive == true && butterKnife.butterAmount > 0 {
+        if holdHereActive == true && butterKnife.butterAmount_ > 0 {
             var currentPoint: CGPoint! = touches.anyObject()?.locationInView(tempToastView)
             
             //drawing code, draws a line that follows the player's touches
@@ -70,11 +94,11 @@ class ToastViewController: UIViewController {
             UIGraphicsEndImageContext()
             
             butterKnife.removeButter(distance/3)
-            println("Butter amount is \(butterKnife.butterAmount)")
+            //println("Butter amount is \(butterKnife.butterAmount_)")
             
             lastPoint = currentPoint
             
-            debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount)
+            debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount_)
         }
     }
     
@@ -89,6 +113,26 @@ class ToastViewController: UIViewController {
         toastView.image = UIGraphicsGetImageFromCurrentImageContext()
         tempToastView.image = nil;
         UIGraphicsEndImageContext();
+        
+        //When touch has ended, update host butterAmount
+        sendData(myPeerID!, butterAmount_: butterKnife.butterAmount_)
+    }
+    
+    //Whenever called sends data to Host that the butterAmount needs to be updated
+    func sendData(peerID: MCPeerID, butterAmount_: Double){
+        var type = "butterAmount"
+        var package = Package(type: type, butterAmount: butterAmount_)
+        
+        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
+        var toPeer: NSArray = [hostPeerID!]
+        
+        var error: NSError?
+        appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: toPeer, withMode: MCSessionSendDataMode.Reliable, error: &error)
+        if(error != nil){
+            println(error?.localizedDescription)
+        }
+        
+        
     }
     
     @IBAction func holdHerePressed() {
