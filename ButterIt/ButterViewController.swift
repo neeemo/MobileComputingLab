@@ -58,7 +58,7 @@ class ButterViewController: UIViewController {
                 butterView4.setPeerID(player!)
                 butterView4.setName(player!.displayName)
             default:
-                println("No connected peers (should not be able to happen)")
+                println("Somethings is wrong, This print can not happen!")
             }
             playersArray?.addObject(player!)
         }
@@ -66,7 +66,6 @@ class ButterViewController: UIViewController {
     }
     
     func callSendEnter(){
-        println("delegate method sendEnter called")
         sendEnter()
     }
     

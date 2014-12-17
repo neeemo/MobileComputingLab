@@ -9,11 +9,14 @@
 import UIKit
 import MultipeerConnectivity
 
-class ToastTransitionViewController: UIViewController {
+class ToastTransitionViewController: UIViewController, UITextFieldDelegate {
 
     var appDelegate: AppDelegate? = UIApplication.sharedApplication().delegate as? AppDelegate
     
     @IBOutlet weak var statusLabel: UILabel?
+    @IBOutlet weak var usernameField: UITextField?
+    @IBOutlet weak var readyLabel: UILabel?
+    @IBOutlet weak var readySwitch: UISwitch!
     
     var hostPeerID : MCPeerID?
     
@@ -22,7 +25,12 @@ class ToastTransitionViewController: UIViewController {
         
         appDelegate?.mcManager?.setupPeerWithDisplayName(UIDevice.currentDevice().name)
         appDelegate?.mcManager?.setupSession()
-        statusLabel?.text = "Connecting..."
+        statusLabel?.text = "Get ready!"
+        readyLabel?.text = "Not Ready"
+        readyLabel?.textColor = UIColor.redColor()
+        
+        usernameField?.delegate = self
+        usernameField?.placeholder = UIDevice.currentDevice().name
         
         //Adding observers to this VC
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peerDidChangeStateWithNotification:", name: "ButterIt_DidChangeStateNotification", object: nil)
@@ -31,7 +39,7 @@ class ToastTransitionViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        appDelegate?.mcManager?.advertiseSelf(true)
+        //appDelegate?.mcManager?.advertiseSelf(true)
     }
     
     //This method is called when our notificationCenter receives state changed notification
@@ -46,6 +54,40 @@ class ToastTransitionViewController: UIViewController {
             }
             var peersExist = appDelegate?.mcManager?.session.connectedPeers.count == 0
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if(appDelegate?.mcManager?.peerID != nil){
+            appDelegate?.mcManager?.disconnect()
+            
+            appDelegate?.mcManager?.peerID = nil
+            appDelegate?.mcManager?.session = nil
+        }
+    
+        appDelegate?.mcManager?.setupPeerWithDisplayName(usernameField?.text)
+        appDelegate?.mcManager?.setupSession()
+        
+        return true
+    }
+    
+    @IBAction func switchFunc(sender: AnyObject) {
+        if(readySwitch.on){
+            statusLabel?.text = "Connecting..."
+            readyLabel?.text = "Ready"
+            readyLabel?.textColor = UIColor.greenColor()
+            usernameField?.enabled = false;
+            appDelegate?.mcManager?.advertiseSelf(true)
+        }
+        else{
+            statusLabel?.text = "Get ready!"
+            readyLabel?.text = "Not Ready"
+            readyLabel?.textColor = UIColor.redColor()
+            usernameField?.enabled = true;
+            appDelegate?.mcManager?.disconnect()
+        }
+        
     }
     
     //This method is called when our notificationCenter receives a data nofitication
@@ -67,7 +109,6 @@ class ToastTransitionViewController: UIViewController {
                 self.performSegueWithIdentifier("toastPlaySegue", sender: self)
             }
         }
-        
     }
     
     //Our prepareforsegue method only exist so we can send the correct hostPeerID to our toastVC
