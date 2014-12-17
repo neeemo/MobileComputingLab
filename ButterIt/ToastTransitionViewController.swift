@@ -22,7 +22,7 @@ class ToastTransitionViewController: UIViewController {
         
         appDelegate?.mcManager?.setupPeerWithDisplayName(UIDevice.currentDevice().name)
         appDelegate?.mcManager?.setupSession()
-        statusLabel?.text = "Waiting for host to connect you..."
+        statusLabel?.text = "Connecting..."
         
         //Adding observers to this VC
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peerDidChangeStateWithNotification:", name: "ButterIt_DidChangeStateNotification", object: nil)
