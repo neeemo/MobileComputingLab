@@ -32,7 +32,7 @@ class ButterViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        //registerPlayerOnLabels()
+        registerPlayerOnLabels()
     }
     
     //Register players and set butterView
