@@ -24,6 +24,8 @@ class ToastViewController: UIViewController {
     var hostPeerID: MCPeerID?
     
     var butterKnife = ButterKnife()
+    
+    let minButterPercentage = 85 //the minimum amount of butter that must be spread on the toast for a successful buttering
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -73,6 +75,7 @@ class ToastViewController: UIViewController {
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        //conditional to make sure player is holding button and there is butter to spread
         if holdHereActive == true && butterKnife.butterAmount_ > 0 {
             var currentPoint: CGPoint! = touches.anyObject()?.locationInView(tempToastView)
             
@@ -104,9 +107,9 @@ class ToastViewController: UIViewController {
         }
     }
     
-    //merges the tempToastView and toastView image views - this is done to preserve opacity levels
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
 
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        //merges the tempToastView and toastView image views - this is done to preserve opacity levels
         UIGraphicsBeginImageContext(toastView.frame.size)
         toastView.image?.drawInRect(CGRectMake(0, 0, toastView.frame.size.width, toastView.frame.size.height), blendMode: kCGBlendModeNormal, alpha: 1.0)
         
@@ -133,8 +136,52 @@ class ToastViewController: UIViewController {
         if(error != nil){
             println(error?.localizedDescription)
         }
+    }
+    
+    func isItButtered() -> Bool {
+        let toastViewWidth = Int(toastView.frame.size.width)
+        let toastViewHeight = Int(toastView.frame.size.height)
+        let minButterPercentage: Double = 0.85
+        var totalPoints: Double = 0
+        var butteredPoints: Double = 0
+        var toastIsButtered = false
         
+        for var i = 0; i < toastViewWidth; i = i + 10 {
+            for var j = 0; j < toastViewHeight; j = j + 10 {
+                var currentPoint = CGPoint(x: i, y: j)
+                var greenValue = getGreenValue(currentPoint)
+                //tests the currentPoint's Green Channel value, if > 0, then point is buttered
+                if greenValue > 0 {
+                    butteredPoints++
+                }
+                totalPoints++
+                println("green channel value: \(greenValue)")
+            }
+        }
+        println("Number of buttered points \(butteredPoints)")
+        println("Number of ponts \(totalPoints)")
+        var butterPercentage = butteredPoints/totalPoints
+        println("Percentage covered \(butterPercentage)")
+        if butterPercentage > minButterPercentage {
+            toastIsButtered = true
+        } else {
+            toastIsButtered = false
+        }
+        return toastIsButtered
+    }
+    
+    func getGreenValue(pos: CGPoint) -> CGFloat {
+        var pixelData = CGDataProviderCopyData(CGImageGetDataProvider(toastView.image?.CGImage))
+        var data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
         
+        var pixelInfo: Int = ((Int(toastView.image!.size.width) * Int(pos.y)) + Int(pos.x)) * 4
+        
+        //var r = CGFloat(data[pixelInfo])
+        var g = CGFloat(data[pixelInfo+1])
+        //var b = CGFloat(data[pixelInfo+2])
+        //var a = CGFloat(data[pixelInfo+3])
+        
+        return g
     }
     
     @IBAction func holdHerePressed() {
@@ -145,9 +192,8 @@ class ToastViewController: UIViewController {
     @IBAction func holdHereReleased() {
         //holdHereActive = false
         println("Button pressed = \(holdHereActive)")
+        var testBool = isItButtered()
+        println("Is it buttered? \(testBool)")
     }
-
-
-
 }
 
