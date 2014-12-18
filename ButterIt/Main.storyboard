@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gal-Ae-EmW">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -28,9 +28,6 @@
                                 <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="179" y="84" width="43" height="30"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="362" y="162" width="43" height="30"/>
-                                </variation>
                                 <connections>
                                     <segue destination="FfB-jL-fga" kind="presentation" id="rGE-FV-SEC"/>
                                 </connections>
@@ -45,9 +42,6 @@
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="182" y="169" width="37" height="30"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="365" y="247" width="37" height="30"/>
                                 </variation>
                                 <connections>
                                     <segue destination="rO9-yF-Vmn" kind="presentation" id="b8e-v5-1n7"/>
@@ -84,27 +78,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="306" y="58" width="146" height="21"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Butter Lobby" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPn-TD-HLa">
                                 <rect key="frame" x="87" y="20" width="146" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="306" y="20" width="146" height="30"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hl6-1c-Ass">
                                 <rect key="frame" x="16" y="530" width="83" height="30"/>
                                 <state key="normal" title="Add Players">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="235" y="530" width="83" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="addPlayersFunc:" destination="FfB-jL-fga" eventType="touchUpInside" id="NZ7-Va-qK6"/>
                                 </connections>
@@ -114,9 +99,6 @@
                                 <state key="normal" title="Play">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="493" y="530" width="30" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="playFunc:" destination="FfB-jL-fga" eventType="touchUpInside" id="u9Y-c8-eQc"/>
                                 </connections>
@@ -129,7 +111,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="40" y="87" width="240" height="330"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="259" y="87" width="240" height="330"/>
                                 </variation>
                             </textView>
@@ -171,42 +153,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxa-gv-kD4" userLabel="ButterDebugText">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxa-gv-kD4" userLabel="ButterDebugText">
                                 <rect key="frame" x="196" y="37" width="71" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeY-0h-e4U" userLabel="holdHereButton">
-                                <rect key="frame" x="118" y="538" width="69" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ButterIt" translatesAutoresizingMaskIntoConstraints="NO" id="NXb-62-tOS">
+                                <rect key="frame" x="16" y="52" width="316" height="495"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="2" y="37" width="316" height="403"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeY-0h-e4U" userLabel="holdHereButton">
+                                <rect key="frame" x="265.5" y="545" width="69" height="30"/>
                                 <state key="normal" title="Hold Here">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="119" y="448" width="69" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="holdHerePressed" destination="vXZ-lx-hvc" eventType="touchDown" id="0Rk-l0-vjZ"/>
                                     <action selector="holdHereReleased" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5FQ-Hb-HoL"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButterIttoast.png" translatesAutoresizingMaskIntoConstraints="NO" id="NXb-62-tOS">
-                                <rect key="frame" x="16" y="52" width="316" height="495"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="2" y="37" width="316" height="403"/>
-                                </variation>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzk-62-2F3" userLabel="toastView" customClass="UIImageView">
-                                <rect key="frame" x="35" y="174" width="278" height="265"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzk-62-2F3" userLabel="toastView" customClass="UIImageView">
+                                <rect key="frame" x="35" y="178" width="278" height="265"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nDg-eD-wM6" userLabel="tempToastView" customClass="UIImageView">
-                                        <rect key="frame" x="-36" y="-61" width="326" height="338"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="278" height="252"/>
                                         <accessibility key="accessibilityConfiguration" label=""/>
                                     </view>
                                 </subviews>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="200" y="0.0" width="0.0" height="0.0"/>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="NXb-62-tOS" secondAttribute="centerX" id="4qK-VO-tbf"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oeY-0h-e4U" secondAttribute="bottom" constant="25" id="Si8-zK-2x6"/>
+                            <constraint firstItem="uxa-gv-kD4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="Yqz-6F-lrb"/>
+                            <constraint firstAttribute="centerX" secondItem="oeY-0h-e4U" secondAttribute="centerX" id="khw-bT-XR9"/>
+                            <constraint firstAttribute="centerX" secondItem="dzk-62-2F3" secondAttribute="centerX" id="laT-j4-vUZ"/>
+                            <constraint firstAttribute="centerX" secondItem="uxa-gv-kD4" secondAttribute="centerX" id="qY8-aR-iiC"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="debugAmountLabel" destination="uxa-gv-kD4" id="Ihs-6z-5te"/>
@@ -234,27 +224,15 @@
                                 <rect key="frame" x="214" y="106" width="171" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="113" y="91" width="171" height="30"/>
-                                </variation>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jz0-I5-zyO" userLabel="Status">
                                 <rect key="frame" x="166" y="58" width="268" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="29" y="43" width="268" height="21"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="266" y="103" width="268" height="21"/>
-                                </variation>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8sR-Cd-htm">
                                 <rect key="frame" x="274" y="193" width="51" height="31"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="126" y="186" width="51" height="31"/>
-                                </variation>
                                 <connections>
                                     <action selector="switchFunc:" destination="rO9-yF-Vmn" eventType="valueChanged" id="7Om-Cu-SI6"/>
                                 </connections>
@@ -264,9 +242,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="88" y="157" width="125" height="21"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -305,101 +280,229 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yFp-7M-cu9" userLabel="butterView1" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
-                                <rect key="frame" x="9" y="7" width="158" height="156"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Player2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cje-1A-bW6" userLabel="player2">
+                                <rect key="frame" x="16" y="171" width="130" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="533" y="311" width="175" height="20"/>
+                                </variation>
+                            </label>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xcb-cE-HKE" userLabel="butterView4" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButterItjar2.png" translatesAutoresizingMaskIntoConstraints="NO" id="yCx-Np-0Q3">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButterItjar2" translatesAutoresizingMaskIntoConstraints="NO" id="IGG-jL-lXC">
+                                        <rect key="frame" x="0.0" y="-5" width="170" height="161"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                        </variation>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="483" y="505" width="300" height="300"/>
+                                </variation>
+                            </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBE-dq-ST7" userLabel="butterView3" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButterItjar2" translatesAutoresizingMaskIntoConstraints="NO" id="g4Z-bY-gwZ">
+                                        <rect key="frame" x="-3" y="0.0" width="174" height="172"/>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                        </variation>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="46" y="505" width="300" height="300"/>
+                                </variation>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQT-2c-U87" userLabel="player4">
+                                <rect key="frame" x="12" y="450" width="130" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="606.5" y="479.5" width="57.5" height="20.5"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Player3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbG-s8-Y4A" userLabel="player3">
+                                <rect key="frame" x="175" y="309" width="130" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="46" y="459" width="275" height="20"/>
+                                </variation>
+                            </label>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yFp-7M-cu9" userLabel="butterView1" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButterItjar2" translatesAutoresizingMaskIntoConstraints="NO" id="yCx-Np-0Q3">
                                         <rect key="frame" x="-4" y="-4" width="166" height="164"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="275" height="275"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                         </variation>
                                     </imageView>
                                 </subviews>
                                 <accessibility key="accessibilityConfiguration" label=""/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="27" y="35" width="275" height="275"/>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="46" y="28" width="300" height="300"/>
                                 </variation>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sBE-dq-ST7" userLabel="butterView3" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="274" width="168" height="168"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButterItjar2.png" translatesAutoresizingMaskIntoConstraints="NO" id="g4Z-bY-gwZ">
-                                        <rect key="frame" x="-3" y="0.0" width="174" height="172"/>
-                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="275" height="275"/>
-                                        </variation>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="27" y="716" width="275" height="275"/>
-                                </variation>
-                            </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S42-JZ-FIL" userLabel="butterView2" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
+                            <view opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S42-JZ-FIL" userLabel="butterView2" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
                                 <rect key="frame" x="154" y="138" width="162" height="163"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButterItjar2.png" translatesAutoresizingMaskIntoConstraints="NO" id="X04-98-s5s">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButterItjar2" translatesAutoresizingMaskIntoConstraints="NO" id="X04-98-s5s">
                                         <rect key="frame" x="-4" y="-4" width="170" height="172"/>
                                         <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="275" height="275"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                         </variation>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="471" y="35" width="275" height="275"/>
+                                <variation key="widthClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="483" y="28" width="300" height="300"/>
                                 </variation>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xcb-cE-HKE" userLabel="butterView4" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
-                                <rect key="frame" x="150" y="412" width="170" height="156"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButterItjar2.png" translatesAutoresizingMaskIntoConstraints="NO" id="IGG-jL-lXC">
-                                        <rect key="frame" x="0.0" y="-5" width="170" height="161"/>
-                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="275" height="275"/>
-                                        </variation>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="471" y="716" width="275" height="275"/>
-                                </variation>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cje-1A-bW6">
-                                <rect key="frame" x="16" y="171" width="130" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="521" y="325" width="175" height="20"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NH-n3-T6X">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Player1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NH-n3-T6X" userLabel="player1">
                                 <rect key="frame" x="175" y="20" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="27" y="325" width="275" height="20"/>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="46" y="305" width="275" height="20"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQT-2c-U87">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWO-Ub-IFu" userLabel="player4">
                                 <rect key="frame" x="12" y="450" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="27" y="688" width="275" height="20"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbG-s8-Y4A">
-                                <rect key="frame" x="175" y="309" width="130" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="471" y="687" width="275" height="20"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="16" y="412" width="130" height="21"/>
                                 </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xcb-cE-HKE" firstAttribute="top" secondItem="bQT-2c-U87" secondAttribute="bottom" id="3lG-RJ-ZRI"/>
+                            <constraint firstItem="Cje-1A-bW6" firstAttribute="top" secondItem="wRU-wy-y0d" secondAttribute="bottom" constant="300" id="5On-Bf-xuo"/>
+                            <constraint firstItem="DbG-s8-Y4A" firstAttribute="leading" secondItem="C92-uh-0U6" secondAttribute="leadingMargin" constant="120" id="AyR-p5-pvn"/>
+                            <constraint firstItem="Cje-1A-bW6" firstAttribute="top" secondItem="yFp-7M-cu9" secondAttribute="bottom" constant="160" id="Eyi-Wc-qtc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xcb-cE-HKE" secondAttribute="trailing" constant="300" id="ICS-SB-f9Z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bQT-2c-U87" secondAttribute="trailing" constant="120" id="KcD-ac-Efd"/>
+                            <constraint firstItem="Cje-1A-bW6" firstAttribute="leading" secondItem="C92-uh-0U6" secondAttribute="leadingMargin" constant="30" id="KiR-MP-RN1"/>
+                            <constraint firstItem="sBE-dq-ST7" firstAttribute="top" secondItem="Cje-1A-bW6" secondAttribute="bottom" constant="20" id="Lqc-cw-gYl"/>
+                            <constraint firstItem="S42-JZ-FIL" firstAttribute="top" secondItem="wRU-wy-y0d" secondAttribute="bottom" constant="10" id="RNq-Lo-6Jo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3NH-n3-T6X" secondAttribute="trailing" constant="70" id="TBz-KP-i26"/>
+                            <constraint firstItem="Xcb-cE-HKE" firstAttribute="top" secondItem="DbG-s8-Y4A" secondAttribute="bottom" constant="30" id="Tex-gE-pnV"/>
+                            <constraint firstItem="yFp-7M-cu9" firstAttribute="top" secondItem="wRU-wy-y0d" secondAttribute="bottom" constant="10" id="U1c-tQ-No1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DbG-s8-Y4A" secondAttribute="trailing" constant="70" id="UIQ-pM-t6I"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="S42-JZ-FIL" secondAttribute="trailing" constant="150" id="UWQ-hX-nBO"/>
+                            <constraint firstItem="yFp-7M-cu9" firstAttribute="leading" secondItem="C92-uh-0U6" secondAttribute="leadingMargin" constant="10" id="XlE-1O-cmr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xcb-cE-HKE" secondAttribute="trailing" constant="157" id="XvA-XL-NhT"/>
+                            <constraint firstItem="sBE-dq-ST7" firstAttribute="top" secondItem="DbG-s8-Y4A" secondAttribute="bottom" id="aSK-U7-RtP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="S42-JZ-FIL" secondAttribute="trailing" constant="300" id="bOs-y6-p0l"/>
+                            <constraint firstItem="XWO-Ub-IFu" firstAttribute="top" secondItem="Cje-1A-bW6" secondAttribute="bottom" constant="200" id="cFY-OY-DIf"/>
+                            <constraint firstItem="yFp-7M-cu9" firstAttribute="leading" secondItem="C92-uh-0U6" secondAttribute="leadingMargin" constant="-7" id="ca3-II-Tbi"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="sBE-dq-ST7" secondAttribute="bottom" constant="300" id="cm4-l8-EQs"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Xcb-cE-HKE" secondAttribute="bottom" constant="300" id="eBW-uc-peA"/>
+                            <constraint firstItem="yFp-7M-cu9" firstAttribute="top" secondItem="C92-uh-0U6" secondAttribute="topMargin" constant="7" id="ebg-ka-Q19"/>
+                            <constraint firstItem="3NH-n3-T6X" firstAttribute="top" secondItem="wRU-wy-y0d" secondAttribute="bottom" constant="15" id="f4Z-2G-oV0"/>
+                            <constraint firstItem="sBE-dq-ST7" firstAttribute="leading" secondItem="C92-uh-0U6" secondAttribute="leadingMargin" constant="10" id="fSf-PP-A95"/>
+                            <constraint firstItem="DbG-s8-Y4A" firstAttribute="top" secondItem="S42-JZ-FIL" secondAttribute="bottom" constant="170" id="gH5-Pp-4rJ"/>
+                            <constraint firstItem="3NH-n3-T6X" firstAttribute="leading" secondItem="C92-uh-0U6" secondAttribute="leadingMargin" constant="120" id="oba-mk-aoz"/>
+                            <constraint firstItem="S42-JZ-FIL" firstAttribute="top" secondItem="3NH-n3-T6X" secondAttribute="bottom" constant="50" id="p1R-TC-DvM"/>
+                            <constraint firstItem="sBE-dq-ST7" firstAttribute="leading" secondItem="C92-uh-0U6" secondAttribute="leadingMargin" constant="-14" id="sJh-hJ-f73"/>
+                            <constraint firstItem="3NH-n3-T6X" firstAttribute="top" secondItem="wRU-wy-y0d" secondAttribute="bottom" constant="300" id="tZj-JP-MEh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Cje-1A-bW6" secondAttribute="trailing" constant="120" id="vg4-Iv-a3T"/>
+                            <constraint firstItem="XWO-Ub-IFu" firstAttribute="leading" secondItem="C92-uh-0U6" secondAttribute="leadingMargin" constant="30" id="vx4-13-ODq"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="bQT-2c-U87"/>
+                                <exclude reference="XWO-Ub-IFu"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="KcD-ac-Efd"/>
+                                <exclude reference="3lG-RJ-ZRI"/>
+                                <exclude reference="ICS-SB-f9Z"/>
+                                <exclude reference="Tex-gE-pnV"/>
+                                <exclude reference="XvA-XL-NhT"/>
+                                <exclude reference="eBW-uc-peA"/>
+                                <exclude reference="Lqc-cw-gYl"/>
+                                <exclude reference="aSK-U7-RtP"/>
+                                <exclude reference="cm4-l8-EQs"/>
+                                <exclude reference="fSf-PP-A95"/>
+                                <exclude reference="sJh-hJ-f73"/>
+                                <exclude reference="U1c-tQ-No1"/>
+                                <exclude reference="XlE-1O-cmr"/>
+                                <exclude reference="ca3-II-Tbi"/>
+                                <exclude reference="ebg-ka-Q19"/>
+                                <exclude reference="5On-Bf-xuo"/>
+                                <exclude reference="Eyi-Wc-qtc"/>
+                                <exclude reference="KiR-MP-RN1"/>
+                                <exclude reference="vg4-Iv-a3T"/>
+                                <exclude reference="TBz-KP-i26"/>
+                                <exclude reference="f4Z-2G-oV0"/>
+                                <exclude reference="oba-mk-aoz"/>
+                                <exclude reference="tZj-JP-MEh"/>
+                                <exclude reference="RNq-Lo-6Jo"/>
+                                <exclude reference="UWQ-hX-nBO"/>
+                                <exclude reference="bOs-y6-p0l"/>
+                                <exclude reference="p1R-TC-DvM"/>
+                                <exclude reference="AyR-p5-pvn"/>
+                                <exclude reference="UIQ-pM-t6I"/>
+                                <exclude reference="gH5-Pp-4rJ"/>
+                                <exclude reference="cFY-OY-DIf"/>
+                                <exclude reference="vx4-13-ODq"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="XWO-Ub-IFu"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Tex-gE-pnV"/>
+                                <include reference="XvA-XL-NhT"/>
+                                <include reference="Lqc-cw-gYl"/>
+                                <include reference="sJh-hJ-f73"/>
+                                <include reference="ca3-II-Tbi"/>
+                                <include reference="ebg-ka-Q19"/>
+                                <include reference="Eyi-Wc-qtc"/>
+                                <include reference="KiR-MP-RN1"/>
+                                <include reference="TBz-KP-i26"/>
+                                <include reference="f4Z-2G-oV0"/>
+                                <include reference="UWQ-hX-nBO"/>
+                                <include reference="p1R-TC-DvM"/>
+                                <include reference="UIQ-pM-t6I"/>
+                                <include reference="gH5-Pp-4rJ"/>
+                                <include reference="cFY-OY-DIf"/>
+                                <include reference="vx4-13-ODq"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="bQT-2c-U87"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="KcD-ac-Efd"/>
+                                <include reference="3lG-RJ-ZRI"/>
+                                <include reference="ICS-SB-f9Z"/>
+                                <include reference="eBW-uc-peA"/>
+                                <include reference="aSK-U7-RtP"/>
+                                <include reference="cm4-l8-EQs"/>
+                                <include reference="fSf-PP-A95"/>
+                                <include reference="U1c-tQ-No1"/>
+                                <include reference="XlE-1O-cmr"/>
+                                <include reference="5On-Bf-xuo"/>
+                                <include reference="vg4-Iv-a3T"/>
+                                <include reference="oba-mk-aoz"/>
+                                <include reference="tZj-JP-MEh"/>
+                                <include reference="RNq-Lo-6Jo"/>
+                                <include reference="bOs-y6-p0l"/>
+                                <include reference="AyR-p5-pvn"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="butterView1" destination="yFp-7M-cu9" id="8Cn-Dl-x38"/>
@@ -414,11 +517,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crG-gr-NGm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054.5" y="234.75"/>
+            <point key="canvasLocation" x="1108.5" y="291.75"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ButterItjar2.png" width="356" height="368"/>
-        <image name="ButterIttoast.png" width="53" height="332"/>
+        <image name="ButterIt" width="320" height="480"/>
+        <image name="ButterItjar2" width="178" height="184"/>
     </resources>
 </document>

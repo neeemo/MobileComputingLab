@@ -43,6 +43,7 @@ class ButterView: UIImageView {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        println("TOUCHED!")
         startTime = NSDate()
     }
     
