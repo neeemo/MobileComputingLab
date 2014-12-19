@@ -69,7 +69,7 @@ class ToastViewController: UIViewController {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         lastPoint = touches.anyObject()?.locationInView(tempToastView)
         //temporary line to add butter to knife
-        //butterKnife.addButter(100)
+        butterKnife.addButter(100)
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
@@ -117,7 +117,7 @@ class ToastViewController: UIViewController {
         UIGraphicsEndImageContext();
         
         //When touch has ended, update host butterAmount
-        sendData(myPeerID!, butterAmount_: butterKnife.butterAmount_)
+        //sendData(myPeerID!, butterAmount_: butterKnife.butterAmount_)
     }
     
     //Whenever called sends data to Host that the butterAmount needs to be updated

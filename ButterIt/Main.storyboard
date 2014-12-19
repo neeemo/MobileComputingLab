@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gal-Ae-EmW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -159,12 +159,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ButterIt" translatesAutoresizingMaskIntoConstraints="NO" id="NXb-62-tOS">
-                                <rect key="frame" x="16" y="52" width="316" height="495"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="2" y="37" width="316" height="403"/>
-                                </variation>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeY-0h-e4U" userLabel="holdHereButton">
                                 <rect key="frame" x="266" y="545" width="69" height="30"/>
                                 <state key="normal" title="Hold Here">
@@ -175,29 +169,42 @@
                                     <action selector="holdHereReleased" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5FQ-Hb-HoL"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzk-62-2F3" userLabel="toastView" customClass="UIImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ButterIt" translatesAutoresizingMaskIntoConstraints="NO" id="NXb-62-tOS">
+                                <rect key="frame" x="16" y="52" width="316" height="495"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="2" y="37" width="316" height="403"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="16" y="174" width="302" height="400"/>
+                                </variation>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzk-62-2F3" userLabel="toastView" customClass="UIImageView">
                                 <rect key="frame" x="35" y="178" width="278" height="265"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nDg-eD-wM6" userLabel="tempToastView" customClass="UIImageView">
                                         <rect key="frame" x="0.0" y="0.0" width="278" height="252"/>
                                         <accessibility key="accessibilityConfiguration" label=""/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="240"/>
+                                        </variation>
                                         <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                            <rect key="frame" x="-400" y="0.0" width="0.0" height="0.0"/>
+                                            <rect key="frame" x="8" y="200" width="307" height="255"/>
                                         </variation>
                                     </view>
                                 </subviews>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="200" y="0.0" width="0.0" height="0.0"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="127" width="280" height="240"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="11" y="224" width="300" height="300"/>
                                 </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="NXb-62-tOS" secondAttribute="centerX" id="4qK-VO-tbf"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oeY-0h-e4U" secondAttribute="bottom" constant="25" id="Si8-zK-2x6"/>
                             <constraint firstItem="uxa-gv-kD4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="Yqz-6F-lrb"/>
                             <constraint firstAttribute="centerX" secondItem="oeY-0h-e4U" secondAttribute="centerX" id="khw-bT-XR9"/>
-                            <constraint firstAttribute="centerX" secondItem="dzk-62-2F3" secondAttribute="centerX" id="laT-j4-vUZ"/>
                             <constraint firstAttribute="centerX" secondItem="uxa-gv-kD4" secondAttribute="centerX" id="qY8-aR-iiC"/>
                         </constraints>
                     </view>
@@ -209,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1095" y="958"/>
+            <point key="canvasLocation" x="1095" y="957"/>
         </scene>
         <!--Toast Transition View Controller-->
         <scene sceneID="xNG-iB-gvV">
@@ -363,7 +370,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Player1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NH-n3-T6X" userLabel="player1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NH-n3-T6X" userLabel="player1">
                                 <rect key="frame" x="226" y="258" width="130" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="e3W-fp-fyh"/>
@@ -428,19 +435,19 @@
                                 <exclude reference="3NH-n3-T6X"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="u41-wf-tGh"/>
-                                <exclude reference="Uct-ZI-6Mh"/>
                                 <exclude reference="bxT-K4-W0Q"/>
                                 <exclude reference="n1o-4b-6zY"/>
+                                <exclude reference="u41-wf-tGh"/>
+                                <exclude reference="Uct-ZI-6Mh"/>
                                 <exclude reference="7g2-D7-h15"/>
                                 <exclude reference="NBf-3Z-A58"/>
                                 <exclude reference="WRt-wy-4Vc"/>
                                 <exclude reference="IAg-v9-uPj"/>
                                 <exclude reference="pER-YB-9HZ"/>
                                 <exclude reference="jBG-oZ-cri"/>
+                                <exclude reference="Slx-Gb-0Y9"/>
                                 <exclude reference="Q9L-0a-jXB"/>
                                 <exclude reference="xAM-Ur-XaR"/>
-                                <exclude reference="Slx-Gb-0Y9"/>
                                 <exclude reference="dkZ-s7-bsp"/>
                             </mask>
                         </variation>
@@ -449,19 +456,19 @@
                                 <include reference="3NH-n3-T6X"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="u41-wf-tGh"/>
-                                <include reference="Uct-ZI-6Mh"/>
                                 <include reference="bxT-K4-W0Q"/>
                                 <include reference="n1o-4b-6zY"/>
+                                <include reference="u41-wf-tGh"/>
+                                <include reference="Uct-ZI-6Mh"/>
                                 <include reference="7g2-D7-h15"/>
                                 <include reference="NBf-3Z-A58"/>
                                 <exclude reference="WRt-wy-4Vc"/>
                                 <include reference="IAg-v9-uPj"/>
                                 <exclude reference="pER-YB-9HZ"/>
                                 <include reference="jBG-oZ-cri"/>
+                                <include reference="Slx-Gb-0Y9"/>
                                 <include reference="Q9L-0a-jXB"/>
                                 <include reference="xAM-Ur-XaR"/>
-                                <include reference="Slx-Gb-0Y9"/>
                                 <include reference="dkZ-s7-bsp"/>
                             </mask>
                         </variation>
