@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qG4-53-reZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -169,12 +169,12 @@
                                     <action selector="holdHereReleased" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5FQ-Hb-HoL"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ButterIt" translatesAutoresizingMaskIntoConstraints="NO" id="NXb-62-tOS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButterIt" translatesAutoresizingMaskIntoConstraints="NO" id="NXb-62-tOS">
                                 <rect key="frame" x="16" y="52" width="316" height="495"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="2" y="37" width="316" height="403"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="16" y="174" width="302" height="400"/>
                                 </variation>
                             </imageView>
@@ -408,12 +408,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3R-TJ-IP3">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="340" y="360" width="118" height="69"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="brG-av-8ng" secondAttribute="centerY" id="0GV-Ds-KHX"/>
                             <constraint firstAttribute="centerY" secondItem="9La-WJ-Yv5" secondAttribute="centerY" id="5h3-Fr-wCl"/>
                             <constraint firstItem="xZA-BW-fll" firstAttribute="leading" secondItem="9La-WJ-Yv5" secondAttribute="trailing" constant="10" id="7g2-D7-h15"/>
+                            <constraint firstAttribute="centerX" secondItem="r3R-TJ-IP3" secondAttribute="centerX" id="A2o-IN-PgN"/>
                             <constraint firstAttribute="centerY" secondItem="Cje-1A-bW6" secondAttribute="centerY" id="IAg-v9-uPj"/>
                             <constraint firstAttribute="centerY" secondItem="xZA-BW-fll" secondAttribute="centerY" id="NBf-3Z-A58"/>
                             <constraint firstAttribute="trailingMargin" secondItem="brG-av-8ng" secondAttribute="trailing" constant="20" id="Q9L-0a-jXB"/>
@@ -428,47 +438,54 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Cje-1A-bW6" secondAttribute="trailing" constant="211" id="pER-YB-9HZ"/>
                             <constraint firstItem="9La-WJ-Yv5" firstAttribute="leading" secondItem="C92-uh-0U6" secondAttribute="leadingMargin" constant="6" id="u41-wf-tGh"/>
                             <constraint firstItem="brG-av-8ng" firstAttribute="leading" secondItem="Cje-1A-bW6" secondAttribute="trailing" constant="10" id="xAM-Ur-XaR"/>
+                            <constraint firstAttribute="centerY" secondItem="r3R-TJ-IP3" secondAttribute="centerY" id="yJy-Md-Yq4"/>
                             <constraint firstAttribute="centerX" secondItem="vUS-Yd-E9S" secondAttribute="centerX" id="zPQ-M7-4LN"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="3NH-n3-T6X"/>
+                                <exclude reference="r3R-TJ-IP3"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="bxT-K4-W0Q"/>
-                                <exclude reference="n1o-4b-6zY"/>
                                 <exclude reference="u41-wf-tGh"/>
                                 <exclude reference="Uct-ZI-6Mh"/>
+                                <exclude reference="bxT-K4-W0Q"/>
+                                <exclude reference="n1o-4b-6zY"/>
                                 <exclude reference="7g2-D7-h15"/>
                                 <exclude reference="NBf-3Z-A58"/>
                                 <exclude reference="WRt-wy-4Vc"/>
+                                <exclude reference="A2o-IN-PgN"/>
+                                <exclude reference="yJy-Md-Yq4"/>
                                 <exclude reference="IAg-v9-uPj"/>
                                 <exclude reference="pER-YB-9HZ"/>
                                 <exclude reference="jBG-oZ-cri"/>
-                                <exclude reference="Slx-Gb-0Y9"/>
                                 <exclude reference="Q9L-0a-jXB"/>
                                 <exclude reference="xAM-Ur-XaR"/>
+                                <exclude reference="Slx-Gb-0Y9"/>
                                 <exclude reference="dkZ-s7-bsp"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
                                 <include reference="3NH-n3-T6X"/>
+                                <include reference="r3R-TJ-IP3"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="bxT-K4-W0Q"/>
-                                <include reference="n1o-4b-6zY"/>
                                 <include reference="u41-wf-tGh"/>
                                 <include reference="Uct-ZI-6Mh"/>
+                                <include reference="bxT-K4-W0Q"/>
+                                <include reference="n1o-4b-6zY"/>
                                 <include reference="7g2-D7-h15"/>
                                 <include reference="NBf-3Z-A58"/>
                                 <exclude reference="WRt-wy-4Vc"/>
+                                <include reference="A2o-IN-PgN"/>
+                                <include reference="yJy-Md-Yq4"/>
                                 <include reference="IAg-v9-uPj"/>
                                 <exclude reference="pER-YB-9HZ"/>
                                 <include reference="jBG-oZ-cri"/>
-                                <include reference="Slx-Gb-0Y9"/>
                                 <include reference="Q9L-0a-jXB"/>
                                 <include reference="xAM-Ur-XaR"/>
+                                <include reference="Slx-Gb-0Y9"/>
                                 <include reference="dkZ-s7-bsp"/>
                             </mask>
                         </variation>
@@ -481,11 +498,31 @@
                         <outlet property="player1Label" destination="3NH-n3-T6X" id="I2R-jI-7xe"/>
                         <outlet property="player2Label" destination="Cje-1A-bW6" id="vNc-Cb-agY"/>
                         <outlet property="player3Label" destination="DbG-s8-Y4A" id="A7u-Se-kg6"/>
+                        <outlet property="player4Label" destination="xZA-BW-fll" id="9Tp-mv-jwc"/>
+                        <outlet property="timerLabel" destination="r3R-TJ-IP3" id="MEI-I7-byC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crG-gr-NGm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1108" y="291"/>
+            <point key="canvasLocation" x="1107.75" y="291"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gUX-hA-uhD">
+            <objects>
+                <viewController id="jwx-z8-z5X" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bdA-YO-cVt"/>
+                        <viewControllerLayoutGuide type="bottom" id="CAU-RU-bEw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FiS-Ck-k2e">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TVn-t3-2SI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1882" y="291"/>
         </scene>
     </scenes>
     <resources>

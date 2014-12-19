@@ -22,6 +22,14 @@ class ButterViewController: UIViewController {
     @IBOutlet weak var player3Label: UILabel?
     @IBOutlet weak var player4Label: UILabel?
     
+    @IBOutlet weak var timerLabel: UILabel?
+    
+    var startTime = NSTimeInterval()
+    
+    var gameTime: Double = 20
+    
+    var roundTimer: NSTimer = NSTimer()
+    
     var playersArray: NSMutableArray?
     
     var hostPeerID: MCPeerID?
@@ -29,10 +37,14 @@ class ButterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        timerLabel?.textColor = UIColor.greenColor()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
         //registerPlayerOnLabels()
+        startTimer()
     }
     
     //Register players and set butterView
@@ -65,6 +77,39 @@ class ButterViewController: UIViewController {
         
     }
     
+    func startTimer(){
+        if(!roundTimer.valid) {
+            let aSelector: Selector = "updateTime"
+            roundTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
+            startTime = NSDate.timeIntervalSinceReferenceDate()
+        }
+    }
+    
+    func stopTimer(){
+        roundTimer.invalidate()
+    }
+    
+    func updateTime(){
+        var currentTime = NSDate.timeIntervalSinceReferenceDate()
+        
+        var elapsedTime: NSTimeInterval = currentTime - startTime
+        
+        var seconds = gameTime - elapsedTime
+        
+        if(seconds < 5){
+            timerLabel?.textColor = UIColor.redColor()
+        }
+        if(seconds  > 0){
+            elapsedTime -= NSTimeInterval(seconds)
+            timerLabel?.text = String(Int(seconds))
+        }
+        else{
+            stopTimer()
+        }
+    }
+    
+    
+    
     func callSendEnter(){
         sendEnter()
     }
@@ -86,6 +131,35 @@ class ButterViewController: UIViewController {
         if(error != nil){
             println(error?.localizedDescription)
         }
+    }
+    
+    func gameOver(){
+        var type = "gameover"
+        var package = Package(type: type, sender: "butterHost", playBool: false)
+        
+        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(Package)
+        var allPeers = appDelegate?.mcManager!.session.connectedPeers
+        
+        var error: NSError?
+        appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: allPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
+        if(error != nil){
+            println(error?.localizedDescription)
+        }
+    }
+    
+    func didReceiveDataWithNotification(notification: NSNotification) {
+        var peerID: MCPeerID = notification.userInfo?["peerID"]! as MCPeerID
+        var peerDisplayName = peerID.displayName as String
+        var receivedData = notification.userInfo?["data"] as NSData
+        
+        var receivedPackage: Package = NSKeyedUnarchiver.unarchiveObjectWithData(receivedData) as Package
+        var type = receivedPackage.getType()
+  
+        if(type == "gameover"){
+            println(peerID)
+            println(receivedPackage.getScore())
+        }
+        
         
     }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		436D608D1A4479E1009C80BA /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D608C1A4479E1009C80BA /* ScoreViewController.swift */; };
 		43D9ECF61A3DF29A005E68B5 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D9ECF51A3DF29A005E68B5 /* MasterViewController.swift */; };
 		43D9ECFA1A3DF3CB005E68B5 /* MPCHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D9ECF91A3DF3CB005E68B5 /* MPCHandler.m */; };
 		43D9ECFD1A3DF739005E68B5 /* ConnectUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D9ECFC1A3DF739005E68B5 /* ConnectUsersViewController.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		436D608C1A4479E1009C80BA /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		43D9ECF51A3DF29A005E68B5 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		43D9ECF81A3DF3CB005E68B5 /* MPCHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCHandler.h; sourceTree = "<group>"; };
 		43D9ECF91A3DF3CB005E68B5 /* MPCHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCHandler.m; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				BFED7B221A3DEF6000AE4145 /* ToastViewController.swift */,
 				43D9ECF51A3DF29A005E68B5 /* MasterViewController.swift */,
 				43D9ECFE1A3DF8C4005E68B5 /* ToastTransitionViewController.swift */,
+				436D608C1A4479E1009C80BA /* ScoreViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFED7B241A3DEF6000AE4145 /* ButterView.swift in Sources */,
+				436D608D1A4479E1009C80BA /* ScoreViewController.swift in Sources */,
 				43D9ECFF1A3DF8C4005E68B5 /* ToastTransitionViewController.swift in Sources */,
 				BFED7B251A3DEF6000AE4145 /* ButterViewController.swift in Sources */,
 				43D9ECF61A3DF29A005E68B5 /* MasterViewController.swift in Sources */,

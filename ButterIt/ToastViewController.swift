@@ -17,11 +17,15 @@ class ToastViewController: UIViewController {
     @IBOutlet var tempToastView: UIImageView!
     @IBOutlet var debugAmountLabel: UILabel!
     
+    var gameOn: Bool?
+    
     var lastPoint: CGPoint! //for drawing the butter lines
     var holdHereActive = true //boolean to see if the player is pressing on the Hold Here button
     
     var myPeerID: MCPeerID?
     var hostPeerID: MCPeerID?
+    
+    var score_: Int?
     
     var butterKnife = ButterKnife()
 
@@ -31,6 +35,7 @@ class ToastViewController: UIViewController {
         
         myPeerID = appDelegate?.mcManager?.session.myPeerID
         
+        gameOn = false
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
     }
     
@@ -40,6 +45,7 @@ class ToastViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        gameOn = true
         debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount_)
     }
 
@@ -63,13 +69,19 @@ class ToastViewController: UIViewController {
             
             debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount_)
         }
+        else if(type == "gameover"){
+            gameOn == receivedPackage.getPlayBool()
+            sendScore(myPeerID!, score_: 5)
+        }
     }
     
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        lastPoint = touches.anyObject()?.locationInView(tempToastView)
-        //temporary line to add butter to knife
-        butterKnife.addButter(100)
+        if(gameOn == true){
+            lastPoint = touches.anyObject()?.locationInView(tempToastView)
+            //temporary line to add butter to knife
+            butterKnife.addButter(100)
+        }
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
@@ -133,8 +145,20 @@ class ToastViewController: UIViewController {
         if(error != nil){
             println(error?.localizedDescription)
         }
+    }
+    
+    func sendScore(peerID: MCPeerID, score_: Int){
+        var type = "gameover"
+        var package = Package(type: type, score_: score_)
         
+        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
+        var toPeer: NSArray = [hostPeerID!]
         
+        var error: NSError?
+        appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: toPeer, withMode: MCSessionSendDataMode.Reliable, error: &error)
+        if(error != nil){
+            println(error?.localizedDescription)
+        }
     }
     
     @IBAction func holdHerePressed() {
