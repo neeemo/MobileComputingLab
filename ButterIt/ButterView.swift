@@ -43,7 +43,6 @@ class ButterView: UIImageView {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        println("TOUCHED!")
         startTime = NSDate()
     }
     
@@ -56,16 +55,16 @@ class ButterView: UIImageView {
             scoopAmount = scoopAmount + timeInterval
         }
         
-        println("Butter on player \(displayName_)'s knife = \(scoopAmount)")
+        //println("Butter on player \(displayName_)'s knife = \(scoopAmount)")
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        println("\(displayName_) has stopped scooping")
+        //println("\(displayName_) has stopped scooping")
         //scoopAmount = 0
         
         //Calling sendData method that sends a package with the butteramount - scoopamount
         if(peerID_ != nil){
-            println("sending \(scoopAmount) to \(peerID_!)")
+            //println("sending \(scoopAmount) to \(peerID_!)")
             sendData(peerID_!, butterAmount_: scoopAmount)
         }
 

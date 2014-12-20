@@ -26,7 +26,7 @@ class ButterViewController: UIViewController {
     
     var startTime = NSTimeInterval()
     
-    var gameTime: Double = 20
+    var gameTime: Double = 5
     
     var roundTimer: NSTimer = NSTimer()
     
@@ -34,16 +34,23 @@ class ButterViewController: UIViewController {
     
     var hostPeerID: MCPeerID?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
         timerLabel?.textColor = UIColor.greenColor()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
     }
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
+    
     override func viewDidAppear(animated: Bool) {
-        //registerPlayerOnLabels()
+        registerPlayerOnLabels()
         startTimer()
     }
     
@@ -105,6 +112,7 @@ class ButterViewController: UIViewController {
         }
         else{
             stopTimer()
+            gameOver()
         }
     }
     
@@ -137,8 +145,11 @@ class ButterViewController: UIViewController {
         var type = "gameover"
         var package = Package(type: type, sender: "butterHost", playBool: false)
         
-        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(Package)
+        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
         var allPeers = appDelegate?.mcManager!.session.connectedPeers
+        
+        //print to see if we have peers connected (debug)
+        println(appDelegate?.mcManager!.session.connectedPeers.count)
         
         var error: NSError?
         appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: allPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
@@ -156,8 +167,7 @@ class ButterViewController: UIViewController {
         var type = receivedPackage.getType()
   
         if(type == "gameover"){
-            println(peerID)
-            println(receivedPackage.getScore())
+            println("\(peerDisplayName) score is: \(receivedPackage.getScore())")
         }
         
         

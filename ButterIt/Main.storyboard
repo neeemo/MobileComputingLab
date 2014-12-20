@@ -413,9 +413,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="340" y="360" width="118" height="69"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -447,21 +444,21 @@
                                 <exclude reference="r3R-TJ-IP3"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="u41-wf-tGh"/>
-                                <exclude reference="Uct-ZI-6Mh"/>
+                                <exclude reference="A2o-IN-PgN"/>
+                                <exclude reference="yJy-Md-Yq4"/>
                                 <exclude reference="bxT-K4-W0Q"/>
                                 <exclude reference="n1o-4b-6zY"/>
+                                <exclude reference="u41-wf-tGh"/>
+                                <exclude reference="Uct-ZI-6Mh"/>
                                 <exclude reference="7g2-D7-h15"/>
                                 <exclude reference="NBf-3Z-A58"/>
                                 <exclude reference="WRt-wy-4Vc"/>
-                                <exclude reference="A2o-IN-PgN"/>
-                                <exclude reference="yJy-Md-Yq4"/>
                                 <exclude reference="IAg-v9-uPj"/>
                                 <exclude reference="pER-YB-9HZ"/>
                                 <exclude reference="jBG-oZ-cri"/>
+                                <exclude reference="Slx-Gb-0Y9"/>
                                 <exclude reference="Q9L-0a-jXB"/>
                                 <exclude reference="xAM-Ur-XaR"/>
-                                <exclude reference="Slx-Gb-0Y9"/>
                                 <exclude reference="dkZ-s7-bsp"/>
                             </mask>
                         </variation>
@@ -471,21 +468,21 @@
                                 <include reference="r3R-TJ-IP3"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="u41-wf-tGh"/>
-                                <include reference="Uct-ZI-6Mh"/>
+                                <include reference="A2o-IN-PgN"/>
+                                <include reference="yJy-Md-Yq4"/>
                                 <include reference="bxT-K4-W0Q"/>
                                 <include reference="n1o-4b-6zY"/>
+                                <include reference="u41-wf-tGh"/>
+                                <include reference="Uct-ZI-6Mh"/>
                                 <include reference="7g2-D7-h15"/>
                                 <include reference="NBf-3Z-A58"/>
                                 <exclude reference="WRt-wy-4Vc"/>
-                                <include reference="A2o-IN-PgN"/>
-                                <include reference="yJy-Md-Yq4"/>
                                 <include reference="IAg-v9-uPj"/>
                                 <exclude reference="pER-YB-9HZ"/>
                                 <include reference="jBG-oZ-cri"/>
+                                <include reference="Slx-Gb-0Y9"/>
                                 <include reference="Q9L-0a-jXB"/>
                                 <include reference="xAM-Ur-XaR"/>
-                                <include reference="Slx-Gb-0Y9"/>
                                 <include reference="dkZ-s7-bsp"/>
                             </mask>
                         </variation>
