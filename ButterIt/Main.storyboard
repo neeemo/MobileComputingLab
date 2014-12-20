@@ -247,12 +247,12 @@
                                 <exclude reference="Hvx-F7-07v"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Kr9-vK-iy6"/>
-                                <exclude reference="qbY-yo-yYa"/>
                                 <exclude reference="2Vd-Vu-pl3"/>
                                 <exclude reference="3Kc-tY-mZv"/>
                                 <exclude reference="V41-Yq-3r0"/>
                                 <exclude reference="z1Z-MY-ZWZ"/>
+                                <exclude reference="Kr9-vK-iy6"/>
+                                <exclude reference="qbY-yo-yYa"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -261,10 +261,10 @@
                                 <include reference="Hvx-F7-07v"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Kr9-vK-iy6"/>
-                                <include reference="qbY-yo-yYa"/>
                                 <include reference="2Vd-Vu-pl3"/>
                                 <include reference="3Kc-tY-mZv"/>
+                                <include reference="Kr9-vK-iy6"/>
+                                <include reference="qbY-yo-yYa"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
