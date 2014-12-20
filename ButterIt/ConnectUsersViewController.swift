@@ -49,12 +49,15 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
     //Play button called
     //Prepare butterViewController and perform segue
     @IBAction func playFunc(sender: UIButton){
-        //Call delegate method
-        var butterVC = ButterViewController()
-        butterVC.callSendEnter()
-        //self.delegate?.callSendEnter()
-        
         self.performSegueWithIdentifier("goPlaySegue", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "goPlaySegue"){
+            var butterVC = segue.destinationViewController as ButterViewController
+            butterVC.callSendEnter()
+            //self.delegate?.callSendEnter()
+        }
     }
     
     @IBAction func addPlayersFunc(sender: UIButton){

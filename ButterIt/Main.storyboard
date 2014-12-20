@@ -565,6 +565,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3R-TJ-IP3">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="364" y="376" width="72.5" height="48"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-th-bfr">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Play!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="377" y="452" width="34" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="playButtonFunc:" destination="gal-Ae-EmW" eventType="touchUpInside" id="l8i-f4-LRc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -592,6 +613,7 @@
                             </constraint>
                             <constraint firstItem="xZA-BW-fll" firstAttribute="leading" secondItem="9La-WJ-Yv5" secondAttribute="trailing" constant="10" id="7g2-D7-h15"/>
                             <constraint firstAttribute="centerX" secondItem="r3R-TJ-IP3" secondAttribute="centerX" id="A2o-IN-PgN"/>
+                            <constraint firstAttribute="centerX" secondItem="mEs-th-bfr" secondAttribute="centerX" id="G32-qk-tmK"/>
                             <constraint firstAttribute="centerY" secondItem="Cje-1A-bW6" secondAttribute="centerY" id="IAg-v9-uPj"/>
                             <constraint firstAttribute="centerY" secondItem="xZA-BW-fll" secondAttribute="centerY" id="NBf-3Z-A58"/>
                             <constraint firstAttribute="trailingMargin" secondItem="brG-av-8ng" secondAttribute="trailing" constant="20" id="Q9L-0a-jXB"/>
@@ -608,6 +630,8 @@
                             <constraint firstItem="3NH-n3-T6X" firstAttribute="centerX" secondItem="vUS-Yd-E9S" secondAttribute="centerX" id="goJ-NJ-3BP"/>
                             <constraint firstItem="vUS-Yd-E9S" firstAttribute="leading" secondItem="C92-uh-0U6" secondAttribute="leadingMargin" constant="187" id="iVe-ls-Nm3"/>
                             <constraint firstItem="Cje-1A-bW6" firstAttribute="centerX" secondItem="brG-av-8ng" secondAttribute="centerX" id="ivG-Sm-A88"/>
+                            <constraint firstItem="AR2-Qu-Io1" firstAttribute="top" secondItem="Qik-wL-xFR" secondAttribute="bottom" constant="20" id="dkZ-s7-bsp"/>
+                            <constraint firstItem="mEs-th-bfr" firstAttribute="top" secondItem="r3R-TJ-IP3" secondAttribute="bottom" constant="30" id="hz6-M3-QGH"/>
                             <constraint firstAttribute="centerX" secondItem="DbG-s8-Y4A" secondAttribute="centerX" id="jBG-oZ-cri"/>
                             <constraint firstItem="brG-av-8ng" firstAttribute="trailing" secondItem="C92-uh-0U6" secondAttribute="trailingMargin" constant="20" id="lxf-Jc-3ia">
                                 <variation key="heightClass=regular-widthClass=regular" constant="40"/>
@@ -628,8 +652,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="r3R-TJ-IP3"/>
-                                <exclude reference="3NH-n3-T6X"/>
+                                <exclude reference="r3R-TJ-IP3"/>                                <exclude reference="3NH-n3-T6X"/>
+                                <exclude reference="mEs-th-bfr"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="A2o-IN-PgN"/>
@@ -648,6 +672,10 @@
                                 <exclude reference="6kE-AB-P8J"/>
                                 <exclude reference="6zS-Ab-BHq"/>
                                 <exclude reference="u41-wf-tGh"/>
+                                <exclude reference="A2o-IN-PgN"/>
+                                <exclude reference="yJy-Md-Yq4"/>
+                                <exclude reference="G32-qk-tmK"/>
+                                <exclude reference="hz6-M3-QGH"/>
                                 <exclude reference="IAg-v9-uPj"/>
                                 <exclude reference="ivG-Sm-A88"/>
                                 <exclude reference="pER-YB-9HZ"/>
@@ -669,6 +697,7 @@
                             <mask key="subviews">
                                 <include reference="r3R-TJ-IP3"/>
                                 <include reference="3NH-n3-T6X"/>
+                                <include reference="mEs-th-bfr"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="A2o-IN-PgN"/>
@@ -687,6 +716,9 @@
                                 <exclude reference="u41-wf-tGh"/>
                                 <exclude reference="IAg-v9-uPj"/>
                                 <include reference="ivG-Sm-A88"/>
+                                <include reference="G32-qk-tmK"/>
+                                <include reference="hz6-M3-QGH"/>
+                                <include reference="IAg-v9-uPj"/>
                                 <exclude reference="pER-YB-9HZ"/>
                                 <include reference="zzS-yo-Cxy"/>
                                 <include reference="4JJ-c8-S3r"/>
@@ -710,21 +742,23 @@
                         <outlet property="butterView2" destination="brG-av-8ng" id="rkj-mn-QEp"/>
                         <outlet property="butterView3" destination="Qik-wL-xFR" id="mgN-ix-ULh"/>
                         <outlet property="butterView4" destination="9La-WJ-Yv5" id="eqJ-WC-2Wh"/>
+                        <outlet property="playButton" destination="mEs-th-bfr" id="uYt-Pf-SBK"/>
                         <outlet property="player1Label" destination="3NH-n3-T6X" id="I2R-jI-7xe"/>
                         <outlet property="player2Label" destination="Cje-1A-bW6" id="vNc-Cb-agY"/>
                         <outlet property="player3Label" destination="DbG-s8-Y4A" id="A7u-Se-kg6"/>
                         <outlet property="player4Label" destination="xZA-BW-fll" id="9Tp-mv-jwc"/>
                         <outlet property="timerLabel" destination="r3R-TJ-IP3" id="MEI-I7-byC"/>
+                        <segue destination="jwx-z8-z5X" kind="presentation" identifier="scoreSegue" id="6tc-dD-Jev"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crG-gr-NGm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1104.75" y="320.25"/>
         </scene>
-        <!--View Controller-->
+        <!--Score View Controller-->
         <scene sceneID="gUX-hA-uhD">
             <objects>
-                <viewController id="jwx-z8-z5X" sceneMemberID="viewController">
+                <viewController id="jwx-z8-z5X" customClass="ScoreViewController" customModule="ButterIt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bdA-YO-cVt"/>
                         <viewControllerLayoutGuide type="bottom" id="CAU-RU-bEw"/>
@@ -732,12 +766,35 @@
                     <view key="view" contentMode="scaleToFill" id="FiS-Ck-k2e">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mT-WB-Pte">
+                                <rect key="frame" x="206" y="71" width="189" height="96"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="50"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Qe-zB-B4c">
+                                <rect key="frame" x="157" y="175" width="286" height="308"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9mT-WB-Pte" firstAttribute="top" secondItem="bdA-YO-cVt" secondAttribute="bottom" constant="30" id="3FD-3S-16L"/>
+                            <constraint firstAttribute="centerX" secondItem="3Qe-zB-B4c" secondAttribute="centerX" id="i4I-LV-oQC"/>
+                            <constraint firstAttribute="centerX" secondItem="9mT-WB-Pte" secondAttribute="centerX" id="q3f-yo-mpS"/>
+                            <constraint firstItem="3Qe-zB-B4c" firstAttribute="top" secondItem="9mT-WB-Pte" secondAttribute="bottom" constant="20" id="tRr-cK-zhg"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scoreView" destination="3Qe-zB-B4c" id="bEW-Nm-OwH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVn-t3-2SI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1882" y="291"/>
+            <point key="canvasLocation" x="1922" y="291"/>
         </scene>
     </scenes>
     <resources>
