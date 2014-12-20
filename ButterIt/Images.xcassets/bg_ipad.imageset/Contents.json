@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "bg_ipad.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ButterIt.png"
+      "filename" : "ipadRetina.png"
     },
     {
       "idiom" : "universal",
