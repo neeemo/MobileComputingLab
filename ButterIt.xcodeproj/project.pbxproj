@@ -13,7 +13,6 @@
 		43D9ECFD1A3DF739005E68B5 /* ConnectUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D9ECFC1A3DF739005E68B5 /* ConnectUsersViewController.swift */; };
 		43D9ECFF1A3DF8C4005E68B5 /* ToastTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D9ECFE1A3DF8C4005E68B5 /* ToastTransitionViewController.swift */; };
 		43D9ED031A3EEC63005E68B5 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D9ED021A3EEC63005E68B5 /* Package.swift */; };
-		BF09FB851A45C42700F93525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF09FB841A45C42700F93525 /* Main.storyboard */; };
 		BFED7B001A3DEF2700AE4145 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7AFF1A3DEF2700AE4145 /* AppDelegate.swift */; };
 		BFED7B071A3DEF2700AE4145 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFED7B061A3DEF2700AE4145 /* Images.xcassets */; };
 		BFED7B0A1A3DEF2700AE4145 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFED7B081A3DEF2700AE4145 /* LaunchScreen.xib */; };
@@ -22,6 +21,7 @@
 		BFED7B241A3DEF6000AE4145 /* ButterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7B201A3DEF6000AE4145 /* ButterView.swift */; };
 		BFED7B251A3DEF6000AE4145 /* ButterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7B211A3DEF6000AE4145 /* ButterViewController.swift */; };
 		BFED7B261A3DEF6000AE4145 /* ToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFED7B221A3DEF6000AE4145 /* ToastViewController.swift */; };
+		BFED7B281A3DEF8600AE4145 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFED7B271A3DEF8600AE4145 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,6 @@
 		43D9ECFC1A3DF739005E68B5 /* ConnectUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectUsersViewController.swift; sourceTree = "<group>"; };
 		43D9ECFE1A3DF8C4005E68B5 /* ToastTransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastTransitionViewController.swift; sourceTree = "<group>"; };
 		43D9ED021A3EEC63005E68B5 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		BF09FB841A45C42700F93525 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BFED7AFA1A3DEF2700AE4145 /* ButterIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButterIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFED7AFE1A3DEF2700AE4145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFED7AFF1A3DEF2700AE4145 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		BFED7B201A3DEF6000AE4145 /* ButterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButterView.swift; sourceTree = "<group>"; };
 		BFED7B211A3DEF6000AE4145 /* ButterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButterViewController.swift; sourceTree = "<group>"; };
 		BFED7B221A3DEF6000AE4145 /* ToastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastViewController.swift; sourceTree = "<group>"; };
+		BFED7B271A3DEF8600AE4145 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 			children = (
 				43D9ECF71A3DF394005E68B5 /* Objective-C Network/Backend */,
 				43D9ECF41A3DF168005E68B5 /* ViewControllers */,
-				BF09FB841A45C42700F93525 /* Main.storyboard */,
+				BFED7B271A3DEF8600AE4145 /* Main.storyboard */,
 				BFED7B1F1A3DEF6000AE4145 /* ButterKnife.swift */,
 				BFED7B201A3DEF6000AE4145 /* ButterView.swift */,
 				BFED7AFF1A3DEF2700AE4145 /* AppDelegate.swift */,
@@ -208,7 +208,6 @@
 				TargetAttributes = {
 					BFED7AF91A3DEF2700AE4145 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 6DD82AMMNA;
 					};
 					BFED7B0E1A3DEF2700AE4145 = {
 						CreatedOnToolsVersion = 6.1;
@@ -240,9 +239,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF09FB851A45C42700F93525 /* Main.storyboard in Resources */,
 				BFED7B0A1A3DEF2700AE4145 /* LaunchScreen.xib in Resources */,
 				BFED7B071A3DEF2700AE4145 /* Images.xcassets in Resources */,
+				BFED7B281A3DEF8600AE4145 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,12 +384,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ButterIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/ButterIt/ButterIt-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -400,12 +396,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ButterIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/ButterIt/ButterIt-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
