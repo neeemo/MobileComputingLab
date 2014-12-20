@@ -24,17 +24,9 @@ class ButterViewController: UIViewController {
     
     @IBOutlet weak var timerLabel: UILabel?
     
-    @IBOutlet weak var playButton: UIButton?
-    
     var startTime = NSTimeInterval()
     
-    var cdTime = NSTimeInterval()
-    
-    var countDownTime: Double = 7
-    
-    var cdTimer: NSTimer = NSTimer()
-    
-    var gameTime: Double = 22
+    var gameTime: Double = 20
     
     var roundTimer: NSTimer = NSTimer()
     
@@ -42,40 +34,17 @@ class ButterViewController: UIViewController {
     
     var hostPeerID: MCPeerID?
     
-    var playerScores = String()
-    
-    var receivedGameOver: Int?
-    
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         timerLabel?.textColor = UIColor.greenColor()
-        
-        receivedGameOver = 0
-        
-        playButton?.hidden = false
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        timerLabel?.textColor = UIColor.redColor()
-        timerLabel?.text = "Press play to start!"
-    }
-    
     override func viewDidAppear(animated: Bool) {
-        registerPlayerOnLabels()
-        //startTimer()
-        //startCountDown()
-    }
-    
-    @IBAction func playButtonFunc(sender: UIButton){
-        startCountDown()
-        playButton?.hidden = true
+        //registerPlayerOnLabels()
+        startTimer()
     }
     
     //Register players and set butterView
@@ -108,59 +77,7 @@ class ButterViewController: UIViewController {
         
     }
     
-    func activateButterViews(){
-        for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
-            switch(i) {
-            case (0):
-                butterView1.setRoundStarted(true)
-            case (1):
-                butterView2.setRoundStarted(true)
-            case (2):
-                butterView3.setRoundStarted(true)
-            case (3):
-                butterView4.setRoundStarted(true)
-            default:
-            println("Somethings is wrong, This print can not happen!")
-        }
-        
-        }
-    }
-
-    func startCountDown(){
-        if(!cdTimer.valid) {
-            let aSelector: Selector = "updateCD"
-            cdTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
-            cdTime = NSDate.timeIntervalSinceReferenceDate()
-        }
-    }
-    
-    func stopCD(){
-        cdTimer.invalidate()
-    }
-    
-    func updateCD(){
-        var currentTime = NSDate.timeIntervalSinceReferenceDate()
-        
-        var elapsedTime: NSTimeInterval = currentTime - cdTime
-        
-        var seconds = countDownTime - elapsedTime
-
-        if(seconds  > 1){
-            elapsedTime -= NSTimeInterval(seconds)
-            timerLabel?.text = String(Int(seconds))
-        }
-        else{
-            stopCD()
-            timerLabel?.text = "GO!"
-            startTimer()
-            activateButterViews()
-            sendStartRound()
-        }
-
-    }
-    
     func startTimer(){
-        timerLabel?.textColor = UIColor.greenColor()
         if(!roundTimer.valid) {
             let aSelector: Selector = "updateTime"
             roundTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
@@ -188,9 +105,9 @@ class ButterViewController: UIViewController {
         }
         else{
             stopTimer()
-            gameOver()
         }
     }
+    
     
     
     func callSendEnter(){
@@ -220,28 +137,8 @@ class ButterViewController: UIViewController {
         var type = "gameover"
         var package = Package(type: type, sender: "butterHost", playBool: false)
         
-        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
+        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(Package)
         var allPeers = appDelegate?.mcManager!.session.connectedPeers
-        
-        //print to see if we have peers connected (debug)
-        println(appDelegate?.mcManager!.session.connectedPeers.count)
-        
-        var error: NSError?
-        appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: allPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
-        if(error != nil){
-            println(error?.localizedDescription)
-        }
-    }
-    
-    func sendStartRound(){
-        var type = "roundBegin"
-        var package = Package(type: type, sender: "butterHost", roundBegin: true)
-        
-        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
-        var allPeers = appDelegate?.mcManager!.session.connectedPeers
-        
-        //print to see if we have peers connected (debug)
-        println(appDelegate?.mcManager!.session.connectedPeers.count)
         
         var error: NSError?
         appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: allPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
@@ -255,29 +152,15 @@ class ButterViewController: UIViewController {
         var peerDisplayName = peerID.displayName as String
         var receivedData = notification.userInfo?["data"] as NSData
         
-        var allPeers = appDelegate?.mcManager!.session.connectedPeers
-        
         var receivedPackage: Package = NSKeyedUnarchiver.unarchiveObjectWithData(receivedData) as Package
         var type = receivedPackage.getType()
   
         if(type == "gameover"){
-            var tempString = ("\(peerDisplayName) score is: \(receivedPackage.getScore())")
-            playerScores = playerScores + tempString + "\n"
-            receivedGameOver = receivedGameOver! + 1
+            println(peerID)
+            println(receivedPackage.getScore())
         }
         
-        if(receivedGameOver == allPeers?.count){
-            self.performSegueWithIdentifier("scoreSegue", sender: self)
-        }
         
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "scoreSegue"){
-            var scoreVC = segue.destinationViewController as ScoreViewController
-            scoreVC.enterScoreView(playerScores)
-            //self.delegate?.callSendEnter()
-        }
     }
 
     override func didReceiveMemoryWarning() {

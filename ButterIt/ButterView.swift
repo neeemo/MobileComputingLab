@@ -19,7 +19,6 @@ class ButterView: UIImageView {
     var scoopAmount: Double = 0 //as a player "scoops" butter, this value goes up
     var startTime = NSDate() //used in calculating the amount of butter scooped
     let maxScoopAmount: Double = 100
-    var roundStarted: Bool?
     
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -32,13 +31,7 @@ class ButterView: UIImageView {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        roundStarted = false
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
-    }
-    
-    func setRoundStarted(roundBool: Bool){
-        roundStarted = roundBool
     }
     
     func setPeerID(peerID: MCPeerID){
@@ -50,37 +43,30 @@ class ButterView: UIImageView {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        if(roundStarted == true){
-            println("touch began in butterview")
-            startTime = NSDate()
-        }
+        println("TOUCHED!")
+        startTime = NSDate()
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        if(roundStarted == true){
-            if scoopAmount < maxScoopAmount {
-                //scoopAmount++
-                let endTime = NSDate()
-                let timeInterval: Double = endTime.timeIntervalSinceDate(startTime); //Difference in seconds (double)
-                scoopAmount = scoopAmount + timeInterval
-            }
-            
-            //println("Butter on player \(displayName_)'s knife = \(scoopAmount)")
+        
+        if scoopAmount < maxScoopAmount {
+            //scoopAmount++
+            let endTime = NSDate()
+            let timeInterval: Double = endTime.timeIntervalSinceDate(startTime); //Difference in seconds (double)
+            scoopAmount = scoopAmount + timeInterval
         }
-
+        
+        println("Butter on player \(displayName_)'s knife = \(scoopAmount)")
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        if(roundStarted == true){
-            //println("\(displayName_) has stopped scooping")
-            //scoopAmount = 0
-            
-            //Calling sendData method that sends a package with the butteramount - scoopamount
-            if(peerID_ != nil){
-                //println("sending \(scoopAmount) to \(peerID_!)")
-                sendData(peerID_!, butterAmount_: scoopAmount)
-            }
-
+        println("\(displayName_) has stopped scooping")
+        //scoopAmount = 0
+        
+        //Calling sendData method that sends a package with the butteramount - scoopamount
+        if(peerID_ != nil){
+            println("sending \(scoopAmount) to \(peerID_!)")
+            sendData(peerID_!, butterAmount_: scoopAmount)
         }
 
     }

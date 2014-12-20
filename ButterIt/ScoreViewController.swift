@@ -9,32 +9,22 @@
 import UIKit
 import MultipeerConnectivity
 
-class ScoreViewController: UIViewController, UITextViewDelegate {
+class ScoreViewController: UIViewController {
     
     var appDelegate: AppDelegate? = UIApplication.sharedApplication().delegate as? AppDelegate
-    @IBOutlet weak var scoreView: UITextView?
-    
-    var playerScores_ = String()
     
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        scoreView?.delegate = self
-
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        scoreView?.text = playerScores_
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func enterScoreView(playerScores: String){
-        playerScores_ = playerScores
     }
     
 

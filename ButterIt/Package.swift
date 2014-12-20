@@ -16,16 +16,14 @@ class Package: NSObject, NSCoding {
     var sender_: String
     var date_: NSDate
     var score_: Int
-    var roundBegin: Bool
     
-    init(type: String?, sender: String?, butterAmount: Double?, playBool: Bool?, score: Int?, roundBegin: Bool?){
+    init(type: String?, sender: String?, recipient: String?, butterAmount: Double?, playBool: Bool?, numBounces: Int?, path: NSArray?){
         self.type_ = type!
         self.date_ = NSDate()
         self.butterAmount = butterAmount!
         self.sender_ = sender!
         self.playBool = playBool!
-        self.score_ = score!
-        self.roundBegin = roundBegin!
+        self.score_ = 0
     }
     
     init(type: String?, sender: String?){
@@ -35,7 +33,24 @@ class Package: NSObject, NSCoding {
         self.sender_ = sender!
         self.playBool = false
         self.score_ = 0
-        self.roundBegin = false
+    }
+    
+    init(type: String?, sender: String?, recipient: String?){
+        self.type_ = type!
+        self.date_ = NSDate()
+        self.butterAmount = 0
+        self.sender_ = sender!
+        self.playBool = false
+        self.score_ = 0
+    }
+    
+    init(type: String?, sender: String?, path: NSArray?){
+        self.type_ = type!
+        self.date_ = NSDate()
+        self.butterAmount = 0
+        self.sender_ = sender!
+        self.playBool = false
+        self.score_ = 0
     }
     
     init(type: String?, sender: String?, playBool: Bool){
@@ -45,7 +60,6 @@ class Package: NSObject, NSCoding {
         self.sender_ = sender!
         self.playBool = playBool
         self.score_ = 0
-        self.roundBegin = false
     }
     
     init(type: String?, sender: String?, butterAmount: Double){
@@ -55,7 +69,6 @@ class Package: NSObject, NSCoding {
         self.sender_ = sender!
         self.playBool = false
         self.score_ = 0
-        self.roundBegin = false
     }
     
     init(type: String?, butterAmount: Double){
@@ -65,7 +78,6 @@ class Package: NSObject, NSCoding {
         self.sender_ = ""
         self.playBool = false
         self.score_ = 0
-        self.roundBegin = false
     }
     
     init(type: String?, score_: Int){
@@ -75,17 +87,6 @@ class Package: NSObject, NSCoding {
         self.sender_ = ""
         self.playBool = false
         self.score_ = score_
-        self.roundBegin = false
-    }
-    
-    init(type: String?, sender: String?, roundBegin: Bool){
-        self.type_ = type!
-        self.date_ = NSDate()
-        self.butterAmount = 0
-        self.sender_ = sender!
-        self.playBool = false
-        self.score_ = 0
-        self.roundBegin = roundBegin
     }
     
     func getType() -> String {
@@ -93,27 +94,23 @@ class Package: NSObject, NSCoding {
     }
     
     func getButterAmount() -> Double! {
-        return butterAmount
+        return butterAmount;
     }
     
     func getSender() -> String! {
-        return sender_
+        return sender_;
     }
     
     func getDate() -> NSDate! {
-        return date_
+        return date_;
     }
     
     func getPlayBool() -> Bool {
-        return playBool
+        return playBool;
     }
     
     func getScore() -> Int {
-        return score_
-    }
-    
-    func getRoundBegin() -> Bool {
-        return roundBegin
+        return score_;
     }
     
     
@@ -124,7 +121,6 @@ class Package: NSObject, NSCoding {
         self.sender_ = aDecoder.decodeObjectForKey("sender") as String
         self.playBool = aDecoder.decodeObjectForKey("playBool") as Bool
         self.score_ = aDecoder.decodeObjectForKey("score") as Int
-        self.roundBegin = aDecoder.decodeObjectForKey("roundBegin") as Bool
     }
     
     func encodeWithCoder(_aCoder: NSCoder) {
@@ -134,7 +130,6 @@ class Package: NSObject, NSCoding {
         _aCoder.encodeObject(date_, forKey: "date")
         _aCoder.encodeObject(playBool, forKey: "playBool")
         _aCoder.encodeObject(score_, forKey: "score")
-        _aCoder.encodeObject(roundBegin, forKey: "roundBegin")
     }
     
 }
