@@ -24,9 +24,17 @@ class ButterViewController: UIViewController {
     
     @IBOutlet weak var timerLabel: UILabel?
     
+    @IBOutlet weak var playButton: UIButton?
+    
     var startTime = NSTimeInterval()
     
-    var gameTime: Double = 20
+    var cdTime = NSTimeInterval()
+    
+    var countDownTime: Double = 7
+    
+    var cdTimer: NSTimer = NSTimer()
+    
+    var gameTime: Double = 22
     
     var roundTimer: NSTimer = NSTimer()
     
@@ -46,6 +54,8 @@ class ButterViewController: UIViewController {
         
         receivedGameOver = 0
         
+        playButton?.hidden = false
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
     }
     
@@ -53,11 +63,19 @@ class ButterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        timerLabel?.textColor = UIColor.redColor()
+        timerLabel?.text = "Press play to start!"
     }
     
     override func viewDidAppear(animated: Bool) {
         registerPlayerOnLabels()
-        startTimer()
+        //startTimer()
+        //startCountDown()
+    }
+    
+    @IBAction func playButtonFunc(sender: UIButton){
+        startCountDown()
+        playButton?.hidden = true
     }
     
     //Register players and set butterView
@@ -90,7 +108,59 @@ class ButterViewController: UIViewController {
         
     }
     
+    func activateButterViews(){
+        for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
+            switch(i) {
+            case (0):
+                butterView1.setRoundStarted(true)
+            case (1):
+                butterView2.setRoundStarted(true)
+            case (2):
+                butterView3.setRoundStarted(true)
+            case (3):
+                butterView4.setRoundStarted(true)
+            default:
+            println("Somethings is wrong, This print can not happen!")
+        }
+        
+        }
+    }
+
+    func startCountDown(){
+        if(!cdTimer.valid) {
+            let aSelector: Selector = "updateCD"
+            cdTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
+            cdTime = NSDate.timeIntervalSinceReferenceDate()
+        }
+    }
+    
+    func stopCD(){
+        cdTimer.invalidate()
+    }
+    
+    func updateCD(){
+        var currentTime = NSDate.timeIntervalSinceReferenceDate()
+        
+        var elapsedTime: NSTimeInterval = currentTime - cdTime
+        
+        var seconds = countDownTime - elapsedTime
+
+        if(seconds  > 1){
+            elapsedTime -= NSTimeInterval(seconds)
+            timerLabel?.text = String(Int(seconds))
+        }
+        else{
+            stopCD()
+            timerLabel?.text = "GO!"
+            startTimer()
+            activateButterViews()
+            sendStartRound()
+        }
+
+    }
+    
     func startTimer(){
+        timerLabel?.textColor = UIColor.greenColor()
         if(!roundTimer.valid) {
             let aSelector: Selector = "updateTime"
             roundTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
@@ -123,7 +193,6 @@ class ButterViewController: UIViewController {
     }
     
     
-    
     func callSendEnter(){
         sendEnter()
     }
@@ -150,6 +219,23 @@ class ButterViewController: UIViewController {
     func gameOver(){
         var type = "gameover"
         var package = Package(type: type, sender: "butterHost", playBool: false)
+        
+        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
+        var allPeers = appDelegate?.mcManager!.session.connectedPeers
+        
+        //print to see if we have peers connected (debug)
+        println(appDelegate?.mcManager!.session.connectedPeers.count)
+        
+        var error: NSError?
+        appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: allPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
+        if(error != nil){
+            println(error?.localizedDescription)
+        }
+    }
+    
+    func sendStartRound(){
+        var type = "roundBegin"
+        var package = Package(type: type, sender: "butterHost", roundBegin: true)
         
         var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
         var allPeers = appDelegate?.mcManager!.session.connectedPeers

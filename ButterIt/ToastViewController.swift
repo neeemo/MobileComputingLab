@@ -45,8 +45,8 @@ class ToastViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        debugAmountLabel.text = "Get Ready!"
         gameOn = true
-        debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount_)
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +62,10 @@ class ToastViewController: UIViewController {
         
         var receivedPackage: Package = NSKeyedUnarchiver.unarchiveObjectWithData(receivedData) as Package
         var type = receivedPackage.getType()
-  
+
+        if(type == "roundBegin") {
+            debugAmountLabel.text = "Start!"
+        }
         if(type == "butterAmount" && gameOn == true){
             butterKnife.setButter(receivedPackage.getButterAmount())
             debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount_)
@@ -70,8 +73,10 @@ class ToastViewController: UIViewController {
         else if(type == "gameover"){
             gameOn = receivedPackage.getPlayBool()
             debugAmountLabel.text = "Game Over"
+            //sends score 5, this should be changed when score logic has been implemented
             sendScore(myPeerID!, score_: 5)
         }
+
     }
     
     

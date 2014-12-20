@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qG4-53-reZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qG4-53-reZ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -408,12 +408,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3R-TJ-IP3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3R-TJ-IP3">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="364" y="376" width="72.5" height="48"/>
+                                </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-th-bfr">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Play!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="377" y="452" width="34" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="playButtonFunc:" destination="gal-Ae-EmW" eventType="touchUpInside" id="l8i-f4-LRc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -421,6 +436,7 @@
                             <constraint firstAttribute="centerY" secondItem="9La-WJ-Yv5" secondAttribute="centerY" id="5h3-Fr-wCl"/>
                             <constraint firstItem="xZA-BW-fll" firstAttribute="leading" secondItem="9La-WJ-Yv5" secondAttribute="trailing" constant="10" id="7g2-D7-h15"/>
                             <constraint firstAttribute="centerX" secondItem="r3R-TJ-IP3" secondAttribute="centerX" id="A2o-IN-PgN"/>
+                            <constraint firstAttribute="centerX" secondItem="mEs-th-bfr" secondAttribute="centerX" id="G32-qk-tmK"/>
                             <constraint firstAttribute="centerY" secondItem="Cje-1A-bW6" secondAttribute="centerY" id="IAg-v9-uPj"/>
                             <constraint firstAttribute="centerY" secondItem="xZA-BW-fll" secondAttribute="centerY" id="NBf-3Z-A58"/>
                             <constraint firstAttribute="trailingMargin" secondItem="brG-av-8ng" secondAttribute="trailing" constant="20" id="Q9L-0a-jXB"/>
@@ -430,6 +446,7 @@
                             <constraint firstItem="3NH-n3-T6X" firstAttribute="top" secondItem="vUS-Yd-E9S" secondAttribute="bottom" constant="10" id="bxT-K4-W0Q"/>
                             <constraint firstAttribute="centerX" secondItem="Qik-wL-xFR" secondAttribute="centerX" id="cs7-qT-936"/>
                             <constraint firstItem="AR2-Qu-Io1" firstAttribute="top" secondItem="Qik-wL-xFR" secondAttribute="bottom" constant="20" id="dkZ-s7-bsp"/>
+                            <constraint firstItem="mEs-th-bfr" firstAttribute="top" secondItem="r3R-TJ-IP3" secondAttribute="bottom" constant="30" id="hz6-M3-QGH"/>
                             <constraint firstAttribute="centerX" secondItem="DbG-s8-Y4A" secondAttribute="centerX" id="jBG-oZ-cri"/>
                             <constraint firstAttribute="centerX" secondItem="3NH-n3-T6X" secondAttribute="centerX" id="n1o-4b-6zY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Cje-1A-bW6" secondAttribute="trailing" constant="211" id="pER-YB-9HZ"/>
@@ -442,23 +459,26 @@
                             <mask key="subviews">
                                 <exclude reference="3NH-n3-T6X"/>
                                 <exclude reference="r3R-TJ-IP3"/>
+                                <exclude reference="mEs-th-bfr"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="A2o-IN-PgN"/>
-                                <exclude reference="yJy-Md-Yq4"/>
-                                <exclude reference="bxT-K4-W0Q"/>
-                                <exclude reference="n1o-4b-6zY"/>
                                 <exclude reference="u41-wf-tGh"/>
                                 <exclude reference="Uct-ZI-6Mh"/>
+                                <exclude reference="bxT-K4-W0Q"/>
+                                <exclude reference="n1o-4b-6zY"/>
                                 <exclude reference="7g2-D7-h15"/>
                                 <exclude reference="NBf-3Z-A58"/>
                                 <exclude reference="WRt-wy-4Vc"/>
+                                <exclude reference="A2o-IN-PgN"/>
+                                <exclude reference="yJy-Md-Yq4"/>
+                                <exclude reference="G32-qk-tmK"/>
+                                <exclude reference="hz6-M3-QGH"/>
                                 <exclude reference="IAg-v9-uPj"/>
                                 <exclude reference="pER-YB-9HZ"/>
                                 <exclude reference="jBG-oZ-cri"/>
-                                <exclude reference="Slx-Gb-0Y9"/>
                                 <exclude reference="Q9L-0a-jXB"/>
                                 <exclude reference="xAM-Ur-XaR"/>
+                                <exclude reference="Slx-Gb-0Y9"/>
                                 <exclude reference="dkZ-s7-bsp"/>
                             </mask>
                         </variation>
@@ -466,23 +486,26 @@
                             <mask key="subviews">
                                 <include reference="3NH-n3-T6X"/>
                                 <include reference="r3R-TJ-IP3"/>
+                                <include reference="mEs-th-bfr"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="A2o-IN-PgN"/>
-                                <include reference="yJy-Md-Yq4"/>
-                                <include reference="bxT-K4-W0Q"/>
-                                <include reference="n1o-4b-6zY"/>
                                 <include reference="u41-wf-tGh"/>
                                 <include reference="Uct-ZI-6Mh"/>
+                                <include reference="bxT-K4-W0Q"/>
+                                <include reference="n1o-4b-6zY"/>
                                 <include reference="7g2-D7-h15"/>
                                 <include reference="NBf-3Z-A58"/>
                                 <exclude reference="WRt-wy-4Vc"/>
+                                <include reference="A2o-IN-PgN"/>
+                                <include reference="yJy-Md-Yq4"/>
+                                <include reference="G32-qk-tmK"/>
+                                <include reference="hz6-M3-QGH"/>
                                 <include reference="IAg-v9-uPj"/>
                                 <exclude reference="pER-YB-9HZ"/>
                                 <include reference="jBG-oZ-cri"/>
-                                <include reference="Slx-Gb-0Y9"/>
                                 <include reference="Q9L-0a-jXB"/>
                                 <include reference="xAM-Ur-XaR"/>
+                                <include reference="Slx-Gb-0Y9"/>
                                 <include reference="dkZ-s7-bsp"/>
                             </mask>
                         </variation>
@@ -492,6 +515,7 @@
                         <outlet property="butterView2" destination="brG-av-8ng" id="rkj-mn-QEp"/>
                         <outlet property="butterView3" destination="Qik-wL-xFR" id="mgN-ix-ULh"/>
                         <outlet property="butterView4" destination="9La-WJ-Yv5" id="eqJ-WC-2Wh"/>
+                        <outlet property="playButton" destination="mEs-th-bfr" id="uYt-Pf-SBK"/>
                         <outlet property="player1Label" destination="3NH-n3-T6X" id="I2R-jI-7xe"/>
                         <outlet property="player2Label" destination="Cje-1A-bW6" id="vNc-Cb-agY"/>
                         <outlet property="player3Label" destination="DbG-s8-Y4A" id="A7u-Se-kg6"/>
@@ -521,9 +545,6 @@
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="50"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="306" y="28" width="189" height="96"/>
-                                </variation>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Qe-zB-B4c">
                                 <rect key="frame" x="157" y="175" width="286" height="308"/>
