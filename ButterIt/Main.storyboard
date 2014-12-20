@@ -497,16 +497,17 @@
                         <outlet property="player3Label" destination="DbG-s8-Y4A" id="A7u-Se-kg6"/>
                         <outlet property="player4Label" destination="xZA-BW-fll" id="9Tp-mv-jwc"/>
                         <outlet property="timerLabel" destination="r3R-TJ-IP3" id="MEI-I7-byC"/>
+                        <segue destination="jwx-z8-z5X" kind="presentation" identifier="scoreSegue" id="6tc-dD-Jev"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crG-gr-NGm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1107.75" y="291"/>
         </scene>
-        <!--View Controller-->
+        <!--Score View Controller-->
         <scene sceneID="gUX-hA-uhD">
             <objects>
-                <viewController id="jwx-z8-z5X" sceneMemberID="viewController">
+                <viewController id="jwx-z8-z5X" customClass="ScoreViewController" customModule="ButterIt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bdA-YO-cVt"/>
                         <viewControllerLayoutGuide type="bottom" id="CAU-RU-bEw"/>
@@ -514,12 +515,38 @@
                     <view key="view" contentMode="scaleToFill" id="FiS-Ck-k2e">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mT-WB-Pte">
+                                <rect key="frame" x="206" y="71" width="189" height="96"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="50"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="306" y="28" width="189" height="96"/>
+                                </variation>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Qe-zB-B4c">
+                                <rect key="frame" x="157" y="175" width="286" height="308"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9mT-WB-Pte" firstAttribute="top" secondItem="bdA-YO-cVt" secondAttribute="bottom" constant="30" id="3FD-3S-16L"/>
+                            <constraint firstAttribute="centerX" secondItem="3Qe-zB-B4c" secondAttribute="centerX" id="i4I-LV-oQC"/>
+                            <constraint firstAttribute="centerX" secondItem="9mT-WB-Pte" secondAttribute="centerX" id="q3f-yo-mpS"/>
+                            <constraint firstItem="3Qe-zB-B4c" firstAttribute="top" secondItem="9mT-WB-Pte" secondAttribute="bottom" constant="20" id="tRr-cK-zhg"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scoreView" destination="3Qe-zB-B4c" id="bEW-Nm-OwH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVn-t3-2SI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1882" y="291"/>
+            <point key="canvasLocation" x="1922" y="291"/>
         </scene>
     </scenes>
     <resources>

@@ -26,7 +26,7 @@ class ButterViewController: UIViewController {
     
     var startTime = NSTimeInterval()
     
-    var gameTime: Double = 5
+    var gameTime: Double = 20
     
     var roundTimer: NSTimer = NSTimer()
     
@@ -34,11 +34,17 @@ class ButterViewController: UIViewController {
     
     var hostPeerID: MCPeerID?
     
+    var playerScores = String()
+    
+    var receivedGameOver: Int?
+    
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         timerLabel?.textColor = UIColor.greenColor()
+        
+        receivedGameOver = 0
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
     }
@@ -163,14 +169,29 @@ class ButterViewController: UIViewController {
         var peerDisplayName = peerID.displayName as String
         var receivedData = notification.userInfo?["data"] as NSData
         
+        var allPeers = appDelegate?.mcManager!.session.connectedPeers
+        
         var receivedPackage: Package = NSKeyedUnarchiver.unarchiveObjectWithData(receivedData) as Package
         var type = receivedPackage.getType()
   
         if(type == "gameover"){
-            println("\(peerDisplayName) score is: \(receivedPackage.getScore())")
+            var tempString = ("\(peerDisplayName) score is: \(receivedPackage.getScore())")
+            playerScores = playerScores + tempString + "\n"
+            receivedGameOver = receivedGameOver! + 1
         }
         
+        if(receivedGameOver == allPeers?.count){
+            self.performSegueWithIdentifier("scoreSegue", sender: self)
+        }
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "scoreSegue"){
+            var scoreVC = segue.destinationViewController as ScoreViewController
+            scoreVC.enterScoreView(playerScores)
+            //self.delegate?.callSendEnter()
+        }
     }
 
     override func didReceiveMemoryWarning() {
