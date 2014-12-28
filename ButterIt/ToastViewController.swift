@@ -30,6 +30,7 @@ class ToastViewController: UIViewController {
     var butterKnife = ButterKnife()
     
     let minButterPercentage = 85 //the minimum amount of butter that must be spread on the toast for a successful buttering
+    let butterWidth = 25 //the width of the butter strokes
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -86,13 +87,13 @@ class ToastViewController: UIViewController {
         if(gameOn == true){
             lastPoint = touches.anyObject()?.locationInView(tempToastView)
             //temporary line to add butter to knife
-            //butterKnife.addButter(100)
+            butterKnife.addButter(1000)
         }
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         if(gameOn == true){
-            if holdHereActive == true && butterKnife.butterAmount_ > 0 {
+            if /*holdHereActive == true &&*/ butterKnife.butterAmount_ > 0 {
                 var currentPoint: CGPoint! = touches.anyObject()?.locationInView(tempToastView)
                 
                 //drawing code, draws a line that follows the player's touches
@@ -101,7 +102,7 @@ class ToastViewController: UIViewController {
                 CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y)
                 CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint!.x, currentPoint!.y)
                 CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound)   //draws a rounded off line
-                CGContextSetLineWidth(UIGraphicsGetCurrentContext(), 50)
+                CGContextSetLineWidth(UIGraphicsGetCurrentContext(), CGFloat(butterWidth))
                 CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1, 1, 0, 1.0) //arguments are RGB value, in this case, yellow
                 CGContextSetBlendMode(UIGraphicsGetCurrentContext(), kCGBlendModeNormal)
                 CGContextStrokePath(UIGraphicsGetCurrentContext())
@@ -114,7 +115,7 @@ class ToastViewController: UIViewController {
                 
                 UIGraphicsEndImageContext()
                 
-                butterKnife.removeButter(distance/3)
+                butterKnife.removeButter(distance)
                 //println("Butter amount is \(butterKnife.butterAmount_)")
                 
                 lastPoint = currentPoint
@@ -137,7 +138,8 @@ class ToastViewController: UIViewController {
             UIGraphicsEndImageContext();
             
             //When touch has ended, update host butterAmount
-            sendData(myPeerID!, butterAmount_: butterKnife.butterAmount_)
+            //commented out for testing
+            //sendData(myPeerID!, butterAmount_: butterKnife.butterAmount_)
         }
         
     }

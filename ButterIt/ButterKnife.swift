@@ -12,7 +12,7 @@ class ButterKnife {
 
     var butterAmount_: Double = 0
     
-    let maxButterAmount: Double = 100
+    let maxButterAmount: Double = 1000
     let minButterAmount: Double = 0
     
     /*init(start _start: CGPoint, end _end: CGPoint) {

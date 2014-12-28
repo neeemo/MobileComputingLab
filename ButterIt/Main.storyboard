@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gal-Ae-EmW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -22,9 +22,6 @@
                                 <state key="normal" title="Butter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="179" y="89" width="43" height="30"/>
-                                </variation>
                                 <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="179" y="84" width="43" height="30"/>
                                 </variation>
@@ -37,9 +34,6 @@
                                 <state key="normal" title="Toast">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="182" y="174" width="37" height="30"/>
-                                </variation>
                                 <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="182" y="169" width="37" height="30"/>
                                 </variation>
@@ -153,6 +147,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="bg_iphone" translatesAutoresizingMaskIntoConstraints="NO" id="oG7-03-UxM">
+                                <rect key="frame" x="0.0" y="-480" width="320" height="480"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxa-gv-kD4" userLabel="ButterDebugText">
                                 <rect key="frame" x="196" y="37" width="71" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -169,14 +166,8 @@
                                     <action selector="holdHereReleased" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5FQ-Hb-HoL"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ButterIt" translatesAutoresizingMaskIntoConstraints="NO" id="NXb-62-tOS">
-                                <rect key="frame" x="16" y="52" width="316" height="495"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="2" y="37" width="316" height="403"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="174" width="302" height="400"/>
-                                </variation>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Toast Inside" translatesAutoresizingMaskIntoConstraints="NO" id="oXT-7V-AQW">
+                                <rect key="frame" x="0.0" y="-270" width="265" height="270"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzk-62-2F3" userLabel="toastView" customClass="UIImageView">
                                 <rect key="frame" x="35" y="178" width="278" height="265"/>
@@ -184,6 +175,22 @@
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nDg-eD-wM6" userLabel="tempToastView" customClass="UIImageView">
                                         <rect key="frame" x="0.0" y="0.0" width="278" height="252"/>
                                         <accessibility key="accessibilityConfiguration" label=""/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="265" id="kiY-hm-NVU"/>
+                                            <constraint firstAttribute="height" constant="270" id="vye-AB-dcq"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="kiY-hm-NVU"/>
+                                                <exclude reference="vye-AB-dcq"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="kiY-hm-NVU"/>
+                                                <include reference="vye-AB-dcq"/>
+                                            </mask>
+                                        </variation>
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="240"/>
                                         </variation>
@@ -192,6 +199,34 @@
                                         </variation>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="nDg-eD-wM6" secondAttribute="centerY" id="1Et-HL-tVQ"/>
+                                    <constraint firstAttribute="centerX" secondItem="nDg-eD-wM6" secondAttribute="centerX" id="CdX-Bw-aW7"/>
+                                    <constraint firstAttribute="centerX" secondItem="nDg-eD-wM6" secondAttribute="centerX" id="LZp-x6-wQy"/>
+                                    <constraint firstAttribute="width" constant="265" id="Ms4-VY-vpL"/>
+                                    <constraint firstAttribute="height" constant="270" id="b6t-FZ-ygT"/>
+                                    <constraint firstAttribute="centerY" secondItem="nDg-eD-wM6" secondAttribute="centerY" id="i1X-B6-crm"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ms4-VY-vpL"/>
+                                        <exclude reference="b6t-FZ-ygT"/>
+                                        <exclude reference="1Et-HL-tVQ"/>
+                                        <exclude reference="CdX-Bw-aW7"/>
+                                        <exclude reference="LZp-x6-wQy"/>
+                                        <exclude reference="i1X-B6-crm"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Ms4-VY-vpL"/>
+                                        <include reference="b6t-FZ-ygT"/>
+                                        <exclude reference="1Et-HL-tVQ"/>
+                                        <include reference="CdX-Bw-aW7"/>
+                                        <exclude reference="LZp-x6-wQy"/>
+                                        <include reference="i1X-B6-crm"/>
+                                    </mask>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="16" y="127" width="280" height="240"/>
                                 </variation>
@@ -199,14 +234,65 @@
                                     <rect key="frame" x="11" y="224" width="300" height="300"/>
                                 </variation>
                             </view>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Toast Crust" translatesAutoresizingMaskIntoConstraints="NO" id="Hw0-Os-anP">
+                                <rect key="frame" x="0.0" y="-300" width="300" height="300"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="dzk-62-2F3" secondAttribute="centerY" id="153-WV-E6w">
+                                <variation key="widthClass=compact" constant="33"/>
+                            </constraint>
+                            <constraint firstAttribute="centerY" secondItem="Hw0-Os-anP" secondAttribute="centerY" id="FJw-Hh-DG1">
+                                <variation key="widthClass=compact" constant="41"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="oXT-7V-AQW" secondAttribute="centerX" id="PWC-af-0f3"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oeY-0h-e4U" secondAttribute="bottom" constant="25" id="Si8-zK-2x6"/>
+                            <constraint firstAttribute="centerX" secondItem="oG7-03-UxM" secondAttribute="centerX" id="YNd-cB-fwP"/>
                             <constraint firstItem="uxa-gv-kD4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="Yqz-6F-lrb"/>
+                            <constraint firstAttribute="centerX" secondItem="Hw0-Os-anP" secondAttribute="centerX" id="dTF-Ry-zRl"/>
+                            <constraint firstAttribute="centerX" secondItem="dzk-62-2F3" secondAttribute="centerX" id="eyU-W1-siK"/>
                             <constraint firstAttribute="centerX" secondItem="oeY-0h-e4U" secondAttribute="centerX" id="khw-bT-XR9"/>
+                            <constraint firstAttribute="centerY" secondItem="oXT-7V-AQW" secondAttribute="centerY" id="md8-KF-oo6">
+                                <variation key="widthClass=compact" constant="30"/>
+                            </constraint>
                             <constraint firstAttribute="centerX" secondItem="uxa-gv-kD4" secondAttribute="centerX" id="qY8-aR-iiC"/>
+                            <constraint firstAttribute="centerY" secondItem="oG7-03-UxM" secondAttribute="centerY" id="uB8-ck-fR4"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="oG7-03-UxM"/>
+                                <exclude reference="oXT-7V-AQW"/>
+                                <exclude reference="Hw0-Os-anP"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="FJw-Hh-DG1"/>
+                                <exclude reference="dTF-Ry-zRl"/>
+                                <exclude reference="153-WV-E6w"/>
+                                <exclude reference="eyU-W1-siK"/>
+                                <exclude reference="PWC-af-0f3"/>
+                                <exclude reference="md8-KF-oo6"/>
+                                <exclude reference="YNd-cB-fwP"/>
+                                <exclude reference="uB8-ck-fR4"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="oG7-03-UxM"/>
+                                <include reference="oXT-7V-AQW"/>
+                                <include reference="Hw0-Os-anP"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="FJw-Hh-DG1"/>
+                                <include reference="dTF-Ry-zRl"/>
+                                <include reference="153-WV-E6w"/>
+                                <include reference="eyU-W1-siK"/>
+                                <include reference="PWC-af-0f3"/>
+                                <include reference="md8-KF-oo6"/>
+                                <include reference="YNd-cB-fwP"/>
+                                <include reference="uB8-ck-fR4"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="debugAmountLabel" destination="uxa-gv-kD4" id="Ihs-6z-5te"/>
@@ -709,7 +795,9 @@
     </scenes>
     <resources>
         <image name="Butter" width="261" height="350"/>
-        <image name="ButterIt" width="320" height="480"/>
+        <image name="Toast Crust" width="300" height="300"/>
+        <image name="Toast Inside" width="265" height="270"/>
         <image name="bg_ipad" width="768" height="1024"/>
+        <image name="bg_iphone" width="320" height="480"/>
     </resources>
 </document>
