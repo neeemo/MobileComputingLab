@@ -16,6 +16,7 @@ class ToastViewController: UIViewController {
     @IBOutlet var toastView: UIImageView!
     @IBOutlet var tempToastView: UIImageView!
     @IBOutlet var debugAmountLabel: UILabel!
+    @IBOutlet var toastContainer: UIView!
     
     var gameOn: Bool?
     
@@ -227,10 +228,59 @@ class ToastViewController: UIViewController {
     @IBAction func holdHereReleased() {
         //holdHereActive = false
         println("Button pressed = \(holdHereActive)")
-        var testBool = isItButtered()
-        println("Is it buttered? \(testBool)")
+        var toastIsButtered = isItButtered()
+        println("Is it buttered? \(toastIsButtered)")
+        
+        //tests if toast is sufficiently buttered; if so, adds a point and gives a new piece of toast, if not, makes player wait
+        if toastIsButtered {
+            replaceToast()
+        }
+        else {
+            makePlayerWait()
+        }
     }
     
+    func replaceToast() {
+        //code here to add to score
+        
+        let originalToastPosition: CGPoint = toastContainer.center
+        //animates the piece of toast so that it moves out of the screen
+        
+        /*UIView.animateWithDuration(1.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+            self.toastContainer.center = CGPoint(x: originalToastPosition.x, y: -200)
+        }, completion: moveToastToOrigin(originalToastPosition))*/
+        
+        UIView.animateWithDuration(1.5,
+            delay: 0,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 1,
+            options: UIViewAnimationOptions.CurveEaseInOut,
+            animations: {
+                self.toastContainer.center = CGPoint(x: originalToastPosition.x, y: -200)
+            },
+            completion: { finished in
+                //removes all butter from the toast, effectively creating a "new" piece of toast
+                self.toastView.image = nil
+                //moves toast back to the original positin
+                self.moveToastToOrigin(originalToastPosition)
+        })
+    }
     
+    func moveToastToOrigin(originalToastPosition: CGPoint) {
+        //animates the piece of toast so that it returns to it original position
+        UIView.animateWithDuration(1.5,
+            delay: 0,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 1,
+            options: UIViewAnimationOptions.CurveEaseInOut,
+            animations: {
+                self.toastContainer.center = CGPoint(x: originalToastPosition.x, y: originalToastPosition.y)
+            },
+            completion: nil)
+    }
+    
+    func makePlayerWait() {
+        
+    }
     
 }
