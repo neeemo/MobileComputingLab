@@ -34,7 +34,7 @@ class ButterViewController: UIViewController {
     
     var cdTimer: NSTimer = NSTimer()
     
-    var gameTime: Double = 22
+    var gameTime: Double = 52
     
     var roundTimer: NSTimer = NSTimer()
     

@@ -47,5 +47,9 @@ class ButterKnife {
         
         return butterAmount_
     }
+    
+    func getButterAmount() -> Double{
+        return butterAmount_
+    }
 }
 

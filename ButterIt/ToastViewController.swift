@@ -17,7 +17,6 @@ class ToastViewController: UIViewController {
     @IBOutlet var tempToastView: UIImageView!
     @IBOutlet var debugAmountLabel: UILabel!
     @IBOutlet var toastContainer: UIView!
-    @IBOutlet var playerMessageLabel: UILabel!
     
     var gameOn: Bool?
     
@@ -48,7 +47,6 @@ class ToastViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //playerMessageLabel.text = ""
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -241,8 +239,7 @@ class ToastViewController: UIViewController {
             replaceToast()
         }
         else {
-            playerMessageLabel.text = "ueueo"
-            makePlayerWait()
+            //makePlayerWait()
         }
     }
     
@@ -293,7 +290,6 @@ class ToastViewController: UIViewController {
         canSpreadButter = false
         //sleep(4)
         canSpreadButter = true
-        playerMessageLabel.text = ""
     }
     
 }

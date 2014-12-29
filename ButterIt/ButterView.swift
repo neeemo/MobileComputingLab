@@ -18,7 +18,7 @@ class ButterView: UIImageView {
     var peerID_: MCPeerID?
     var scoopAmount: Double = 0 //as a player "scoops" butter, this value goes up
     var startTime = NSDate() //used in calculating the amount of butter scooped
-    let maxScoopAmount: Double = 100
+    let maxScoopAmount: Double = 1000
     var roundStarted: Bool?
     
     let scoopMultiplier = 3.0 // this is a game balancing constant that affects the rate at which butter is scooped
