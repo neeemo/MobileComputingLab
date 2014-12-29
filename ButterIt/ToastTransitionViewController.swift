@@ -56,7 +56,7 @@ class ToastTransitionViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldDidEndEditing(textField: UITextField) {
         textField.resignFirstResponder()
         
         if(appDelegate?.mcManager?.peerID != nil){
@@ -69,7 +69,6 @@ class ToastTransitionViewController: UIViewController, UITextFieldDelegate {
         appDelegate?.mcManager?.setupPeerWithDisplayName(usernameField?.text)
         appDelegate?.mcManager?.setupSession()
         
-        return true
     }
     
     @IBAction func switchFunc(sender: AnyObject) {

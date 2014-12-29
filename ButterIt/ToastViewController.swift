@@ -48,7 +48,7 @@ class ToastViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playerMessageLabel.text = ""
+        //playerMessageLabel.text = ""
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -144,7 +144,7 @@ class ToastViewController: UIViewController {
             
             //When touch has ended, update host butterAmount
             //commented out for testing
-            //sendData(myPeerID!, butterAmount_: butterKnife.butterAmount_)
+            sendData(myPeerID!, butterAmount_: butterKnife.butterAmount_)
         }
         
     }
