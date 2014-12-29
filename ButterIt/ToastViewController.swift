@@ -17,21 +17,24 @@ class ToastViewController: UIViewController {
     @IBOutlet var tempToastView: UIImageView!
     @IBOutlet var debugAmountLabel: UILabel!
     @IBOutlet var toastContainer: UIView!
+    @IBOutlet var playerMessageLabel: UILabel!
     
     var gameOn: Bool?
-    
-    var lastPoint: CGPoint! //for drawing the butter lines
-    var holdHereActive = true //boolean to see if the player is pressing on the Hold Here button
     
     var myPeerID: MCPeerID?
     var hostPeerID: MCPeerID?
     
     var score_: Int?
     
-    var butterKnife = ButterKnife()
-    
-    let minButterPercentage = 85 //the minimum amount of butter that must be spread on the toast for a successful buttering
+    //drawing variables
+    var lastPoint: CGPoint! //for drawing the butter lines
     let butterWidth = 25 //the width of the butter strokes
+    
+    //gameplay variables
+    var butterKnife = ButterKnife()
+    var holdHereActive = true //boolean to see if the player is pressing on the Hold Here button
+    let minButterPercentage = 85 //the minimum amount of butter that must be spread on the toast for a successful buttering
+    var canSpreadButter = true
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -45,6 +48,7 @@ class ToastViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        playerMessageLabel.text = ""
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -94,7 +98,7 @@ class ToastViewController: UIViewController {
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         if(gameOn == true){
-            if /*holdHereActive == true &&*/ butterKnife.butterAmount_ > 0 {
+            if /*holdHereActive == true &&*/ butterKnife.butterAmount_ > 0 && canSpreadButter == true {
                 var currentPoint: CGPoint! = touches.anyObject()?.locationInView(tempToastView)
                 
                 //drawing code, draws a line that follows the player's touches
@@ -236,6 +240,7 @@ class ToastViewController: UIViewController {
             replaceToast()
         }
         else {
+            playerMessageLabel.text = "ueueo"
             makePlayerWait()
         }
     }
@@ -280,7 +285,12 @@ class ToastViewController: UIViewController {
     }
     
     func makePlayerWait() {
+        var timer = NSTimer()
         
+        canSpreadButter = false
+        sleep(4)
+        canSpreadButter = true
+        playerMessageLabel.text = ""
     }
     
 }
