@@ -21,6 +21,8 @@ class ButterView: UIImageView {
     let maxScoopAmount: Double = 100
     var roundStarted: Bool?
     
+    let scoopMultiplier = 3.0 // this is a game balancing constant that affects the rate at which butter is scooped
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -62,7 +64,7 @@ class ButterView: UIImageView {
                 //scoopAmount++
                 let endTime = NSDate()
                 let timeInterval: Double = endTime.timeIntervalSinceDate(startTime); //Difference in seconds (double)
-                scoopAmount = scoopAmount + timeInterval
+                scoopAmount = scoopAmount + (timeInterval*scoopMultiplier)
             }
             
             //println("Butter on player \(displayName_)'s knife = \(scoopAmount)")

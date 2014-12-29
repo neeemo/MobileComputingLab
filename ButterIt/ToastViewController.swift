@@ -24,7 +24,7 @@ class ToastViewController: UIViewController {
     var myPeerID: MCPeerID?
     var hostPeerID: MCPeerID?
     
-    var score_: Int?
+    var score_: Int? = 0 //without network code in place, value for score_ must be declared
     
     //drawing variables
     var lastPoint: CGPoint! //for drawing the butter lines
@@ -73,6 +73,7 @@ class ToastViewController: UIViewController {
         
         if(type == "roundBegin") {
             debugAmountLabel.text = "Start!"
+            score_ = 0 //resets player's score
         }
         if(type == "butterAmount" && gameOn == true){
             butterKnife.setButter(receivedPackage.getButterAmount())
@@ -82,7 +83,7 @@ class ToastViewController: UIViewController {
             gameOn = receivedPackage.getPlayBool()
             debugAmountLabel.text = "Game Over"
             //sends score 5, this should be changed when score logic has been implemented
-            sendScore(myPeerID!, score_: 5)
+            sendScore(myPeerID!, score_: score_!)
         }
         
     }
@@ -91,8 +92,8 @@ class ToastViewController: UIViewController {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         if(gameOn == true){
             lastPoint = touches.anyObject()?.locationInView(tempToastView)
-            //temporary line to add butter to knife
-            butterKnife.addButter(1000)
+            //temporary testing line to add butter to knife
+            //butterKnife.addButter(1000)
         }
     }
     
@@ -246,7 +247,9 @@ class ToastViewController: UIViewController {
     }
     
     func replaceToast() {
-        //code here to add to score
+        //adds one to player's score
+        score_ = score_! + 1
+        println("score is \(score_)")
         
         let originalToastPosition: CGPoint = toastContainer.center
         //animates the piece of toast so that it moves out of the screen
@@ -288,7 +291,7 @@ class ToastViewController: UIViewController {
         var timer = NSTimer()
         
         canSpreadButter = false
-        sleep(4)
+        //sleep(4)
         canSpreadButter = true
         playerMessageLabel.text = ""
     }
