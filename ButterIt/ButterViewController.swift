@@ -12,15 +12,25 @@ import MultipeerConnectivity
 class ButterViewController: UIViewController {
     
     var appDelegate: AppDelegate? = UIApplication.sharedApplication().delegate as? AppDelegate
+    
+    //butter tubs that players scoop
     @IBOutlet var butterView1: ButterView!
     @IBOutlet var butterView2: ButterView!
     @IBOutlet var butterView3: ButterView!
     @IBOutlet var butterView4: ButterView!
     
+    //player names that indicate who gets which piece of butter
     @IBOutlet weak var player1Label: UILabel?
     @IBOutlet weak var player2Label: UILabel?
     @IBOutlet weak var player3Label: UILabel?
     @IBOutlet weak var player4Label: UILabel?
+    
+    //score labels used at the end of the game
+    @IBOutlet var player1ScoreLabel: UILabel?
+    @IBOutlet var player2ScoreLabel: UILabel?
+    @IBOutlet var player3ScoreLabel: UILabel?
+    @IBOutlet var player4ScoreLabel: UILabel?
+    
     
     @IBOutlet weak var timerLabel: UILabel?
     
@@ -248,6 +258,17 @@ class ButterViewController: UIViewController {
         if(error != nil){
             println(error?.localizedDescription)
         }
+    }
+    
+    //gathers scores from each toast client
+    func gatherScores() {
+        
+    }
+    
+    
+    //displays the gathered scores from each player at the end of the game, highlights the winner, and gives option to play again
+    func displayScores() {
+        
     }
     
     func didReceiveDataWithNotification(notification: NSNotification) {

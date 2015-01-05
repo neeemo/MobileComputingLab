@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qG4-53-reZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -156,11 +156,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeY-0h-e4U" userLabel="holdHereButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeY-0h-e4U" userLabel="holdHereButton">
                                 <rect key="frame" x="266" y="545" width="69" height="30"/>
-                                <state key="normal" title="Hold Here">
+                                <state key="normal" image="HoldHereOn">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="HoldHereOff"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="76" y="456" width="250" height="119"/>
+                                </variation>
                                 <connections>
                                     <action selector="holdHerePressed" destination="vXZ-lx-hvc" eventType="touchDown" id="0Rk-l0-vjZ"/>
                                     <action selector="holdHereReleased" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5FQ-Hb-HoL"/>
@@ -293,7 +297,9 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oeY-0h-e4U" secondAttribute="bottom" constant="25" id="Si8-zK-2x6"/>
                             <constraint firstAttribute="centerX" secondItem="mgH-PM-zG3" secondAttribute="centerX" id="TK9-TN-9TL"/>
                             <constraint firstAttribute="centerX" secondItem="oG7-03-UxM" secondAttribute="centerX" id="YNd-cB-fwP"/>
-                            <constraint firstItem="uxa-gv-kD4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="Yqz-6F-lrb"/>
+                            <constraint firstItem="uxa-gv-kD4" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="Yqz-6F-lrb">
+                                <variation key="widthClass=compact" constant="20"/>
+                            </constraint>
                             <constraint firstAttribute="centerY" secondItem="mgH-PM-zG3" secondAttribute="centerY" id="eiY-0R-J6w">
                                 <variation key="widthClass=compact" constant="30"/>
                             </constraint>
@@ -412,14 +418,76 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="bg_ipad" translatesAutoresizingMaskIntoConstraints="NO" id="cfL-0l-lli">
                                 <rect key="frame" x="0.0" y="-1024" width="768" height="1024"/>
                             </imageView>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vUS-Yd-E9S" userLabel="butterView1" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
+                                <rect key="frame" x="203" y="81" width="200" height="200"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-f7-oJ8">
+                                        <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4W-Ng-w2k" userLabel="player1ScoreLabel">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="bgh-f7-oJ8" secondAttribute="centerX" id="3WM-ZQ-bXJ"/>
+                                    <constraint firstAttribute="width" constant="150" id="PZ7-sz-aGQ">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="261"/>
+                                    </constraint>
+                                    <constraint firstAttribute="centerY" secondItem="bgh-f7-oJ8" secondAttribute="centerY" id="Xxt-bE-T2Z"/>
+                                    <constraint firstAttribute="centerY" secondItem="O4W-Ng-w2k" secondAttribute="centerY" id="a5H-48-S7h"/>
+                                    <constraint firstAttribute="height" constant="150" id="n00-2i-R7z">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="350"/>
+                                    </constraint>
+                                    <constraint firstAttribute="centerX" secondItem="O4W-Ng-w2k" secondAttribute="centerX" id="rYi-sL-1Wu"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="bgh-f7-oJ8"/>
+                                        <exclude reference="O4W-Ng-w2k"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="PZ7-sz-aGQ"/>
+                                        <exclude reference="n00-2i-R7z"/>
+                                        <exclude reference="3WM-ZQ-bXJ"/>
+                                        <exclude reference="Xxt-bE-T2Z"/>
+                                        <exclude reference="a5H-48-S7h"/>
+                                        <exclude reference="rYi-sL-1Wu"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="35" y="40" width="261" height="350"/>
+                                    <mask key="subviews">
+                                        <include reference="bgh-f7-oJ8"/>
+                                        <include reference="O4W-Ng-w2k"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="PZ7-sz-aGQ"/>
+                                        <include reference="n00-2i-R7z"/>
+                                        <include reference="3WM-ZQ-bXJ"/>
+                                        <include reference="Xxt-bE-T2Z"/>
+                                        <include reference="a5H-48-S7h"/>
+                                        <include reference="rYi-sL-1Wu"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brG-av-8ng" userLabel="butterView2" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
                                 <rect key="frame" x="384" y="210" width="200" height="200"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="XPR-3p-Dd7">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spp-bJ-jEd" userLabel="player2ScoreLabel">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="Spp-bJ-jEd" secondAttribute="centerY" id="5sP-l5-jHM"/>
                                     <constraint firstAttribute="centerX" secondItem="XPR-3p-Dd7" secondAttribute="centerX" id="FFN-vt-rfX"/>
                                     <constraint firstAttribute="height" constant="150" id="VZA-pA-Wpb">
                                         <variation key="heightClass=regular-widthClass=regular" constant="350"/>
@@ -427,68 +495,35 @@
                                     <constraint firstAttribute="width" constant="150" id="WwZ-Xg-XGh">
                                         <variation key="heightClass=regular-widthClass=regular" constant="261"/>
                                     </constraint>
+                                    <constraint firstAttribute="centerX" secondItem="Spp-bJ-jEd" secondAttribute="centerX" id="YUn-ul-B92"/>
                                     <constraint firstAttribute="centerY" secondItem="XPR-3p-Dd7" secondAttribute="centerY" id="aNc-iE-ovC"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="XPR-3p-Dd7"/>
+                                        <exclude reference="Spp-bJ-jEd"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="VZA-pA-Wpb"/>
                                         <exclude reference="WwZ-Xg-XGh"/>
                                         <exclude reference="FFN-vt-rfX"/>
                                         <exclude reference="aNc-iE-ovC"/>
+                                        <exclude reference="5sP-l5-jHM"/>
+                                        <exclude reference="YUn-ul-B92"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <mask key="subviews">
                                         <include reference="XPR-3p-Dd7"/>
+                                        <include reference="Spp-bJ-jEd"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="VZA-pA-Wpb"/>
                                         <include reference="WwZ-Xg-XGh"/>
                                         <include reference="FFN-vt-rfX"/>
                                         <include reference="aNc-iE-ovC"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9La-WJ-Yv5" userLabel="butterView4" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
-                                <rect key="frame" x="16" y="189" width="200" height="200"/>
-                                <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="QXX-Cu-Lh0">
-                                        <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="QXX-Cu-Lh0" secondAttribute="centerX" id="8wF-Uy-GZo"/>
-                                    <constraint firstAttribute="height" constant="150" id="I6A-YB-NWD">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="350"/>
-                                    </constraint>
-                                    <constraint firstAttribute="width" constant="150" id="iPI-NB-V0Q">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="261"/>
-                                    </constraint>
-                                    <constraint firstAttribute="centerY" secondItem="QXX-Cu-Lh0" secondAttribute="centerY" id="zLf-Em-hjT"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="QXX-Cu-Lh0"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <exclude reference="I6A-YB-NWD"/>
-                                        <exclude reference="iPI-NB-V0Q"/>
-                                        <exclude reference="8wF-Uy-GZo"/>
-                                        <exclude reference="zLf-Em-hjT"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="subviews">
-                                        <include reference="QXX-Cu-Lh0"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <include reference="I6A-YB-NWD"/>
-                                        <include reference="iPI-NB-V0Q"/>
-                                        <include reference="8wF-Uy-GZo"/>
-                                        <include reference="zLf-Em-hjT"/>
+                                        <include reference="5sP-l5-jHM"/>
+                                        <include reference="YUn-ul-B92"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -498,37 +533,105 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-Hd-pIN">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEB-Zn-DGm" userLabel="player3ScoreLabel">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="JKl-Hd-pIN" secondAttribute="centerX" id="Qdm-Fs-Ev7"/>
                                     <constraint firstAttribute="centerY" secondItem="JKl-Hd-pIN" secondAttribute="centerY" id="d6c-Cv-KYE"/>
+                                    <constraint firstAttribute="centerY" secondItem="uEB-Zn-DGm" secondAttribute="centerY" id="fWY-eq-c8W"/>
                                     <constraint firstAttribute="width" constant="150" id="qbp-Gj-f23">
                                         <variation key="heightClass=regular-widthClass=regular" constant="261"/>
                                     </constraint>
                                     <constraint firstAttribute="height" constant="150" id="s2N-in-hDh">
                                         <variation key="heightClass=regular-widthClass=regular" constant="350"/>
                                     </constraint>
+                                    <constraint firstAttribute="centerX" secondItem="uEB-Zn-DGm" secondAttribute="centerX" id="xMi-y2-03l"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="JKl-Hd-pIN"/>
+                                        <exclude reference="uEB-Zn-DGm"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="qbp-Gj-f23"/>
                                         <exclude reference="s2N-in-hDh"/>
                                         <exclude reference="Qdm-Fs-Ev7"/>
                                         <exclude reference="d6c-Cv-KYE"/>
+                                        <exclude reference="fWY-eq-c8W"/>
+                                        <exclude reference="xMi-y2-03l"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <mask key="subviews">
                                         <include reference="JKl-Hd-pIN"/>
+                                        <include reference="uEB-Zn-DGm"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="qbp-Gj-f23"/>
                                         <include reference="s2N-in-hDh"/>
                                         <include reference="Qdm-Fs-Ev7"/>
                                         <include reference="d6c-Cv-KYE"/>
+                                        <include reference="fWY-eq-c8W"/>
+                                        <include reference="xMi-y2-03l"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9La-WJ-Yv5" userLabel="butterView4" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
+                                <rect key="frame" x="16" y="189" width="200" height="200"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="QXX-Cu-Lh0">
+                                        <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCb-Ge-zAZ" userLabel="player4ScoreLabel">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="QXX-Cu-Lh0" secondAttribute="centerX" id="8wF-Uy-GZo"/>
+                                    <constraint firstAttribute="height" constant="150" id="I6A-YB-NWD">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="350"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="150" id="iPI-NB-V0Q">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="261"/>
+                                    </constraint>
+                                    <constraint firstAttribute="centerY" secondItem="PCb-Ge-zAZ" secondAttribute="centerY" id="rdf-Cw-h4m"/>
+                                    <constraint firstAttribute="centerX" secondItem="PCb-Ge-zAZ" secondAttribute="centerX" id="vx2-CK-Dne"/>
+                                    <constraint firstAttribute="centerY" secondItem="QXX-Cu-Lh0" secondAttribute="centerY" id="zLf-Em-hjT"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="QXX-Cu-Lh0"/>
+                                        <exclude reference="PCb-Ge-zAZ"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="I6A-YB-NWD"/>
+                                        <exclude reference="iPI-NB-V0Q"/>
+                                        <exclude reference="8wF-Uy-GZo"/>
+                                        <exclude reference="zLf-Em-hjT"/>
+                                        <exclude reference="rdf-Cw-h4m"/>
+                                        <exclude reference="vx2-CK-Dne"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="QXX-Cu-Lh0"/>
+                                        <include reference="PCb-Ge-zAZ"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="I6A-YB-NWD"/>
+                                        <include reference="iPI-NB-V0Q"/>
+                                        <include reference="8wF-Uy-GZo"/>
+                                        <include reference="zLf-Em-hjT"/>
+                                        <include reference="rdf-Cw-h4m"/>
+                                        <include reference="vx2-CK-Dne"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -553,9 +656,6 @@
                                         <exclude reference="ZgV-dV-2EY"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="371" y="399" width="58" height="21"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3R-TJ-IP3">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -572,46 +672,6 @@
                                     <action selector="playButtonFunc:" destination="gal-Ae-EmW" eventType="touchUpInside" id="l8i-f4-LRc"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vUS-Yd-E9S" userLabel="butterView1" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
-                                <rect key="frame" x="203" y="81" width="200" height="200"/>
-                                <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-f7-oJ8">
-                                        <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="bgh-f7-oJ8" secondAttribute="centerX" id="3WM-ZQ-bXJ"/>
-                                    <constraint firstAttribute="width" constant="150" id="PZ7-sz-aGQ">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="261"/>
-                                    </constraint>
-                                    <constraint firstAttribute="centerY" secondItem="bgh-f7-oJ8" secondAttribute="centerY" id="Xxt-bE-T2Z"/>
-                                    <constraint firstAttribute="height" constant="150" id="n00-2i-R7z">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="350"/>
-                                    </constraint>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="bgh-f7-oJ8"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <exclude reference="PZ7-sz-aGQ"/>
-                                        <exclude reference="n00-2i-R7z"/>
-                                        <exclude reference="3WM-ZQ-bXJ"/>
-                                        <exclude reference="Xxt-bE-T2Z"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="subviews">
-                                        <include reference="bgh-f7-oJ8"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <include reference="PZ7-sz-aGQ"/>
-                                        <include reference="n00-2i-R7z"/>
-                                        <include reference="3WM-ZQ-bXJ"/>
-                                        <include reference="Xxt-bE-T2Z"/>
-                                    </mask>
-                                </variation>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Player2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cje-1A-bW6" userLabel="player2">
                                 <rect key="frame" x="273" y="284" width="130" height="21"/>
                                 <constraints>
@@ -770,9 +830,13 @@
                         <outlet property="butterView4" destination="9La-WJ-Yv5" id="eqJ-WC-2Wh"/>
                         <outlet property="playButton" destination="mEs-th-bfr" id="uYt-Pf-SBK"/>
                         <outlet property="player1Label" destination="3NH-n3-T6X" id="I2R-jI-7xe"/>
+                        <outlet property="player1ScoreLabel" destination="O4W-Ng-w2k" id="NwF-0j-7z8"/>
                         <outlet property="player2Label" destination="Cje-1A-bW6" id="vNc-Cb-agY"/>
+                        <outlet property="player2ScoreLabel" destination="Spp-bJ-jEd" id="fsk-AE-5xq"/>
                         <outlet property="player3Label" destination="DbG-s8-Y4A" id="A7u-Se-kg6"/>
+                        <outlet property="player3ScoreLabel" destination="uEB-Zn-DGm" id="aHP-P1-vQz"/>
                         <outlet property="player4Label" destination="xZA-BW-fll" id="9Tp-mv-jwc"/>
+                        <outlet property="player4ScoreLabel" destination="PCb-Ge-zAZ" id="zkI-tp-tj1"/>
                         <outlet property="timerLabel" destination="r3R-TJ-IP3" id="MEI-I7-byC"/>
                         <segue destination="jwx-z8-z5X" kind="presentation" identifier="scoreSegue" id="6tc-dD-Jev"/>
                     </connections>
@@ -825,6 +889,8 @@
     </scenes>
     <resources>
         <image name="Butter" width="261" height="350"/>
+        <image name="HoldHereOff" width="250" height="119"/>
+        <image name="HoldHereOn" width="250" height="119"/>
         <image name="Toast Crust" width="300" height="300"/>
         <image name="Toast Inside" width="265" height="270"/>
         <image name="bg_ipad" width="768" height="1024"/>
