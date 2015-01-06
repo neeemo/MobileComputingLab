@@ -7,12 +7,11 @@
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "iphone6+-1.png"
+      "filename" : "inside.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "iphone6+.png"
+      "scale" : "3x"
     }
   ],
   "info" : {

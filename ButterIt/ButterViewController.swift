@@ -189,6 +189,7 @@ class ButterViewController: UIViewController {
             startTimer()
             activateButterViews()
             sendStartRound()
+            countDownBool = false
         }
         else{
             stopTimer()
