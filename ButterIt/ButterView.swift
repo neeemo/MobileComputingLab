@@ -51,6 +51,11 @@ class ButterView: UIImageView {
         displayName_ = displayName
     }
     
+    //function to let the host get the peerID to identify each client
+    func getPeerID() -> MCPeerID {
+        return peerID_!
+    }
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         if(roundStarted == true){
             println("touch began in butterview")
