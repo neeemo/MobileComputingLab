@@ -38,13 +38,9 @@ class ButterViewController: UIViewController {
     
     var startTime = NSTimeInterval()
     
-    var cdTime = NSTimeInterval()
+    var countDownBool: Bool = true
     
-    var countDownTime: Double = 7
-    
-    var cdTimer: NSTimer = NSTimer()
-    
-    var gameTime: Double = 52
+    var gameTime: Double = 0
     
     var roundTimer: NSTimer = NSTimer()
     
@@ -137,38 +133,10 @@ class ButterViewController: UIViewController {
     }
     
     func startCountDown(){
-        if(!cdTimer.valid) {
-            let aSelector: Selector = "updateCD"
-            cdTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
-            cdTime = NSDate.timeIntervalSinceReferenceDate()
-        }
+        gameTime = 7
+        startTimer()
     }
-    
-    func stopCD(){
-        cdTimer.invalidate()
-    }
-    
-    func updateCD(){
-        var currentTime = NSDate.timeIntervalSinceReferenceDate()
-        
-        var elapsedTime: NSTimeInterval = currentTime - cdTime
-        
-        var seconds = countDownTime - elapsedTime
-        
-        if(seconds  > 1){
-            elapsedTime -= NSTimeInterval(seconds)
-            timerLabel?.text = String(Int(seconds))
-        }
-        else{
-            stopCD()
-            timerLabel?.text = "GO!"
-            startTimer()
-            activateButterViews()
-            sendStartRound()
-        }
-        
-    }
-    
+
     func startTimer(){
         timerLabel?.textColor = UIColor.greenColor()
         if(!roundTimer.valid) {
@@ -189,12 +157,21 @@ class ButterViewController: UIViewController {
         
         var seconds = gameTime - elapsedTime
         
-        if(seconds < 5){
+        if(seconds < 5 && !countDownBool){
             timerLabel?.textColor = UIColor.redColor()
         }
         if(seconds  > 0){
             elapsedTime -= NSTimeInterval(seconds)
             timerLabel?.text = String(Int(seconds))
+        }
+        else if(countDownBool){
+            stopTimer()
+            gameTime = 52
+            timerLabel?.textColor = UIColor.greenColor()
+            timerLabel?.text = "GO!"
+            startTimer()
+            activateButterViews()
+            sendStartRound()
         }
         else{
             stopTimer()

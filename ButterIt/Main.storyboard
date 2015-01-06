@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gal-Ae-EmW">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -156,7 +156,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeY-0h-e4U" userLabel="holdHereButton">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeY-0h-e4U" userLabel="holdHereButton">
                                 <rect key="frame" x="266" y="545" width="69" height="30"/>
                                 <state key="normal" image="HoldHereOn">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -451,10 +451,10 @@
                                     <mask key="constraints">
                                         <exclude reference="PZ7-sz-aGQ"/>
                                         <exclude reference="n00-2i-R7z"/>
-                                        <exclude reference="3WM-ZQ-bXJ"/>
-                                        <exclude reference="Xxt-bE-T2Z"/>
                                         <exclude reference="a5H-48-S7h"/>
                                         <exclude reference="rYi-sL-1Wu"/>
+                                        <exclude reference="3WM-ZQ-bXJ"/>
+                                        <exclude reference="Xxt-bE-T2Z"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
@@ -466,10 +466,10 @@
                                     <mask key="constraints">
                                         <include reference="PZ7-sz-aGQ"/>
                                         <include reference="n00-2i-R7z"/>
-                                        <include reference="3WM-ZQ-bXJ"/>
-                                        <include reference="Xxt-bE-T2Z"/>
                                         <include reference="a5H-48-S7h"/>
                                         <include reference="rYi-sL-1Wu"/>
+                                        <include reference="3WM-ZQ-bXJ"/>
+                                        <include reference="Xxt-bE-T2Z"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -506,10 +506,10 @@
                                     <mask key="constraints">
                                         <exclude reference="VZA-pA-Wpb"/>
                                         <exclude reference="WwZ-Xg-XGh"/>
-                                        <exclude reference="FFN-vt-rfX"/>
-                                        <exclude reference="aNc-iE-ovC"/>
                                         <exclude reference="5sP-l5-jHM"/>
                                         <exclude reference="YUn-ul-B92"/>
+                                        <exclude reference="FFN-vt-rfX"/>
+                                        <exclude reference="aNc-iE-ovC"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
@@ -520,10 +520,10 @@
                                     <mask key="constraints">
                                         <include reference="VZA-pA-Wpb"/>
                                         <include reference="WwZ-Xg-XGh"/>
-                                        <include reference="FFN-vt-rfX"/>
-                                        <include reference="aNc-iE-ovC"/>
                                         <include reference="5sP-l5-jHM"/>
                                         <include reference="YUn-ul-B92"/>
+                                        <include reference="FFN-vt-rfX"/>
+                                        <include reference="aNc-iE-ovC"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -614,10 +614,10 @@
                                     <mask key="constraints">
                                         <exclude reference="I6A-YB-NWD"/>
                                         <exclude reference="iPI-NB-V0Q"/>
-                                        <exclude reference="8wF-Uy-GZo"/>
-                                        <exclude reference="zLf-Em-hjT"/>
                                         <exclude reference="rdf-Cw-h4m"/>
                                         <exclude reference="vx2-CK-Dne"/>
+                                        <exclude reference="8wF-Uy-GZo"/>
+                                        <exclude reference="zLf-Em-hjT"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
@@ -628,10 +628,10 @@
                                     <mask key="constraints">
                                         <include reference="I6A-YB-NWD"/>
                                         <include reference="iPI-NB-V0Q"/>
-                                        <include reference="8wF-Uy-GZo"/>
-                                        <include reference="zLf-Em-hjT"/>
                                         <include reference="rdf-Cw-h4m"/>
                                         <include reference="vx2-CK-Dne"/>
+                                        <include reference="8wF-Uy-GZo"/>
+                                        <include reference="zLf-Em-hjT"/>
                                     </mask>
                                 </variation>
                             </view>
