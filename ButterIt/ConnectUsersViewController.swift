@@ -52,11 +52,11 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
         self.performSegueWithIdentifier("goPlaySegue", sender: self)
     }
     
+    //When goPlaySegue is called it also called sendEnter
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "goPlaySegue"){
             var butterVC = segue.destinationViewController as ButterViewController
             butterVC.callSendEnter()
-            //self.delegate?.callSendEnter()
         }
     }
     

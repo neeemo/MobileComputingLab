@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var initialViewController :UIViewController?
     var mcManager : MPCHandler?
 
 
@@ -19,6 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         //Creating a singleton of our networking backend
         mcManager = MPCHandler.sharedInstance()
+        
+        //created window and initializing mainStoryboard
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //Checking device type and sets initialViewController
+        if(UIDevice.currentDevice().userInterfaceIdiom == .Phone){
+            initialViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ToastTransitionViewController") as ToastTransitionViewController
+        }
+        else if(UIDevice.currentDevice().userInterfaceIdiom == .Pad){
+            initialViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ConnectUsersViewController") as ConnectUsersViewController
+        }
+        
+        //set rootViewController
+        window!.rootViewController = initialViewController
+        window!.makeKeyAndVisible()
         
         return true
     }

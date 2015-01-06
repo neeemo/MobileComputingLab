@@ -66,34 +66,6 @@ class ToastViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func startTimer(){
-        if(!timer.valid){
-            let aSelector: Selector = "updateTime"
-            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
-            startTime = NSDate.timeIntervalSinceReferenceDate()
-        }
-    }
-    
-    func stopTimer(){
-        timer.invalidate()
-    }
-    
-    func updateTime(){
-        var currentTime = NSDate.timeIntervalSinceReferenceDate()
-        
-        var elapsedTime: NSTimeInterval = currentTime - startTime
-        
-        var seconds = penaltyTime - elapsedTime
-        
-        if(seconds > 0){
-            elapsedTime -= NSTimeInterval(seconds)
-        }
-        else{
-            stopTimer()
-            gameOn = true
-        }
-    }
-    
     //Update the butterAmount on knife from the Host
     func didReceiveDataWithNotification(notification: NSNotification) {
         var peerID: MCPeerID = notification.userInfo?["peerID"]! as MCPeerID
@@ -318,10 +290,37 @@ class ToastViewController: UIViewController {
             completion: nil)
     }
     
+    func startTimer(){
+        if(!timer.valid){
+            let aSelector: Selector = "updateTime"
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
+            startTime = NSDate.timeIntervalSinceReferenceDate()
+        }
+    }
+    
+    func stopTimer(){   
+        timer.invalidate()
+    }
+    
+    func updateTime(){
+        var currentTime = NSDate.timeIntervalSinceReferenceDate()
+        
+        var elapsedTime: NSTimeInterval = currentTime - startTime
+        
+        var seconds = penaltyTime - elapsedTime
+        
+        if(seconds > 0){
+            elapsedTime -= NSTimeInterval(seconds)
+        }
+        else{
+            stopTimer()
+            gameOn = true
+        }
+    }
+    
     func makePlayerWait() {
         gameOn = false
         startTimer()
-        
     }
     
 }
