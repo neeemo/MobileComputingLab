@@ -2,17 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "iphone6+-1.png"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "iphone6+.png"
+      "scale" : "1x",
+      "filename" : "bg_iphone.png"
     }
   ],
   "info" : {
