@@ -199,9 +199,7 @@ class ButterViewController: UIViewController {
         }
         else if(countDownBool){
             stopTimer()
-            //gameTime = 52
-            //this is temporary for debugging
-            gameTime = 3
+            gameTime = 52
             timerLabel?.textColor = UIColor.greenColor()
             timerLabel?.text = "GO!"
             startTimer()
