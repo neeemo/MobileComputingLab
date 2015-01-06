@@ -421,7 +421,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vUS-Yd-E9S" userLabel="butterView1" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
                                 <rect key="frame" x="203" y="81" width="200" height="200"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-f7-oJ8">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="butter" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-f7-oJ8">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4W-Ng-w2k" userLabel="player1ScoreLabel">
@@ -476,7 +476,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brG-av-8ng" userLabel="butterView2" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
                                 <rect key="frame" x="384" y="210" width="200" height="200"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="XPR-3p-Dd7">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="butter" translatesAutoresizingMaskIntoConstraints="NO" id="XPR-3p-Dd7">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spp-bJ-jEd" userLabel="player2ScoreLabel">
@@ -530,7 +530,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qik-wL-xFR" userLabel="butterView3" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
                                 <rect key="frame" x="216" y="373" width="200" height="200"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-Hd-pIN">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="butter" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-Hd-pIN">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEB-Zn-DGm" userLabel="player3ScoreLabel">
@@ -584,7 +584,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9La-WJ-Yv5" userLabel="butterView4" customClass="ButterView" customModule="ButterIt" customModuleProvider="target">
                                 <rect key="frame" x="16" y="189" width="200" height="200"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="QXX-Cu-Lh0">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="butter" translatesAutoresizingMaskIntoConstraints="NO" id="QXX-Cu-Lh0">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCb-Ge-zAZ" userLabel="player4ScoreLabel">
@@ -888,12 +888,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Butter" width="261" height="350"/>
         <image name="HoldHereOff" width="250" height="119"/>
         <image name="HoldHereOn" width="250" height="119"/>
         <image name="Toast Crust" width="300" height="300"/>
         <image name="Toast Inside" width="265" height="270"/>
         <image name="bg_ipad" width="768" height="1024"/>
-        <image name="bg_iphone" width="540" height="960"/>
+        <image name="bg_iphone" width="640" height="960"/>
+        <image name="butter" width="261" height="350"/>
     </resources>
 </document>
