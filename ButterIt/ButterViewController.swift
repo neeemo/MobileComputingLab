@@ -31,6 +31,17 @@ class ButterViewController: UIViewController {
     @IBOutlet var player3ScoreLabel: UILabel?
     @IBOutlet var player4ScoreLabel: UILabel?
     
+    //butter images, need a reference here in order to make them disappear at the end of the game
+    @IBOutlet var butterImage1: UIImageView!
+    @IBOutlet var butterImage2: UIImageView!
+    @IBOutlet var butterImage3: UIImageView!
+    @IBOutlet var butterImage4: UIImageView!
+    
+    //star images, used to mark who the winner is at the end of the game
+    @IBOutlet var starImage1: UIImageView!
+    @IBOutlet var starImage2: UIImageView!
+    @IBOutlet var starImage3: UIImageView!
+    @IBOutlet var starImage4: UIImageView!
     
     @IBOutlet weak var timerLabel: UILabel?
     
@@ -109,6 +120,11 @@ class ButterViewController: UIViewController {
         playerScoreLabelArray += [player3ScoreLabel!]
         playerScoreLabelArray += [player4ScoreLabel!]
         
+        //erase all labels in the player scores
+        for playerScoreLabel in playerScoreLabelArray {
+            playerScoreLabel.text = ""
+        }
+        
         for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
             var player: MCPeerID? = appDelegate?.mcManager?.getConnectedPeer(i)
             playerLabelArray[i].text = player?.displayName
@@ -183,12 +199,15 @@ class ButterViewController: UIViewController {
         }
         else if(countDownBool){
             stopTimer()
-            gameTime = 52
+            //gameTime = 52
+            //this is temporary for debugging
+            gameTime = 3
             timerLabel?.textColor = UIColor.greenColor()
             timerLabel?.text = "GO!"
             startTimer()
             activateButterViews()
             sendStartRound()
+            countDownBool = false
         }
         else{
             stopTimer()
@@ -281,7 +300,33 @@ class ButterViewController: UIViewController {
         }
         return winnerArray
     }
+    
+    func markWinners (winnerArray: [MCPeerID], numberOfPlayers: Int) {
+        //creates an array of the star view controllers, makes programming cleaner later
+        var starArray: [UIImageView] = []
+        starArray += [starImage1]
+        starArray += [starImage2]
+        starArray += [starImage3]
+        starArray += [starImage4]
         
+        //iterates through every entry in the winnerArray and marks their score with a star
+        for winner in winnerArray {
+            for (var i = 0; i < numberOfPlayers; i++) {
+                if (winner == butterViewArray[i].peerID_) {
+                    starArray[i].hidden = false
+                }
+            }
+        }
+    }
+    
+    //hides the images of butter to make scores more readable
+    func removeButterGraphics() {
+        butterImage1.hidden = true
+        butterImage2.hidden = true
+        butterImage3.hidden = true
+        butterImage4.hidden = true
+    }
+    
     func didReceiveDataWithNotification(notification: NSNotification) {
         var peerID: MCPeerID = notification.userInfo?["peerID"]! as MCPeerID
         var peerDisplayName = peerID.displayName as String
@@ -291,10 +336,16 @@ class ButterViewController: UIViewController {
             
         var receivedPackage: Package = NSKeyedUnarchiver.unarchiveObjectWithData(receivedData) as Package
         var type = receivedPackage.getType()
+        
+        var winnerArray: [MCPeerID] = []
+        var numberOfPlayers = allPeers!.count
             
         //if receives a gameover packet, requests the score from the toast client
         if(type == "gameover"){
-            tallyScores(peerID, playerScore: receivedPackage.getScore(), numberOfPlayers:allPeers!.count)
+            removeButterGraphics()
+            winnerArray = tallyScores(peerID, playerScore: receivedPackage.getScore(), numberOfPlayers: numberOfPlayers)
+            markWinners(winnerArray, numberOfPlayers: numberOfPlayers)
+            
                 
             //var tempString = ("\(peerDisplayName) score is: \(receivedPackage.getScore())")
             //playerScores = playerScores + tempString + "\n"
