@@ -22,10 +22,7 @@ class ToastViewController: UIViewController {
     var gameOn: Bool?
     
     var startTime = NSTimeInterval()
-    
-    var penaltyTime: Double = 3
-    
-    var timer: NSTimer = NSTimer()
+
     
     var myPeerID: MCPeerID?
     var hostPeerID: MCPeerID?
@@ -41,7 +38,9 @@ class ToastViewController: UIViewController {
     var holdHereActive = true //boolean to see if the player is pressing on the Hold Here button
     let minButterPercentage = 85 //the minimum amount of butter that must be spread on the toast for a successful buttering
     var canSpreadButter = true
-    
+    var timer: NSTimer = NSTimer()
+    let penaltyTime: Double = 3 //the time a player must wait when submitting unbuttered toast
+
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         //tempToastView.backgroundColor = UIColor.blackColor()
@@ -78,17 +77,14 @@ class ToastViewController: UIViewController {
         var type = receivedPackage.getType()
         
         if(type == "roundBegin") {
-            //debugAmountLabel.text = "Start!"
             score_ = 0 //resets player's score
             playerMessageLabel.text = "" //erases text in the playerText
         }
         if(type == "butterAmount" && gameOn == true){
             butterKnife.setButter(receivedPackage.getButterAmount())
-            //debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount_)
         }
         else if(type == "gameover"){
             gameOn = receivedPackage.getPlayBool()
-            //debugAmountLabel.text = "Game Over"
             playerMessageLabel.text = "Time up!"
             //sends score 5, this should be changed when score logic has been implemented
             sendScore(myPeerID!, score_: score_!)
@@ -101,7 +97,7 @@ class ToastViewController: UIViewController {
         if(gameOn == true){
             lastPoint = touches.anyObject()?.locationInView(tempToastView)
             //gameplay testing line to add butter to knife
-            //butterKnife.addButter(1000)
+            butterKnife.addButter(1000)
         }
     }
     
@@ -198,26 +194,30 @@ class ToastViewController: UIViewController {
         var butteredPoints: Double = 0
         var toastIsButtered = false
         
-        for var i = 0; i < toastViewWidth; i = i + 10 {
-            for var j = 0; j < toastViewHeight; j = j + 10 {
-                var currentPoint = CGPoint(x: i, y: j)
-                var greenValue = getGreenValue(currentPoint)
-                //tests the currentPoint's Green Channel value, if > 0, then point is buttered
-                if greenValue > 0 {
-                    butteredPoints++
+        //make sure toastView isn't empty - if not, does the pixel check for butter
+        if (toastView.image != nil) {
+            for var i = 0; i < toastViewWidth; i = i + 10 {
+                for var j = 0; j < toastViewHeight; j = j + 10 {
+                    var currentPoint = CGPoint(x: i, y: j)
+                    var greenValue = getGreenValue(currentPoint)
+                    //tests the currentPoint's Green Channel value, if > 0, then point is buttered
+                    if greenValue > 0 {
+                        butteredPoints++
+                    }
+                    totalPoints++
                 }
-                totalPoints++
+            }
+            //println("Number of buttered points \(butteredPoints)")
+            //println("Number of ponts \(totalPoints)")
+            var butterPercentage = butteredPoints/totalPoints
+            //println("Percentage covered \(butterPercentage)")
+            if butterPercentage > minButterPercentage {
+                toastIsButtered = true
+            } else {
+                toastIsButtered = false
             }
         }
-        println("Number of buttered points \(butteredPoints)")
-        println("Number of ponts \(totalPoints)")
-        var butterPercentage = butteredPoints/totalPoints
-        println("Percentage covered \(butterPercentage)")
-        if butterPercentage > minButterPercentage {
-            toastIsButtered = true
-        } else {
-            toastIsButtered = false
-        }
+        
         return toastIsButtered
     }
     
@@ -228,11 +228,11 @@ class ToastViewController: UIViewController {
         var pixelInfo: Int = ((Int(toastView.image!.size.width) * Int(pos.y)) + Int(pos.x)) * 4
         
         //var r = CGFloat(data[pixelInfo])
-        var g = CGFloat(data[pixelInfo+1])
+        var green = CGFloat(data[pixelInfo+1])
         //var b = CGFloat(data[pixelInfo+2])
         //var a = CGFloat(data[pixelInfo+3])
         
-        return g
+        return green
     }
 
     
