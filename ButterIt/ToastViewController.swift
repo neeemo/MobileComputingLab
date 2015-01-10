@@ -15,8 +15,9 @@ class ToastViewController: UIViewController {
     
     @IBOutlet var toastView: UIImageView!
     @IBOutlet var tempToastView: UIImageView!
-    @IBOutlet var debugAmountLabel: UILabel!
+    //@IBOutlet var debugAmountLabel: UILabel! used for debugging, not part of the game
     @IBOutlet var toastContainer: UIView!
+    @IBOutlet var playerMessageLabel: UILabel! //label that displays messages like "start" or "not enough butter"
     
     var gameOn: Bool?
     
@@ -31,7 +32,7 @@ class ToastViewController: UIViewController {
     
     var score_: Int? = 0 //without network code in place, value for score_ must be declared
     
-    //drawing variables
+    //drawing variables and connstants
     var lastPoint: CGPoint! //for drawing the butter lines
     let butterWidth = 25 //the width of the butter strokes
     
@@ -57,8 +58,9 @@ class ToastViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        debugAmountLabel.text = "Get Ready!"
-        gameOn = true
+        //debugAmountLabel.text = "Get Ready!"
+        playerMessageLabel.text = "Waiting for game to start." //
+        gameOn = true // toastController loaded, so player is now ready to play
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,16 +78,18 @@ class ToastViewController: UIViewController {
         var type = receivedPackage.getType()
         
         if(type == "roundBegin") {
-            debugAmountLabel.text = "Start!"
+            //debugAmountLabel.text = "Start!"
             score_ = 0 //resets player's score
+            playerMessageLabel.text = "" //erases text in the playerText
         }
         if(type == "butterAmount" && gameOn == true){
             butterKnife.setButter(receivedPackage.getButterAmount())
-            debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount_)
+            //debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount_)
         }
         else if(type == "gameover"){
             gameOn = receivedPackage.getPlayBool()
-            debugAmountLabel.text = "Game Over"
+            //debugAmountLabel.text = "Game Over"
+            playerMessageLabel.text = "Time up!"
             //sends score 5, this should be changed when score logic has been implemented
             sendScore(myPeerID!, score_: score_!)
         }
@@ -96,14 +100,14 @@ class ToastViewController: UIViewController {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         if(gameOn == true){
             lastPoint = touches.anyObject()?.locationInView(tempToastView)
-            //temporary testing line to add butter to knife
+            //gameplay testing line to add butter to knife
             //butterKnife.addButter(1000)
         }
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         if(gameOn == true){
-            if /*holdHereActive == true &&*/ butterKnife.butterAmount_ > 0 && canSpreadButter == true {
+            if holdHereActive == true && butterKnife.butterAmount_ > 0 && canSpreadButter == true {
                 var currentPoint: CGPoint! = touches.anyObject()?.locationInView(tempToastView)
                 
                 //drawing code, draws a line that follows the player's touches
@@ -130,7 +134,7 @@ class ToastViewController: UIViewController {
                 
                 lastPoint = currentPoint
                 
-                debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount_)
+                //debugAmountLabel.text = String(format:"%.1f", butterKnife.butterAmount_)
             }
         }
     }
@@ -182,7 +186,10 @@ class ToastViewController: UIViewController {
             println(error?.localizedDescription)
         }
     }
-    
+ 
+    //function that determines how much of the piece of toast is covered in butter by checking if the GREEN CHANNEL value is > 0
+    //checks every 10th pixel on a horizontal line, once whole line checked, goes vertically down 10 pixels and repeats
+    //in short, checks 1 out of 100 pixels to see if it has any green (a component of the yellow butter)
     func isItButtered() -> Bool {
         let toastViewWidth = Int(toastView.frame.size.width)
         let toastViewHeight = Int(toastView.frame.size.height)
@@ -242,25 +249,20 @@ class ToastViewController: UIViewController {
         
         //tests if toast is sufficiently buttered; if so, adds a point and gives a new piece of toast, if not, makes player wait
         if toastIsButtered {
-            replaceToast()
+            replaceToast() //move the buttered toast offscreen, erase it, then move it back to its original location
+            increaseScore() //score point(s) for player
+
         }
         else {
-            makePlayerWait()
+            playerMessageLabel.text = "Not enough butter!" //lets the player know to add more butter
+            makePlayerWait() //penalizes player for submitting insufficiently buttered toast
         }
     }
     
     func replaceToast() {
-        //adds one to player's score
-        score_ = score_! + 1
-        println("score is \(score_)")
-        
         let originalToastPosition: CGPoint = toastContainer.center
+
         //animates the piece of toast so that it moves out of the screen
-        
-        /*UIView.animateWithDuration(1.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
-            self.toastContainer.center = CGPoint(x: originalToastPosition.x, y: -200)
-        }, completion: moveToastToOrigin(originalToastPosition))*/
-        
         UIView.animateWithDuration(1.5,
             delay: 0,
             usingSpringWithDamping: 0.5,
@@ -290,6 +292,12 @@ class ToastViewController: UIViewController {
             completion: nil)
     }
     
+    func increaseScore() {
+        //adds one to player's score
+        score_ = score_! + 1
+        println("score is \(score_)")
+    }
+    
     func startTimer(){
         if(!timer.valid){
             let aSelector: Selector = "updateTime"
@@ -314,6 +322,7 @@ class ToastViewController: UIViewController {
         }
         else{
             stopTimer()
+            playerMessageLabel.text = "" //erases the player message label
             gameOn = true
         }
     }

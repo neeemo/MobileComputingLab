@@ -199,7 +199,8 @@ class ButterViewController: UIViewController {
         }
         else if(countDownBool){
             stopTimer()
-            gameTime = 52
+            //for debugging, changed gameTime to 5 from 52
+            gameTime = 5
             timerLabel?.textColor = UIColor.greenColor()
             timerLabel?.text = "GO!"
             startTimer()
@@ -310,9 +311,15 @@ class ButterViewController: UIViewController {
         //iterates through every entry in the winnerArray and marks their score with a star
         for winner in winnerArray {
             for (var i = 0; i < numberOfPlayers; i++) {
+                println("Star for player \(i+1) is \(starArray[i].hidden)")
                 if (winner == butterViewArray[i].peerID_) {
                     starArray[i].hidden = false
                 }
+                else {
+                    starArray[i].hidden = true
+                }
+                //debugging line
+                println("Star for player \(i+1) is \(starArray[i].hidden)")
             }
         }
     }
