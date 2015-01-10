@@ -56,9 +56,9 @@ class ButterViewController: UIViewController {
     var roundTimer: NSTimer = NSTimer()
     
     //array that stores which ButterView belongs to which Peer, which playernumber belongs to each peer, 0=Player1, 1=Player2, etc
-    var butterViewArray: [ButterView] = []
-    var playerLabelArray: [UILabel] = []
-    var playerScoreLabelArray: [UILabel] = []
+    var butterViewArray = [ButterView]()
+    var playerLabelArray: [UILabel] = Array()
+    var playerScoreLabelArray: [UILabel] = Array()
     
     var hostPeerID: MCPeerID?
     
@@ -82,15 +82,13 @@ class ButterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         timerLabel?.textColor = UIColor.redColor()
         timerLabel?.text = "Press play to start!"
     }
     
     override func viewDidAppear(animated: Bool) {
         registerPlayerOnLabels()
-        //startTimer()
-        //startCountDown()
+        hideButterGraphics(false)
     }
     
     @IBAction func playButtonFunc(sender: UIButton){
@@ -138,7 +136,7 @@ class ButterViewController: UIViewController {
         for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
             butterViewArray[i].setRoundStarted(true)
         }
-
+        println(butterViewArray.count)
     }
     
     //sets the countdown to 5 secs (2 sec delay) and starts the timer
@@ -181,7 +179,7 @@ class ButterViewController: UIViewController {
         else if(countDownBool){
             stopTimer()
             //for debugging, changed gameTime to 5 from 52
-            gameTime = 5
+            gameTime = 20
             timerLabel?.textColor = UIColor.greenColor()
             timerLabel?.text = "GO!"
             startTimer()
@@ -191,6 +189,7 @@ class ButterViewController: UIViewController {
         }
         else{
             stopTimer()
+            hideButterGraphics(true)
             gameOver()
         }
     }
@@ -258,9 +257,10 @@ class ButterViewController: UIViewController {
     //displays the gathered scores from each player at the end of the game
     func tallyScores(playerID: MCPeerID, playerScore: Int, numberOfPlayers: Int) -> [MCPeerID] {
         //array that stores the players who have the highest score, so it is possible to have a draw
-        var winnerArray: [MCPeerID] = []
+        var winnerArray: [MCPeerID] = Array()
         var highScore = 0
-            
+        
+        //SOME ERROR HERE BUTTERVIEWARRAY SEEM TO BE EMPTY!!
         //compares the incoming playerID with all playerIDs
         for (var i = 0; i < numberOfPlayers; i++) {
             if (playerID == butterViewArray[i].peerID_) {
@@ -270,7 +270,7 @@ class ButterViewController: UIViewController {
                 //...then checks to see if it is a high score
                 if (playerScore > highScore) {
                     //if highest score, erases winnerArray and puts this player's score in the array
-                    winnerArray = []
+                    winnerArray.removeAll()
                     winnerArray += [playerID]
                 }
                 //if not a new high score, then checks to see if it tied the existing high score
@@ -308,11 +308,11 @@ class ButterViewController: UIViewController {
     }
     
     //hides the images of butter to make scores more readable
-    func removeButterGraphics() {
-        butterImage1.hidden = true
-        butterImage2.hidden = true
-        butterImage3.hidden = true
-        butterImage4.hidden = true
+    func hideButterGraphics(value: Bool) {
+        butterImage1.hidden = value
+        butterImage2.hidden = value
+        butterImage3.hidden = value
+        butterImage4.hidden = value
     }
     
     //this methods handles the receiving data from all peers, currently only receiving game over package
@@ -331,7 +331,6 @@ class ButterViewController: UIViewController {
             
         //if receives a gameover packet, requests the score from the toast client
         if(type == "gameover"){
-            removeButterGraphics()
             winnerArray = tallyScores(peerID, playerScore: receivedPackage.getScore(), numberOfPlayers: numberOfPlayers)
             markWinners(winnerArray, numberOfPlayers: numberOfPlayers)
             
