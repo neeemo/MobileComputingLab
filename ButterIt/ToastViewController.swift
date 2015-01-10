@@ -52,8 +52,10 @@ class ToastViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didReceiveDataWithNotification:", name: "ButterIt_DidReceiveDataNotification", object: nil)
     }
     
+    //hides the toast
     override func viewDidLoad() {
         super.viewDidLoad()
+        toastContainer.hidden = true
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -79,6 +81,8 @@ class ToastViewController: UIViewController {
         
         if(type == "roundBegin") {
             //debugAmountLabel.text = "Start!"
+            toastContainer.hidden = false
+            replaceToast()
             score_ = 0 //resets player's score
             playerMessageLabel.text = "" //erases text in the playerText
         }
