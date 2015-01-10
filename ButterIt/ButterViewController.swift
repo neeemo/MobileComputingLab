@@ -55,8 +55,6 @@ class ButterViewController: UIViewController {
     
     var roundTimer: NSTimer = NSTimer()
     
-    var playersArray: NSMutableArray?
-    
     //array that stores which ButterView belongs to which Peer, which playernumber belongs to each peer, 0=Player1, 1=Player2, etc
     var butterViewArray: [ButterView] = []
     var playerLabelArray: [UILabel] = []
@@ -125,51 +123,31 @@ class ButterViewController: UIViewController {
             playerScoreLabel.text = ""
         }
         
+        //adding a peerID/displayname to each butterview
         for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
             var player: MCPeerID? = appDelegate?.mcManager?.getConnectedPeer(i)
             playerLabelArray[i].text = player?.displayName
             butterViewArray[i].setPeerID(player!)
             butterViewArray[i].setName(player!.displayName)
-            
-            //commented out below to test the score above
-            /*switch (i) {
-            case (0):
-            player1Label?.text = player?.displayName;
-            butterView1.setPeerID(player!)
-            butterView1.setName(player!.displayName)
-            case (1):
-            player2Label?.text = player?.displayName;
-            butterView2.setPeerID(player!)
-            butterView2.setName(player!.displayName)
-            case (2):
-            player3Label?.text = player?.displayName;
-            butterView3.setPeerID(player!)
-            butterView3.setName(player!.displayName)
-            case (3):
-            player4Label?.text = player?.displayName;
-            butterView4.setPeerID(player!)
-            butterView4.setName(player!.displayName)
-            default:
-            println("Something is wrong, This print can not happen!")
-            }*/
-            playersArray?.addObject(player!)
         }
         
     }
     
+    //activating all butterviews
     func activateButterViews(){
         for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
             butterViewArray[i].setRoundStarted(true)
-
         }
 
     }
     
+    //sets the countdown to 5 secs (2 sec delay) and starts the timer
     func startCountDown(){
         gameTime = 7
         startTimer()
     }
 
+    //starts a timer that uses the updateTime method
     func startTimer(){
         timerLabel?.textColor = UIColor.greenColor()
         if(!roundTimer.valid) {
@@ -179,24 +157,27 @@ class ButterViewController: UIViewController {
         }
     }
     
+    //stops our timer
     func stopTimer(){
         roundTimer.invalidate()
     }
     
+    //update time method
     func updateTime(){
         var currentTime = NSDate.timeIntervalSinceReferenceDate()
-        
         var elapsedTime: NSTimeInterval = currentTime - startTime
-        
         var seconds = gameTime - elapsedTime
 
+        //if time is under 5 secounds change textcolor to red
         if(seconds < 5 && !countDownBool){
             timerLabel?.textColor = UIColor.redColor()
         }
+        //when time is more than 0, update elapsedtime and add current time to timerlabel
         if(seconds  > 0){
             elapsedTime -= NSTimeInterval(seconds)
             timerLabel?.text = String(Int(seconds))
         }
+        //if true then we start the game, set all variables for our new timer
         else if(countDownBool){
             stopTimer()
             //for debugging, changed gameTime to 5 from 52
@@ -214,13 +195,13 @@ class ButterViewController: UIViewController {
         }
     }
         
-        
+    //help method that is called from ConnectUsersViewController
     func callSendEnter(){
         sendEnter()
     }
         
-        //When ButterViewController is created, send a package to all Toasts Devices
-        //That game has been started
+    //When ButterViewController is created, send a package to all Toasts Devices
+    //That game has been started
     func sendEnter(){
         var type = "enter"
         var package = Package(type: type, sender: "butterHost", playBool: true)
@@ -237,7 +218,8 @@ class ButterViewController: UIViewController {
             println(error?.localizedDescription)
         }
     }
-        
+    
+    //when this method is called we create a gameover package and sends it to all peers
     func gameOver(){
         var type = "gameover"
         var package = Package(type: type, sender: "butterHost", playBool: false)
@@ -254,7 +236,8 @@ class ButterViewController: UIViewController {
             println(error?.localizedDescription)
         }
     }
-        
+    
+    //when this method is called we create a roundbegin package and sends it to all peers
     func sendStartRound(){
         var type = "roundBegin"
         var package = Package(type: type, sender: "butterHost", roundBegin: true)
@@ -332,6 +315,7 @@ class ButterViewController: UIViewController {
         butterImage4.hidden = true
     }
     
+    //this methods handles the receiving data from all peers, currently only receiving game over package
     func didReceiveDataWithNotification(notification: NSNotification) {
         var peerID: MCPeerID = notification.userInfo?["peerID"]! as MCPeerID
         var peerDisplayName = peerID.displayName as String
