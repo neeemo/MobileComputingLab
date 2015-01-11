@@ -77,7 +77,7 @@ class ToastViewController: UIViewController {
         
         var receivedPackage: Package = NSKeyedUnarchiver.unarchiveObjectWithData(receivedData) as Package
         var type = receivedPackage.getType()
-        
+        println("Toast received package! \(receivedPackage.getType())")
         if(type == "roundBegin") {
             //debugAmountLabel.text = "Start!"
             toastContainer.hidden = false
@@ -89,9 +89,9 @@ class ToastViewController: UIViewController {
             butterKnife.setButter(receivedPackage.getButterAmount())
         }
         else if(type == "gameover"){
+            println("Are we here?")
             gameOn = receivedPackage.getPlayBool()
             playerMessageLabel.text = "Time up!"
-            //sends score 5, this should be changed when score logic has been implemented
             sendScore(myPeerID!, score_: score_!)
         }
         
@@ -102,7 +102,7 @@ class ToastViewController: UIViewController {
         if(gameOn == true){
             lastPoint = touches.anyObject()?.locationInView(tempToastView)
             //gameplay testing line to add butter to knife
-            butterKnife.addButter(1000)
+            //butterKnife.addButter(1000)
         }
     }
     
