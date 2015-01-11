@@ -3,7 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "bg_ipad.png"
+      "filename" : "bg_ipadx1.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "bg_ipadx2.png"
     }
   ],
   "info" : {

@@ -56,7 +56,7 @@ class ButterViewController: UIViewController {
     var roundTimer: NSTimer = NSTimer()
     
     //array that stores which ButterView belongs to which Peer, which playernumber belongs to each peer, 0=Player1, 1=Player2, etc
-    var butterViewArray = [ButterView]()
+    var butterViewArray: [ButterView] = Array()
     var playerLabelArray: [UILabel] = Array()
     var playerScoreLabelArray: [UILabel] = Array()
     
@@ -82,12 +82,10 @@ class ButterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timerLabel?.textColor = UIColor.redColor()
-        timerLabel?.text = "Press play to start!"
+        registerPlayerOnLabels()
     }
     
     override func viewDidAppear(animated: Bool) {
-        registerPlayerOnLabels()
         hideButterGraphics(false)
     }
     
@@ -121,6 +119,9 @@ class ButterViewController: UIViewController {
             playerScoreLabel.text = ""
         }
         
+        //erase timer label
+        timerLabel?.text = ""
+        
         //adding a peerID/displayname to each butterview
         for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
             var player: MCPeerID? = appDelegate?.mcManager?.getConnectedPeer(i)
@@ -136,18 +137,18 @@ class ButterViewController: UIViewController {
         for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
             butterViewArray[i].setRoundStarted(true)
         }
-        println(butterViewArray.count)
+        println("Upon activation, there are this many butter views: \(butterViewArray.count)")
     }
     
-    //sets the countdown to 5 secs (2 sec delay) and starts the timer
+    //sets the countdown to 3 secs (2 sec delay) and starts the timer
     func startCountDown(){
-        gameTime = 7
+        gameTime = 5
         startTimer()
     }
 
     //starts a timer that uses the updateTime method
     func startTimer(){
-        timerLabel?.textColor = UIColor.greenColor()
+        timerLabel?.textColor = UIColor.blackColor()
         if(!roundTimer.valid) {
             let aSelector: Selector = "updateTime"
             roundTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
@@ -178,8 +179,8 @@ class ButterViewController: UIViewController {
         //if true then we start the game, set all variables for our new timer
         else if(countDownBool){
             stopTimer()
-            //for debugging, changed gameTime to 5 from 52
-            gameTime = 20
+            //for debugging, changed gameTime from 52
+            gameTime = 52
             timerLabel?.textColor = UIColor.greenColor()
             timerLabel?.text = "GO!"
             startTimer()
@@ -234,6 +235,9 @@ class ButterViewController: UIViewController {
         if(error != nil){
             println(error?.localizedDescription)
         }
+        
+        //debug code to check contents of butterArray
+        println("Number of items upon gameover packet created \(butterViewArray.count)")
     }
     
     //when this method is called we create a roundbegin package and sends it to all peers
@@ -261,6 +265,9 @@ class ButterViewController: UIViewController {
         var highScore = 0
         
         //SOME ERROR HERE BUTTERVIEWARRAY SEEM TO BE EMPTY!!
+        //debug code to check contents of butterArray
+        println("At score tally, the number of items in butterViewArray is \(butterViewArray.count)")
+        
         //compares the incoming playerID with all playerIDs
         for (var i = 0; i < numberOfPlayers; i++) {
             if (playerID == butterViewArray[i].peerID_) {
@@ -317,6 +324,9 @@ class ButterViewController: UIViewController {
     
     //this methods handles the receiving data from all peers, currently only receiving game over package
     func didReceiveDataWithNotification(notification: NSNotification) {
+        //debug code to check contents of butterArray
+        println("Received a packet,number of items in butterViewArray is \(self.butterViewArray.count)")
+        
         var peerID: MCPeerID = notification.userInfo?["peerID"]! as MCPeerID
         var peerDisplayName = peerID.displayName as String
         var receivedData = notification.userInfo?["data"] as NSData
@@ -331,6 +341,8 @@ class ButterViewController: UIViewController {
             
         //if receives a gameover packet, requests the score from the toast client
         if(type == "gameover"){
+            println("Upon gameover, number of butterVies in array is: \(butterViewArray.count)")
+            
             winnerArray = tallyScores(peerID, playerScore: receivedPackage.getScore(), numberOfPlayers: numberOfPlayers)
             markWinners(winnerArray, numberOfPlayers: numberOfPlayers)
             

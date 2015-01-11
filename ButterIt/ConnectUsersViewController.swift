@@ -38,8 +38,8 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peerDidChangeStateWithNotification:", name: "ButterIt_DidChangeStateNotification", object: nil)
         arrConnectedDevices = NSMutableArray()
         
-        //for debugging purposes this is set to true
-        playButton?.enabled = true
+        //cannot see the play Button until there is a client connected
+        playButton?.hidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -104,7 +104,7 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
             textField?.text = allPlayers
             
             if(arrConnectedDevices.count > 0){
-                playButton?.enabled = true
+                playButton?.hidden = false
             }
             var peersExist = appDelegate?.mcManager?.session.connectedPeers.count == 0
         }

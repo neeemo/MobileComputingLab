@@ -67,21 +67,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="bg_ipad" translatesAutoresizingMaskIntoConstraints="NO" id="bcg-yV-Zk8">
+                                <rect key="frame" x="0.0" y="-1024" width="768" height="1024"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Connected Players" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIP-U5-4WQ">
                                 <rect key="frame" x="87" y="121" width="146" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Butter Lobby" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPn-TD-HLa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bring Players to the Table" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPn-TD-HLa">
                                 <rect key="frame" x="87" y="20" width="146" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="40"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hl6-1c-Ass">
                                 <rect key="frame" x="16" y="530" width="83" height="30"/>
-                                <state key="normal" title="Add Players">
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                <state key="normal" title="Invite Players" backgroundImage="HoldHereOff">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -90,7 +95,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaP-fM-XM3">
                                 <rect key="frame" x="274" y="530" width="30" height="30"/>
-                                <state key="normal" title="Play">
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                <state key="normal" title="Start Game" backgroundImage="HoldHereOff">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -100,29 +107,81 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EEV-fH-Qjx">
                                 <rect key="frame" x="40" y="150" width="240" height="330"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="40" y="87" width="240" height="330"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="259" y="87" width="240" height="330"/>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="400" y="400" width="0.0" height="0.0"/>
                                 </variation>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="BIP-U5-4WQ" secondAttribute="centerX" id="7yH-gz-dCR"/>
+                            <constraint firstAttribute="centerX" secondItem="bcg-yV-Zk8" secondAttribute="centerX" id="8xX-Rd-fDc"/>
+                            <constraint firstAttribute="centerY" secondItem="LaP-fM-XM3" secondAttribute="centerY" id="ACm-3G-h9w">
+                                <variation key="heightClass=regular-widthClass=regular" constant="-250"/>
+                            </constraint>
+                            <constraint firstAttribute="centerY" secondItem="EEV-fH-Qjx" secondAttribute="centerY" id="AbU-3m-WMy"/>
                             <constraint firstItem="wPn-TD-HLa" firstAttribute="top" secondItem="lxO-QO-4df" secondAttribute="bottom" constant="30" id="Cbd-vn-eD1"/>
+                            <constraint firstAttribute="centerY" secondItem="Hl6-1c-Ass" secondAttribute="centerY" id="EFU-pg-E8g">
+                                <variation key="heightClass=regular-widthClass=regular" constant="250"/>
+                            </constraint>
                             <constraint firstItem="BIP-U5-4WQ" firstAttribute="top" secondItem="wPn-TD-HLa" secondAttribute="bottom" constant="30" id="M86-2M-qzg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LaP-fM-XM3" secondAttribute="trailing" constant="20" id="NKo-5U-sar"/>
                             <constraint firstItem="UBb-Du-rA9" firstAttribute="top" secondItem="LaP-fM-XM3" secondAttribute="bottom" constant="40" id="Pyh-pC-sNx"/>
+                            <constraint firstAttribute="centerY" secondItem="bcg-yV-Zk8" secondAttribute="centerY" id="Rqr-GE-bMK">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="centerY" secondItem="BIP-U5-4WQ" secondAttribute="centerY" id="Rzc-Ek-8Wl">
+                                <variation key="heightClass=regular-widthClass=regular" constant="50"/>
+                            </constraint>
                             <constraint firstItem="EEV-fH-Qjx" firstAttribute="top" secondItem="BIP-U5-4WQ" secondAttribute="bottom" constant="15" id="Y7g-UA-tol"/>
                             <constraint firstAttribute="centerX" secondItem="wPn-TD-HLa" secondAttribute="centerX" id="Z6f-ix-oZg"/>
                             <constraint firstItem="UBb-Du-rA9" firstAttribute="top" secondItem="Hl6-1c-Ass" secondAttribute="bottom" constant="40" id="cpK-w8-M3e"/>
                             <constraint firstItem="Hl6-1c-Ass" firstAttribute="leading" secondItem="mNP-Ja-yaA" secondAttribute="leadingMargin" constant="20" id="kTY-o9-9Gm"/>
                             <constraint firstAttribute="centerX" secondItem="EEV-fH-Qjx" secondAttribute="centerX" id="kuL-Y7-S4b"/>
+                            <constraint firstAttribute="centerX" secondItem="Hl6-1c-Ass" secondAttribute="centerX" id="r6D-XE-vgY"/>
+                            <constraint firstAttribute="centerX" secondItem="LaP-fM-XM3" secondAttribute="centerX" id="ruD-By-0OL"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="bcg-yV-Zk8"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="8xX-Rd-fDc"/>
+                                <exclude reference="Rqr-GE-bMK"/>
+                                <exclude reference="EFU-pg-E8g"/>
+                                <exclude reference="r6D-XE-vgY"/>
+                                <exclude reference="Rzc-Ek-8Wl"/>
+                                <exclude reference="AbU-3m-WMy"/>
+                                <exclude reference="ACm-3G-h9w"/>
+                                <exclude reference="ruD-By-0OL"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="bcg-yV-Zk8"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="8xX-Rd-fDc"/>
+                                <include reference="Rqr-GE-bMK"/>
+                                <include reference="EFU-pg-E8g"/>
+                                <exclude reference="kTY-o9-9Gm"/>
+                                <include reference="r6D-XE-vgY"/>
+                                <exclude reference="M86-2M-qzg"/>
+                                <include reference="Rzc-Ek-8Wl"/>
+                                <include reference="AbU-3m-WMy"/>
+                                <exclude reference="Y7g-UA-tol"/>
+                                <include reference="ACm-3G-h9w"/>
+                                <exclude reference="NKo-5U-sar"/>
+                                <include reference="ruD-By-0OL"/>
+                                <exclude reference="Pyh-pC-sNx"/>
+                                <exclude reference="cpK-w8-M3e"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="addPlayersButton" destination="Hl6-1c-Ass" id="9DM-V5-44M"/>
@@ -152,10 +211,12 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeY-0h-e4U" userLabel="holdHereButton">
                                 <rect key="frame" x="266" y="545" width="69" height="30"/>
-                                <state key="normal" image="HoldHereOn">
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="40"/>
+                                <state key="normal" title="Hold here" backgroundImage="HoldHereOn">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" image="HoldHereOff"/>
+                                <state key="highlighted" backgroundImage="HoldHereOff"/>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="76" y="456" width="250" height="119"/>
                                 </variation>
@@ -281,9 +342,12 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxB-dz-zW8" userLabel="playerMessageLabel">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="176" y="258" width="49" height="26"/>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -424,7 +488,7 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Plate" translatesAutoresizingMaskIntoConstraints="NO" id="ivr-aT-GOT">
                                         <rect key="frame" x="0.0" y="-350" width="258" height="350"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="butter" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-f7-oJ8">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-f7-oJ8">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
                                     <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="8Fj-5g-gMd">
@@ -432,7 +496,7 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="player1ScoreLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4W-Ng-w2k" userLabel="player1ScoreLabel">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -500,7 +564,7 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Plate" translatesAutoresizingMaskIntoConstraints="NO" id="MGv-xt-ite">
                                         <rect key="frame" x="0.0" y="-350" width="258" height="350"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="butter" translatesAutoresizingMaskIntoConstraints="NO" id="XPR-3p-Dd7">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="XPR-3p-Dd7">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
                                     <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="07i-du-UDj">
@@ -508,7 +572,7 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="player2ScoreLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spp-bJ-jEd" userLabel="player2ScoreLabel">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -576,7 +640,7 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Plate" translatesAutoresizingMaskIntoConstraints="NO" id="IGP-gr-2bf">
                                         <rect key="frame" x="0.0" y="-350" width="258" height="350"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="butter" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-Hd-pIN">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-Hd-pIN">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
                                     <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="IbU-1o-goc">
@@ -584,7 +648,7 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="player3ScoreLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEB-Zn-DGm" userLabel="player3ScoreLabel">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -652,7 +716,7 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Plate" translatesAutoresizingMaskIntoConstraints="NO" id="EHg-G4-jZX">
                                         <rect key="frame" x="0.0" y="-350" width="258" height="350"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="butter" translatesAutoresizingMaskIntoConstraints="NO" id="QXX-Cu-Lh0">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="QXX-Cu-Lh0">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
                                     <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="BDe-9e-Cy4">
@@ -660,7 +724,7 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="player4ScoreLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCb-Ge-zAZ" userLabel="player4ScoreLabel">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -728,7 +792,15 @@
                                     <constraint firstAttribute="height" constant="21" id="e3W-fp-fyh"/>
                                     <constraint firstAttribute="width" constant="130" id="lgc-PX-039"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Player2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cje-1A-bW6" userLabel="player2">
+                                <rect key="frame" x="273" y="284" width="130" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="zYO-XT-vlg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Player3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbG-s8-Y4A" userLabel="player3">
@@ -736,7 +808,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="ZgV-dV-2EY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -744,37 +816,54 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3R-TJ-IP3">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-th-bfr">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Play!">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playButtonFunc:" destination="gal-Ae-EmW" eventType="touchUpInside" id="l8i-f4-LRc"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Player2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cje-1A-bW6" userLabel="player2">
-                                <rect key="frame" x="273" y="284" width="130" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="zYO-XT-vlg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Player4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZA-BW-fll" userLabel="player4">
                                 <rect key="frame" x="217" y="289" width="130" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="8ux-ky-vv7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timerText" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3R-TJ-IP3">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="381" y="381" width="38" height="39"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-th-bfr">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="107-EE-7zL"/>
+                                    <constraint firstAttribute="width" constant="150" id="fe8-C4-20X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                <state key="normal" title="Play!" backgroundImage="PlayButtonUp">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" title="Play!" backgroundImage="PlayButtonDown">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="107-EE-7zL"/>
+                                        <exclude reference="fe8-C4-20X"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                    <mask key="constraints">
+                                        <include reference="107-EE-7zL"/>
+                                        <include reference="fe8-C4-20X"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="playButtonFunc:" destination="gal-Ae-EmW" eventType="touchUpInside" id="l8i-f4-LRc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -794,6 +883,7 @@
                             <constraint firstItem="Qik-wL-xFR" firstAttribute="top" secondItem="DbG-s8-Y4A" secondAttribute="bottom" constant="28" id="Slx-Gb-0Y9">
                                 <variation key="heightClass=regular-widthClass=regular" constant="10"/>
                             </constraint>
+                            <constraint firstAttribute="centerY" secondItem="mEs-th-bfr" secondAttribute="centerY" id="TgT-Yc-0c1"/>
                             <constraint firstItem="vUS-Yd-E9S" firstAttribute="top" secondItem="wRU-wy-y0d" secondAttribute="bottom" constant="20" id="Uct-ZI-6Mh"/>
                             <constraint firstItem="xZA-BW-fll" firstAttribute="leading" secondItem="C92-uh-0U6" secondAttribute="leadingMargin" constant="10" id="WRt-wy-4Vc"/>
                             <constraint firstItem="Cje-1A-bW6" firstAttribute="centerX" secondItem="brG-av-8ng" secondAttribute="centerX" id="YaZ-M2-Gyl"/>
@@ -818,6 +908,7 @@
                             <constraint firstItem="DbG-s8-Y4A" firstAttribute="centerX" secondItem="Qik-wL-xFR" secondAttribute="centerX" id="voB-PE-0UG"/>
                             <constraint firstItem="9La-WJ-Yv5" firstAttribute="top" secondItem="xZA-BW-fll" secondAttribute="bottom" constant="10" id="vzI-kU-VPR"/>
                             <constraint firstItem="brG-av-8ng" firstAttribute="leading" secondItem="Cje-1A-bW6" secondAttribute="trailing" constant="10" id="xAM-Ur-XaR"/>
+                            <constraint firstAttribute="centerX" secondItem="mEs-th-bfr" secondAttribute="centerX" id="xYI-ke-wWf"/>
                             <constraint firstAttribute="centerY" secondItem="r3R-TJ-IP3" secondAttribute="centerY" id="yJy-Md-Yq4"/>
                             <constraint firstAttribute="centerX" secondItem="vUS-Yd-E9S" secondAttribute="centerX" id="zPQ-M7-4LN"/>
                         </constraints>
@@ -829,38 +920,40 @@
                                 <exclude reference="mEs-th-bfr"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="A2o-IN-PgN"/>
-                                <exclude reference="yJy-Md-Yq4"/>
-                                <exclude reference="G32-qk-tmK"/>
-                                <exclude reference="hz6-M3-QGH"/>
-                                <exclude reference="bxT-K4-W0Q"/>
-                                <exclude reference="n1o-4b-6zY"/>
-                                <exclude reference="u41-wf-tGh"/>
-                                <exclude reference="vzI-kU-VPR"/>
                                 <exclude reference="Hf2-5M-7o7"/>
                                 <exclude reference="Uct-ZI-6Mh"/>
                                 <exclude reference="hHB-JS-Nup"/>
                                 <exclude reference="nMN-eA-UVF"/>
+                                <exclude reference="6mL-Mz-caR"/>
+                                <exclude reference="DzR-BW-VXh"/>
+                                <exclude reference="bxT-K4-W0Q"/>
+                                <exclude reference="n1o-4b-6zY"/>
                                 <exclude reference="7g2-D7-h15"/>
                                 <exclude reference="NBf-3Z-A58"/>
                                 <exclude reference="Qgu-Pe-k0Y"/>
                                 <exclude reference="WRt-wy-4Vc"/>
+                                <exclude reference="u41-wf-tGh"/>
+                                <exclude reference="vzI-kU-VPR"/>
+                                <exclude reference="Q9L-0a-jXB"/>
+                                <exclude reference="nN2-SZ-1vR"/>
+                                <exclude reference="xAM-Ur-XaR"/>
+                                <exclude reference="A2o-IN-PgN"/>
+                                <exclude reference="yJy-Md-Yq4"/>
+                                <exclude reference="G32-qk-tmK"/>
+                                <exclude reference="TgT-Yc-0c1"/>
+                                <exclude reference="hz6-M3-QGH"/>
+                                <exclude reference="xYI-ke-wWf"/>
+                                <exclude reference="PZX-Ue-PDC"/>
+                                <exclude reference="Slx-Gb-0Y9"/>
                                 <exclude reference="IAg-v9-uPj"/>
                                 <exclude reference="YaZ-M2-Gyl"/>
                                 <exclude reference="jFk-wq-n9l"/>
                                 <exclude reference="pER-YB-9HZ"/>
                                 <exclude reference="jBG-oZ-cri"/>
                                 <exclude reference="voB-PE-0UG"/>
-                                <exclude reference="PZX-Ue-PDC"/>
-                                <exclude reference="Slx-Gb-0Y9"/>
-                                <exclude reference="Q9L-0a-jXB"/>
-                                <exclude reference="nN2-SZ-1vR"/>
-                                <exclude reference="xAM-Ur-XaR"/>
                                 <exclude reference="aqI-V3-EKF"/>
                                 <exclude reference="dkZ-s7-bsp"/>
                                 <exclude reference="rdl-0I-451"/>
-                                <exclude reference="6mL-Mz-caR"/>
-                                <exclude reference="DzR-BW-VXh"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -871,42 +964,44 @@
                                 <include reference="mEs-th-bfr"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="A2o-IN-PgN"/>
-                                <include reference="yJy-Md-Yq4"/>
-                                <include reference="G32-qk-tmK"/>
-                                <include reference="hz6-M3-QGH"/>
-                                <include reference="bxT-K4-W0Q"/>
-                                <exclude reference="n1o-4b-6zY"/>
-                                <exclude reference="5h3-Fr-wCl"/>
-                                <include reference="u41-wf-tGh"/>
-                                <include reference="vzI-kU-VPR"/>
                                 <include reference="Hf2-5M-7o7"/>
                                 <include reference="Uct-ZI-6Mh"/>
                                 <exclude reference="hHB-JS-Nup"/>
                                 <include reference="nMN-eA-UVF"/>
                                 <exclude reference="zPQ-M7-4LN"/>
+                                <include reference="6mL-Mz-caR"/>
+                                <include reference="DzR-BW-VXh"/>
+                                <include reference="bxT-K4-W0Q"/>
+                                <exclude reference="n1o-4b-6zY"/>
                                 <exclude reference="7g2-D7-h15"/>
                                 <exclude reference="NBf-3Z-A58"/>
                                 <include reference="Qgu-Pe-k0Y"/>
                                 <exclude reference="WRt-wy-4Vc"/>
+                                <exclude reference="5h3-Fr-wCl"/>
+                                <include reference="u41-wf-tGh"/>
+                                <include reference="vzI-kU-VPR"/>
+                                <exclude reference="0GV-Ds-KHX"/>
+                                <include reference="Q9L-0a-jXB"/>
+                                <include reference="nN2-SZ-1vR"/>
+                                <exclude reference="xAM-Ur-XaR"/>
+                                <include reference="A2o-IN-PgN"/>
+                                <include reference="yJy-Md-Yq4"/>
+                                <exclude reference="G32-qk-tmK"/>
+                                <include reference="TgT-Yc-0c1"/>
+                                <exclude reference="hz6-M3-QGH"/>
+                                <include reference="xYI-ke-wWf"/>
+                                <include reference="PZX-Ue-PDC"/>
+                                <include reference="Slx-Gb-0Y9"/>
+                                <exclude reference="cs7-qT-936"/>
                                 <exclude reference="IAg-v9-uPj"/>
                                 <include reference="YaZ-M2-Gyl"/>
                                 <include reference="jFk-wq-n9l"/>
                                 <exclude reference="pER-YB-9HZ"/>
                                 <exclude reference="jBG-oZ-cri"/>
                                 <include reference="voB-PE-0UG"/>
-                                <include reference="PZX-Ue-PDC"/>
-                                <include reference="Slx-Gb-0Y9"/>
-                                <exclude reference="cs7-qT-936"/>
-                                <exclude reference="0GV-Ds-KHX"/>
-                                <include reference="Q9L-0a-jXB"/>
-                                <include reference="nN2-SZ-1vR"/>
-                                <exclude reference="xAM-Ur-XaR"/>
                                 <include reference="aqI-V3-EKF"/>
                                 <include reference="dkZ-s7-bsp"/>
                                 <include reference="rdl-0I-451"/>
-                                <include reference="6mL-Mz-caR"/>
-                                <include reference="DzR-BW-VXh"/>
                             </mask>
                         </variation>
                     </view>
@@ -983,14 +1078,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Butter" width="261" height="350"/>
         <image name="HoldHereOff" width="250" height="119"/>
         <image name="HoldHereOn" width="250" height="119"/>
         <image name="Plate" width="258" height="350"/>
+        <image name="PlayButtonDown" width="155" height="155"/>
+        <image name="PlayButtonUp" width="155" height="155"/>
         <image name="Star" width="217" height="207"/>
         <image name="Toast Crust" width="300" height="300"/>
         <image name="Toast Inside" width="265" height="270"/>
         <image name="bg_ipad" width="768" height="1024"/>
-        <image name="bg_iphone" width="640" height="960"/>
-        <image name="butter" width="261" height="350"/>
+        <image name="bg_iphone" width="540" height="960"/>
     </resources>
 </document>
