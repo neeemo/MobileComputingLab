@@ -66,6 +66,8 @@ class ButterViewController: UIViewController {
     
     var receivedGameOver: Int?
     
+    var connectedPeers: Int!
+    
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -128,7 +130,7 @@ class ButterViewController: UIViewController {
             butterViewArray[i].setPeerID(player!)
             butterViewArray[i].setName(player!.displayName)
         }
-        
+        connectedPeers = appDelegate?.mcManager?.getConnectedPeers().count
     }
     
     //activating all butterviews
@@ -136,7 +138,7 @@ class ButterViewController: UIViewController {
         for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
             butterViewArray[i].setRoundStarted(true)
         }
-        println(butterViewArray.count)
+        println("Activating butterViews: \(butterViewArray.count)")
     }
     
     //sets the countdown to 5 secs (2 sec delay) and starts the timer
@@ -179,7 +181,7 @@ class ButterViewController: UIViewController {
         else if(countDownBool){
             stopTimer()
             //for debugging, changed gameTime to 5 from 52
-            gameTime = 20
+            gameTime = 5
             timerLabel?.textColor = UIColor.greenColor()
             timerLabel?.text = "GO!"
             startTimer()
@@ -209,7 +211,7 @@ class ButterViewController: UIViewController {
         var allPeers = appDelegate?.mcManager!.session.connectedPeers
             
         //print to see if we have peers connected (debug)
-        println(appDelegate?.mcManager!.session.connectedPeers.count)
+        println("SendEnter: \(connectedPeers)")
             
         var error: NSError?
         appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: allPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
@@ -227,7 +229,7 @@ class ButterViewController: UIViewController {
         var allPeers = appDelegate?.mcManager!.session.connectedPeers
             
         //print to see if we have peers connected (debug)
-        println(appDelegate?.mcManager!.session.connectedPeers.count)
+        println("Sending Game Over to  #\(connectedPeers) devices.")
             
         var error: NSError?
         appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: allPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
@@ -245,7 +247,7 @@ class ButterViewController: UIViewController {
         var allPeers = appDelegate?.mcManager!.session.connectedPeers
             
         //print to see if we have peers connected (debug)
-        println(appDelegate?.mcManager!.session.connectedPeers.count)
+        println("startRound: \(connectedPeers)")
             
         var error: NSError?
         appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: allPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
@@ -253,16 +255,50 @@ class ButterViewController: UIViewController {
             println(error?.localizedDescription)
         }
     }
+    
+    func checkPeerID(peerID: MCPeerID) -> ButterView{
+        var bv: ButterView?
+        var index: Int = 0
+        while(index < connectedPeers){
+            switch index{
+            case 0:
+                if(peerID == butterView1.peerID_){
+                    bv = butterView1
+                }
+            case 1:
+                if(peerID == butterView2.peerID_){
+                    bv = butterView2
+                }
+            case 2:
+                if(peerID == butterView3.peerID_){
+                    bv = butterView3
+                }
+            case 3:
+                if(peerID == butterView4.peerID_){
+                    bv = butterView4
+                }
+            default:
+                println("this cant happen")
+        }
+            index++
+        }
+        return bv!
+    }
         
     //displays the gathered scores from each player at the end of the game
-    func tallyScores(playerID: MCPeerID, playerScore: Int, numberOfPlayers: Int) -> [MCPeerID] {
+    func tallyScores(playerID: MCPeerID, playerScore: Int) -> [MCPeerID] {
         //array that stores the players who have the highest score, so it is possible to have a draw
         var winnerArray: [MCPeerID] = Array()
         var highScore = 0
         
+        
+        checkPeerID(playerID)
+        
+        
         //SOME ERROR HERE BUTTERVIEWARRAY SEEM TO BE EMPTY!!
         //compares the incoming playerID with all playerIDs
-        for (var i = 0; i < numberOfPlayers; i++) {
+        /*
+        for (var i = 0; i < connectedPeers; i++) {
             if (playerID == butterViewArray[i].peerID_) {
                 //once player identified, displays score on screen...
                 playerScoreLabelArray[i].text = String(playerScore)
@@ -280,10 +316,11 @@ class ButterViewController: UIViewController {
                 }
             }
         }
+        */
         return winnerArray
     }
     
-    func markWinners (winnerArray: [MCPeerID], numberOfPlayers: Int) {
+    func markWinners (winnerArray: [MCPeerID]) {
         //creates an array of the star view controllers, makes programming cleaner later
         var starArray: [UIImageView] = []
         starArray += [starImage1]
@@ -293,7 +330,7 @@ class ButterViewController: UIViewController {
         
         //iterates through every entry in the winnerArray and marks their score with a star
         for winner in winnerArray {
-            for (var i = 0; i < numberOfPlayers; i++) {
+            for (var i = 0; i < connectedPeers; i++) {
                 println("Star for player \(i+1) is \(starArray[i].hidden)")
                 if (winner == butterViewArray[i].peerID_) {
                     starArray[i].hidden = false
@@ -327,12 +364,12 @@ class ButterViewController: UIViewController {
         var type = receivedPackage.getType()
         
         var winnerArray: [MCPeerID] = []
-        var numberOfPlayers = allPeers!.count
-            
+
         //if receives a gameover packet, requests the score from the toast client
         if(type == "gameover"){
-            winnerArray = tallyScores(peerID, playerScore: receivedPackage.getScore(), numberOfPlayers: numberOfPlayers)
-            markWinners(winnerArray, numberOfPlayers: numberOfPlayers)
+            println("butterViewArray: -> \(butterViewArray.count)")
+            //winnerArray = tallyScores(peerID, playerScore: receivedPackage.getScore())
+            //markWinners(winnerArray)
             
                 
             //var tempString = ("\(peerDisplayName) score is: \(receivedPackage.getScore())")
