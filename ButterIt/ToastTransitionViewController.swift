@@ -73,8 +73,8 @@ class ToastTransitionViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        textField.resignFirstResponder()
+    func returnTextMethod(){
+        usernameField?.resignFirstResponder()
         
         if(appDelegate?.mcManager?.peerID != nil){
             appDelegate?.mcManager?.disconnect()
@@ -82,10 +82,22 @@ class ToastTransitionViewController: UIViewController, UITextFieldDelegate {
             appDelegate?.mcManager?.peerID = nil
             appDelegate?.mcManager?.session = nil
         }
-        
-        appDelegate?.mcManager?.setupPeerWithDisplayName(usernameField?.text)
+        if(usernameField?.text == ""){
+           appDelegate?.mcManager?.setupPeerWithDisplayName(UIDevice.currentDevice().name)
+        }
+        else{
+           appDelegate?.mcManager?.setupPeerWithDisplayName(usernameField?.text)
+        }
         appDelegate?.mcManager?.setupSession()
-        
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        returnTextMethod()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        returnTextMethod()
+        return true
     }
     
     //toggles playerIsReady bool, advertises to the host that the player is ready, and changes the screen messages
