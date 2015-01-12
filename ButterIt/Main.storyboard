@@ -488,7 +488,7 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Plate" translatesAutoresizingMaskIntoConstraints="NO" id="ivr-aT-GOT">
                                         <rect key="frame" x="0.0" y="-350" width="258" height="350"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-f7-oJ8">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="butter" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-f7-oJ8">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
                                     <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="8Fj-5g-gMd">
@@ -564,7 +564,7 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Plate" translatesAutoresizingMaskIntoConstraints="NO" id="MGv-xt-ite">
                                         <rect key="frame" x="0.0" y="-350" width="258" height="350"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="XPR-3p-Dd7">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="butter" translatesAutoresizingMaskIntoConstraints="NO" id="XPR-3p-Dd7">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
                                     <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="07i-du-UDj">
@@ -640,7 +640,7 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Plate" translatesAutoresizingMaskIntoConstraints="NO" id="IGP-gr-2bf">
                                         <rect key="frame" x="0.0" y="-350" width="258" height="350"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-Hd-pIN">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="butter" translatesAutoresizingMaskIntoConstraints="NO" id="JKl-Hd-pIN">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
                                     <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="IbU-1o-goc">
@@ -716,7 +716,7 @@
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Plate" translatesAutoresizingMaskIntoConstraints="NO" id="EHg-G4-jZX">
                                         <rect key="frame" x="0.0" y="-350" width="258" height="350"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Butter" translatesAutoresizingMaskIntoConstraints="NO" id="QXX-Cu-Lh0">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="butter" translatesAutoresizingMaskIntoConstraints="NO" id="QXX-Cu-Lh0">
                                         <rect key="frame" x="0.0" y="-350" width="261" height="350"/>
                                     </imageView>
                                     <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="BDe-9e-Cy4">
@@ -829,9 +829,6 @@
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="381" y="381" width="38" height="39"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-th-bfr">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1078,7 +1075,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Butter" width="261" height="350"/>
         <image name="HoldHereOff" width="250" height="119"/>
         <image name="HoldHereOn" width="250" height="119"/>
         <image name="Plate" width="258" height="350"/>
@@ -1089,5 +1085,6 @@
         <image name="Toast Inside" width="265" height="270"/>
         <image name="bg_ipad" width="768" height="1024"/>
         <image name="bg_iphone" width="540" height="960"/>
+        <image name="butter" width="261" height="350"/>
     </resources>
 </document>
