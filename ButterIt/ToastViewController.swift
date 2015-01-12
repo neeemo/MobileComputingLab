@@ -61,7 +61,7 @@ class ToastViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         //debugAmountLabel.text = "Get Ready!"
-        playerMessageLabel.text = "Waiting for game to start." //
+        playerMessageLabel.text = "Waiting to Start." //
         gameOn = true // toastController loaded, so player is now ready to play
     }
     
