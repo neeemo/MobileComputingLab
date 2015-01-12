@@ -345,9 +345,6 @@
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="176" y="258" width="49" height="26"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -419,46 +416,215 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YSu-BY-f2Y">
-                                <rect key="frame" x="214" y="106" width="171" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="bg_toastTransition" translatesAutoresizingMaskIntoConstraints="NO" id="Dp6-E5-Txh">
+                                <rect key="frame" x="0.0" y="-960" width="540" height="960"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3O-HP-5F8" userLabel="toastContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ToastPiece" translatesAutoresizingMaskIntoConstraints="NO" id="zAz-GR-0mj">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.49999999999999961" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YSu-BY-f2Y" userLabel="playerName">
+                                        <rect key="frame" x="214" y="106" width="171" height="30"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="YSu-BY-f2Y" secondAttribute="centerX" id="AWG-2T-w49"/>
+                                    <constraint firstAttribute="width" constant="150" id="EbN-Fy-4ot"/>
+                                    <constraint firstAttribute="centerY" secondItem="YSu-BY-f2Y" secondAttribute="centerY" constant="30" id="a7L-At-3VM"/>
+                                    <constraint firstAttribute="centerY" secondItem="zAz-GR-0mj" secondAttribute="centerY" id="vFP-pG-Tlk"/>
+                                    <constraint firstAttribute="centerX" secondItem="zAz-GR-0mj" secondAttribute="centerX" id="xel-fs-1UM"/>
+                                    <constraint firstAttribute="height" constant="155" id="ykd-00-MVq"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="zAz-GR-0mj"/>
+                                        <exclude reference="YSu-BY-f2Y"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="EbN-Fy-4ot"/>
+                                        <exclude reference="ykd-00-MVq"/>
+                                        <exclude reference="vFP-pG-Tlk"/>
+                                        <exclude reference="xel-fs-1UM"/>
+                                        <exclude reference="AWG-2T-w49"/>
+                                        <exclude reference="a7L-At-3VM"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="zAz-GR-0mj"/>
+                                        <include reference="YSu-BY-f2Y"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="EbN-Fy-4ot"/>
+                                        <include reference="ykd-00-MVq"/>
+                                        <include reference="vFP-pG-Tlk"/>
+                                        <include reference="xel-fs-1UM"/>
+                                        <include reference="AWG-2T-w49"/>
+                                        <include reference="a7L-At-3VM"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jz0-I5-zyO" userLabel="Status">
                                 <rect key="frame" x="166" y="58" width="268" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8sR-Cd-htm">
-                                <rect key="frame" x="274" y="193" width="51" height="31"/>
-                                <connections>
-                                    <action selector="switchFunc:" destination="rO9-yF-Vmn" eventType="valueChanged" id="7Om-Cu-SI6"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKG-Rc-iCW" userLabel="ReadyLabel">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ia8-cF-GSd" userLabel="switchContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ToasterSwitch" translatesAutoresizingMaskIntoConstraints="NO" id="J2D-ep-Wz8">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBY-vf-52d" userLabel="switchButton">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="77d-J4-S5e"/>
+                                            <constraint firstAttribute="height" constant="50" id="AkF-Ky-ffl"/>
+                                        </constraints>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="77d-J4-S5e"/>
+                                                <exclude reference="AkF-Ky-ffl"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="77d-J4-S5e"/>
+                                                <include reference="AkF-Ky-ffl"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="switchPressed" destination="rO9-yF-Vmn" eventType="touchDown" id="k44-lj-OjM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="SBY-vf-52d" secondAttribute="centerY" id="9Vn-dN-OZW"/>
+                                    <constraint firstAttribute="centerX" secondItem="J2D-ep-Wz8" secondAttribute="centerX" id="DGd-cf-uPt"/>
+                                    <constraint firstAttribute="height" constant="28" id="Yct-wT-09F"/>
+                                    <constraint firstAttribute="centerX" secondItem="SBY-vf-52d" secondAttribute="centerX" id="dYp-XP-xvb"/>
+                                    <constraint firstAttribute="width" constant="27" id="fsX-qY-nEi"/>
+                                    <constraint firstAttribute="centerY" secondItem="J2D-ep-Wz8" secondAttribute="centerY" id="ksY-NT-7Tb"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="J2D-ep-Wz8"/>
+                                        <exclude reference="SBY-vf-52d"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="Yct-wT-09F"/>
+                                        <exclude reference="fsX-qY-nEi"/>
+                                        <exclude reference="9Vn-dN-OZW"/>
+                                        <exclude reference="dYp-XP-xvb"/>
+                                        <exclude reference="DGd-cf-uPt"/>
+                                        <exclude reference="ksY-NT-7Tb"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="J2D-ep-Wz8"/>
+                                        <include reference="SBY-vf-52d"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="Yct-wT-09F"/>
+                                        <include reference="fsX-qY-nEi"/>
+                                        <include reference="9Vn-dN-OZW"/>
+                                        <include reference="dYp-XP-xvb"/>
+                                        <include reference="DGd-cf-uPt"/>
+                                        <include reference="ksY-NT-7Tb"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Toaster" translatesAutoresizingMaskIntoConstraints="NO" id="FGF-Ej-4tR">
+                                <rect key="frame" x="0.0" y="-202" width="275" height="202"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKG-Rc-iCW" userLabel="ReadyLabel">
                                 <rect key="frame" x="236" y="164" width="125" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="8sR-Cd-htm" secondAttribute="centerX" id="1hn-Pi-Xbl"/>
-                            <constraint firstItem="8sR-Cd-htm" firstAttribute="top" secondItem="E26-4J-sxO" secondAttribute="bottom" constant="130" id="6xB-AA-iBX"/>
+                            <constraint firstItem="FGF-Ej-4tR" firstAttribute="centerX" secondItem="s3O-HP-5F8" secondAttribute="centerX" id="29y-wU-DE6"/>
+                            <constraint firstItem="FGF-Ej-4tR" firstAttribute="top" secondItem="s3O-HP-5F8" secondAttribute="bottom" constant="-75" id="4mj-dp-CqF" userLabel="toastConstraint"/>
+                            <constraint firstItem="FGF-Ej-4tR" firstAttribute="centerY" secondItem="GKG-Rc-iCW" secondAttribute="centerY" id="79c-3r-lhI">
+                                <variation key="widthClass=compact" constant="15"/>
+                            </constraint>
                             <constraint firstAttribute="centerX" secondItem="Jz0-I5-zyO" secondAttribute="centerX" id="AXT-Vt-Loc"/>
+                            <constraint firstItem="Ia8-cF-GSd" firstAttribute="leading" secondItem="FGF-Ej-4tR" secondAttribute="trailing" id="Pyn-c3-u9e">
+                                <variation key="widthClass=compact" constant="-9"/>
+                            </constraint>
+                            <constraint firstAttribute="centerY" secondItem="Dp6-E5-Txh" secondAttribute="centerY" id="ZaY-SK-lUR"/>
+                            <constraint firstAttribute="centerX" secondItem="FGF-Ej-4tR" secondAttribute="centerX" id="aRL-T6-Afi">
+                                <variation key="widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstAttribute="centerY" secondItem="FGF-Ej-4tR" secondAttribute="centerY" id="blh-ul-gpr">
+                                <variation key="widthClass=compact" constant="-65"/>
+                            </constraint>
                             <constraint firstItem="Jz0-I5-zyO" firstAttribute="top" secondItem="E26-4J-sxO" secondAttribute="bottom" constant="30" id="g8B-u8-VhG"/>
-                            <constraint firstAttribute="centerX" secondItem="YSu-BY-f2Y" secondAttribute="centerX" id="h8k-Lz-hrt"/>
-                            <constraint firstAttribute="centerX" secondItem="GKG-Rc-iCW" secondAttribute="centerX" id="hkd-SC-c9N"/>
-                            <constraint firstItem="GKG-Rc-iCW" firstAttribute="top" secondItem="E26-4J-sxO" secondAttribute="bottom" constant="110" id="rO6-fa-xzf"/>
-                            <constraint firstItem="YSu-BY-f2Y" firstAttribute="top" secondItem="E26-4J-sxO" secondAttribute="bottom" constant="60" id="tG0-H1-hyE"/>
+                            <constraint firstAttribute="centerX" secondItem="Dp6-E5-Txh" secondAttribute="centerX" id="peB-ar-hiG"/>
+                            <constraint firstItem="FGF-Ej-4tR" firstAttribute="centerX" secondItem="GKG-Rc-iCW" secondAttribute="centerX" id="scD-we-zsQ"/>
+                            <constraint firstItem="FGF-Ej-4tR" firstAttribute="top" secondItem="Ia8-cF-GSd" secondAttribute="bottom" constant="-25" id="yVj-hP-gkk" userLabel="switchConstraint">
+                                <variation key="widthClass=compact" constant="-75"/>
+                            </constraint>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Dp6-E5-Txh"/>
+                                <exclude reference="s3O-HP-5F8"/>
+                                <exclude reference="Ia8-cF-GSd"/>
+                                <exclude reference="FGF-Ej-4tR"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="ZaY-SK-lUR"/>
+                                <exclude reference="peB-ar-hiG"/>
+                                <exclude reference="29y-wU-DE6"/>
+                                <exclude reference="4mj-dp-CqF"/>
+                                <exclude reference="79c-3r-lhI"/>
+                                <exclude reference="aRL-T6-Afi"/>
+                                <exclude reference="blh-ul-gpr"/>
+                                <exclude reference="scD-we-zsQ"/>
+                                <exclude reference="yVj-hP-gkk"/>
+                                <exclude reference="Pyn-c3-u9e"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Dp6-E5-Txh"/>
+                                <include reference="s3O-HP-5F8"/>
+                                <include reference="Ia8-cF-GSd"/>
+                                <include reference="FGF-Ej-4tR"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="ZaY-SK-lUR"/>
+                                <include reference="peB-ar-hiG"/>
+                                <include reference="29y-wU-DE6"/>
+                                <include reference="4mj-dp-CqF"/>
+                                <include reference="79c-3r-lhI"/>
+                                <include reference="aRL-T6-Afi"/>
+                                <include reference="blh-ul-gpr"/>
+                                <include reference="scD-we-zsQ"/>
+                                <include reference="yVj-hP-gkk"/>
+                                <include reference="Pyn-c3-u9e"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="readyLabel" destination="GKG-Rc-iCW" id="t8k-yZ-HoG"/>
-                        <outlet property="readySwitch" destination="8sR-Cd-htm" id="p6A-6u-hgi"/>
                         <outlet property="statusLabel" destination="Jz0-I5-zyO" id="oug-mf-bM9"/>
+                        <outlet property="switchConstraint" destination="yVj-hP-gkk" id="wxR-eG-GrU"/>
+                        <outlet property="switchContainer" destination="Ia8-cF-GSd" id="2Sp-iK-79x"/>
+                        <outlet property="toastConstraint" destination="4mj-dp-CqF" id="8Qd-bE-CTZ"/>
+                        <outlet property="toastContainer" destination="s3O-HP-5F8" id="gAq-Fk-hkn"/>
                         <outlet property="usernameField" destination="YSu-BY-f2Y" id="NiF-TQ-Zae"/>
                         <segue destination="vXZ-lx-hvc" kind="presentation" identifier="toastPlaySegue" id="1oF-VE-TGb"/>
                     </connections>
@@ -829,9 +995,6 @@
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="381" y="381" width="38" height="39"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-th-bfr">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -1087,7 +1250,11 @@
         <image name="Star" width="217" height="207"/>
         <image name="Toast Crust" width="300" height="300"/>
         <image name="Toast Inside" width="265" height="270"/>
+        <image name="ToastPiece" width="150" height="155"/>
+        <image name="Toaster" width="275" height="202"/>
+        <image name="ToasterSwitch" width="27" height="28"/>
         <image name="bg_ipad" width="768" height="1024"/>
         <image name="bg_iphone" width="540" height="960"/>
+        <image name="bg_toastTransition" width="540" height="960"/>
     </resources>
 </document>

@@ -10,24 +10,41 @@ import UIKit
 import MultipeerConnectivity
 
 class ToastTransitionViewController: UIViewController, UITextFieldDelegate {
-
+    
     var appDelegate: AppDelegate? = UIApplication.sharedApplication().delegate as? AppDelegate
     
     @IBOutlet weak var statusLabel: UILabel?
     @IBOutlet weak var usernameField: UITextField?
     @IBOutlet weak var readyLabel: UILabel?
-    @IBOutlet weak var readySwitch: UISwitch!
+    
+    //these are defined for animation of controls
+    @IBOutlet var switchContainer: UIView!
+    @IBOutlet var toastContainer: UIView!
+    @IBOutlet var switchConstraint: NSLayoutConstraint!
+    @IBOutlet var toastConstraint: NSLayoutConstraint!
+    let animationDistance: CGFloat = 50
+    
+    var playerIsReady = false
     
     var hostPeerID : MCPeerID?
+    
+    @IBAction func switchPressed () {
+        //check if username field is empty, if not, toggles player readiness
+        if (playerIsReady == false) {
+            animateDown()
+        }
+            //if the player hits the button after indicating readiness, can change his name and won't show up in the network list
+        else {
+            animateUp()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         appDelegate?.mcManager?.setupPeerWithDisplayName(UIDevice.currentDevice().name)
         appDelegate?.mcManager?.setupSession()
-        statusLabel?.text = "Get ready!"
-        readyLabel?.text = "Not Ready"
-        readyLabel?.textColor = UIColor.redColor()
+        readyLabel?.text = "Hit the lever to start"
         
         usernameField?.delegate = self
         usernameField?.placeholder = UIDevice.currentDevice().name
@@ -65,28 +82,78 @@ class ToastTransitionViewController: UIViewController, UITextFieldDelegate {
             appDelegate?.mcManager?.peerID = nil
             appDelegate?.mcManager?.session = nil
         }
-    
+        
         appDelegate?.mcManager?.setupPeerWithDisplayName(usernameField?.text)
         appDelegate?.mcManager?.setupSession()
         
     }
     
-    @IBAction func switchFunc(sender: AnyObject) {
-        if(readySwitch.on){
-            statusLabel?.text = "Connecting..."
-            readyLabel?.text = "Ready"
-            readyLabel?.textColor = UIColor.greenColor()
+    //toggles playerIsReady bool, advertises to the host that the player is ready, and changes the screen messages
+    func toggleReady () {
+        if(playerIsReady == false){
+            playerIsReady = true
+            readyLabel?.text = "Please wait"
             usernameField?.enabled = false;
             appDelegate?.mcManager?.advertiseSelf(true)
         }
         else{
-            statusLabel?.text = "Get ready!"
-            readyLabel?.text = "Not Ready"
-            readyLabel?.textColor = UIColor.redColor()
+            playerIsReady = false
+            readyLabel?.text = "Hit the lever to start"
             usernameField?.enabled = true;
             appDelegate?.mcManager?.disconnect()
         }
+    }
+    
+    //used to animate the toast and the switch to the down position, 50 pixels lower
+    func animateDown() {
+        /* let originalSwitchPosition = switchContainer.center
+        let originalToastPosition = toastContainer.center
         
+        UIView.animateWithDuration(1,
+        animations: {
+        self.switchContainer.center = CGPoint(x: originalSwitchPosition.x, y: (originalSwitchPosition.y + self.animationDistance))
+        self.toastContainer.center = CGPoint(x: originalToastPosition.x, y: (originalToastPosition.y + self.animationDistance))
+        },
+        completion: { finished in
+        self.toggleReady()
+        self.toastContainer.updateConstraints()
+        })*/
+        
+        switchConstraint.constant -= animationDistance
+        toastConstraint.constant -= animationDistance
+        
+        UIView.animateWithDuration(1,
+            animations: {
+                self.switchContainer.layoutIfNeeded()
+                self.toastContainer.layoutIfNeeded()
+            },
+            completion: { finished in
+                self.toggleReady()
+        })
+    }
+    
+    //used to animate the toast and switch to the up position, 50 pixels higher
+    func animateUp() {
+        /*       UIView.animateWithDuration(1,
+        animations: {
+        self.switchContainer.center = CGPoint(x: originalSwitchPosition.x, y: (originalSwitchPosition.y - self.animationDistance))
+        self.toastContainer.center = CGPoint(x: originalToastPosition.x, y: (originalToastPosition.y - self.animationDistance))
+        },
+        completion: { finished in
+        self.toggleReady()
+        })*/
+        
+        switchConstraint.constant += animationDistance
+        toastConstraint.constant += animationDistance
+        
+        UIView.animateWithDuration(1,
+            animations: {
+                self.switchContainer.layoutIfNeeded()
+                self.toastContainer.layoutIfNeeded()
+            },
+            completion: { finished in
+                self.toggleReady()
+        })
     }
     
     //This method is called when our notificationCenter receives a data nofitication

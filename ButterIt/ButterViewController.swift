@@ -139,11 +139,8 @@ class ButterViewController: UIViewController {
         for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
             butterViewArray[i].setRoundStarted(true)
         }
-<<<<<<< HEAD
-        println("Upon activation, there are this many butter views: \(butterViewArray.count)")
-=======
+
         println("Activating butterViews: \(butterViewArray.count)")
->>>>>>> FETCH_HEAD
     }
     
     //sets the countdown to 3 secs (2 sec delay) and starts the timer
@@ -185,13 +182,10 @@ class ButterViewController: UIViewController {
         //if true then we start the game, set all variables for our new timer
         else if(countDownBool){
             stopTimer()
-<<<<<<< HEAD
+
             //for debugging, changed gameTime from 52
             gameTime = 52
-=======
-            //for debugging, changed gameTime to 5 from 52
-            gameTime = 5
->>>>>>> FETCH_HEAD
+
             timerLabel?.textColor = UIColor.greenColor()
             timerLabel?.text = "GO!"
             startTimer()
@@ -386,16 +380,10 @@ class ButterViewController: UIViewController {
 
         //if receives a gameover packet, requests the score from the toast client
         if(type == "gameover"){
-<<<<<<< HEAD
-            println("Upon gameover, number of butterVies in array is: \(butterViewArray.count)")
-            
-            winnerArray = tallyScores(peerID, playerScore: receivedPackage.getScore(), numberOfPlayers: numberOfPlayers)
-            markWinners(winnerArray, numberOfPlayers: numberOfPlayers)
-=======
+
             println("butterViewArray: -> \(butterViewArray.count)")
             //winnerArray = tallyScores(peerID, playerScore: receivedPackage.getScore())
             //markWinners(winnerArray)
->>>>>>> FETCH_HEAD
             
                 
             //var tempString = ("\(peerDisplayName) score is: \(receivedPackage.getScore())")
