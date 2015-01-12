@@ -56,9 +56,9 @@ class ButterViewController: UIViewController {
     var roundTimer: NSTimer = NSTimer()
     
     //array that stores which ButterView belongs to which Peer, which playernumber belongs to each peer, 0=Player1, 1=Player2, etc
-    var butterViewArray: [ButterView] = Array()
-    var playerLabelArray: [UILabel] = Array()
-    var playerScoreLabelArray: [UILabel] = Array()
+    //var butterViewArray: [ButterView] = Array()
+    //var playerLabelArray: [UILabel] = Array()
+    //var playerScoreLabelArray: [UILabel] = Array()
     
     var hostPeerID: MCPeerID?
     
@@ -68,6 +68,7 @@ class ButterViewController: UIViewController {
     
     var connectedPeers: Int!
     
+    var winnerArray: [ButterView] = Array()
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -84,11 +85,29 @@ class ButterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        butterImage1.hidden = true
+        butterImage2.hidden = true
+        butterImage3.hidden = true
+        butterImage4.hidden = true
+        player1Label?.hidden = true
+        player2Label?.hidden = true
+        player3Label?.hidden = true
+        player4Label?.hidden = true
+        
+        player1ScoreLabel?.text = ""
+        player1ScoreLabel?.hidden = true
+        player2ScoreLabel?.text = ""
+        player2ScoreLabel?.hidden = true
+        player3ScoreLabel?.text = ""
+        player3ScoreLabel?.hidden = true
+        player4ScoreLabel?.text = ""
+        player4ScoreLabel?.hidden = true
         registerPlayerOnLabels()
     }
     
     override func viewDidAppear(animated: Bool) {
-        hideButterGraphics(false)
+        
     }
     
     @IBAction func playButtonFunc(sender: UIButton){
@@ -98,47 +117,48 @@ class ButterViewController: UIViewController {
     
     //Register players and set butterView
     func registerPlayerOnLabels(){
-        //fill the butterViewArray with the four butterViews
-        butterViewArray += [butterView1]
-        butterViewArray += [butterView2]
-        butterViewArray += [butterView3]
-        butterViewArray += [butterView4]
-        
-        //fill the playerLabel array with the player positions
-        playerLabelArray += [player1Label!]
-        playerLabelArray += [player2Label!]
-        playerLabelArray += [player3Label!]
-        playerLabelArray += [player4Label!]
-        
-        //fill the playerScoreLabel array with player scores
-        playerScoreLabelArray += [player1ScoreLabel!]
-        playerScoreLabelArray += [player2ScoreLabel!]
-        playerScoreLabelArray += [player3ScoreLabel!]
-        playerScoreLabelArray += [player4ScoreLabel!]
-        
-        //erase all labels in the player scores
-        for playerScoreLabel in playerScoreLabelArray {
-            playerScoreLabel.text = ""
-        }
         
         //erase timer label
         timerLabel?.text = ""
         
-        //adding a peerID/displayname to each butterview
-        for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
-            var player: MCPeerID? = appDelegate?.mcManager?.getConnectedPeer(i)
-            playerLabelArray[i].text = player?.displayName
-            butterViewArray[i].setPeerID(player!)
-            butterViewArray[i].setName(player!.displayName)
-        }
         connectedPeers = appDelegate?.mcManager?.getConnectedPeers().count
+        
+        //adding a peerID/displayname to each butterview
+        for(var i = 0; i < connectedPeers; i++){
+            var player: MCPeerID? = appDelegate?.mcManager?.getConnectedPeer(i)
+            switch i{
+            case 0:
+                player1Label?.text = player?.displayName
+                butterView1.setPeerID(player!)
+                butterView1.setName(player!.displayName)
+                player1Label?.hidden = false
+            case 1:
+                player2Label?.text = player?.displayName
+                butterView2.setPeerID(player!)
+                butterView2.setName(player!.displayName)
+                player2Label?.hidden = false
+            case 2:
+                player3Label?.text = player?.displayName
+                butterView3.setPeerID(player!)
+                butterView3.setName(player!.displayName)
+                player3Label?.hidden = false
+            case 3:
+                player4Label?.text = player?.displayName
+                butterView4.setPeerID(player!)
+                butterView4.setName(player!.displayName)
+                player4Label?.hidden = false
+            default:
+                println("must have an excecutable line")
+            }
+        }
     }
     
     //activating all butterviews
     func activateButterViews(){
-        for(var i = 0; i < appDelegate?.mcManager?.getConnectedPeers().count; i++){
-            butterViewArray[i].setRoundStarted(true)
-        }
+        butterView1.setRoundStarted(true)
+        butterView2.setRoundStarted(true)
+        butterView3.setRoundStarted(true)
+        butterView4.setRoundStarted(true)
     }
     
     //sets the countdown to 3 secs (2 sec delay) and starts the timer
@@ -181,11 +201,12 @@ class ButterViewController: UIViewController {
         else if(countDownBool){
             stopTimer()
             //for debugging, changed gameTime to 5 from 52
-            gameTime = 5
+            gameTime = 50
             timerLabel?.textColor = UIColor.greenColor()
             timerLabel?.text = "GO!"
             startTimer()
             activateButterViews()
+            hideButterGraphics(false)
             sendStartRound()
             countDownBool = false
         }
@@ -211,7 +232,7 @@ class ButterViewController: UIViewController {
         var allPeers = appDelegate?.mcManager!.session.connectedPeers
             
         //print to see if we have peers connected (debug)
-        println("SendEnter: \(connectedPeers)")
+        println("SendEnter: \(allPeers?.count)")
             
         var error: NSError?
         appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: allPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
@@ -219,7 +240,24 @@ class ButterViewController: UIViewController {
             println(error?.localizedDescription)
         }
     }
+    func gameOver(){
+        var type = "gameover"
+        var package = Package(type: type, sender: "butterHost", playBool: false)
+        
+        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
+        var allPeers = appDelegate?.mcManager!.session.connectedPeers
+        
+        //print to see if we have peers connected (debug)
+        println("gameover: \(connectedPeers)")
+        
+        var error: NSError?
+        appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: allPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
+        if(error != nil){
+            println(error?.localizedDescription)
+        }
+    }
     
+    /*
     //when this method is called we create a gameover package and sends it to all peers
     func gameOver(){
         var type = "gameover"
@@ -236,10 +274,14 @@ class ButterViewController: UIViewController {
         if(error != nil){
             println(error?.localizedDescription)
         }
+        else if(error == nil) {
+            println("nil detected!")
+        }
         
         //debug code to check contents of butterArray
         println("Number of items upon gameover packet created \(butterViewArray.count)")
     }
+*/
     
     //when this method is called we create a roundbegin package and sends it to all peers
     func sendStartRound(){
@@ -260,7 +302,7 @@ class ButterViewController: UIViewController {
     }
     
     func checkPeerID(peerID: MCPeerID) -> ButterView{
-        var bv: ButterView?
+        var bv: ButterView = butterView1
         var index: Int = 0
         while(index < connectedPeers){
             switch index{
@@ -285,84 +327,48 @@ class ButterViewController: UIViewController {
         }
             index++
         }
-        return bv!
+        return bv
     }
         
     //displays the gathered scores from each player at the end of the game
-    func tallyScores(playerID: MCPeerID, playerScore: Int) -> [MCPeerID] {
-        //array that stores the players who have the highest score, so it is possible to have a draw
-        var winnerArray: [MCPeerID] = Array()
-        var highScore = 0
+    func tallyScores(playerID: MCPeerID, playerScore: Int){
+        checkPeerID(playerID).setScore(playerScore)
         
-        
-        checkPeerID(playerID)
-        
-        
-        //SOME ERROR HERE BUTTERVIEWARRAY SEEM TO BE EMPTY!!
-        //debug code to check contents of butterArray
-        println("At score tally, the number of items in butterViewArray is \(butterViewArray.count)")
-        
-        //compares the incoming playerID with all playerIDs
-        /*
-        for (var i = 0; i < connectedPeers; i++) {
-            if (playerID == butterViewArray[i].peerID_) {
-                //once player identified, displays score on screen...
-                playerScoreLabelArray[i].text = String(playerScore)
-                    
-                //...then checks to see if it is a high score
-                if (playerScore > highScore) {
-                    //if highest score, erases winnerArray and puts this player's score in the array
-                    winnerArray.removeAll()
-                    winnerArray += [playerID]
-                }
-                //if not a new high score, then checks to see if it tied the existing high score
-                else if (playerScore == highScore) {
-                    //appends this player ID to the winnerArray, resulting in a tie
-                    winnerArray += [playerID]
-                }
+        if(winnerArray.count > 0){
+            if(winnerArray[0].getScore() < playerScore){
+                winnerArray.removeAll()
+                winnerArray += [checkPeerID(playerID)]
+            }
+            else if(winnerArray[0].getScore() == playerScore){
+                winnerArray += [checkPeerID(playerID)]
             }
         }
-        */
-        return winnerArray
-    }
-    
-    func markWinners (winnerArray: [MCPeerID]) {
-        //creates an array of the star view controllers, makes programming cleaner later
-        var starArray: [UIImageView] = []
-        starArray += [starImage1]
-        starArray += [starImage2]
-        starArray += [starImage3]
-        starArray += [starImage4]
-        
-        //iterates through every entry in the winnerArray and marks their score with a star
-        for winner in winnerArray {
-            for (var i = 0; i < connectedPeers; i++) {
-                println("Star for player \(i+1) is \(starArray[i].hidden)")
-                if (winner == butterViewArray[i].peerID_) {
-                    starArray[i].hidden = false
-                }
-                else {
-                    starArray[i].hidden = true
-                }
-                //debugging line
-                println("Star for player \(i+1) is \(starArray[i].hidden)")
-            }
+        else{
+           winnerArray += [checkPeerID(playerID)]
+        }
+        for(var i = 0; i < winnerArray.count; i++){
+            println("In array: \(winnerArray[i].peerID_)")
         }
     }
-    
+
     //hides the images of butter to make scores more readable
     func hideButterGraphics(value: Bool) {
-        butterImage1.hidden = value
-        butterImage2.hidden = value
-        butterImage3.hidden = value
-        butterImage4.hidden = value
+        if(butterView1.peerID_ != nil){
+            butterImage1.hidden = value
+        }
+        if(butterView2.peerID_ != nil){
+            butterImage2.hidden = value
+        }
+        if(butterView3.peerID_ != nil){
+            butterImage3.hidden = value
+        }
+        if(butterView4.peerID_ != nil){
+            butterImage4.hidden = value
+        }
     }
     
     //this methods handles the receiving data from all peers, currently only receiving game over package
     func didReceiveDataWithNotification(notification: NSNotification) {
-        //debug code to check contents of butterArray
-        println("Received a packet,number of items in butterViewArray is \(self.butterViewArray.count)")
-        
         var peerID: MCPeerID = notification.userInfo?["peerID"]! as MCPeerID
         var peerDisplayName = peerID.displayName as String
         var receivedData = notification.userInfo?["data"] as NSData
@@ -371,24 +377,58 @@ class ButterViewController: UIViewController {
             
         var receivedPackage: Package = NSKeyedUnarchiver.unarchiveObjectWithData(receivedData) as Package
         var type = receivedPackage.getType()
-        
-        var winnerArray: [MCPeerID] = []
 
         //if receives a gameover packet, requests the score from the toast client
         if(type == "gameover"){
-            println("Upon gameover, number of butterVies in array is: \(butterViewArray.count)")
-
-            println("butterViewArray: -> \(butterViewArray.count)")
-            //winnerArray = tallyScores(peerID, playerScore: receivedPackage.getScore())
-            //markWinners(winnerArray)
-
+            if(butterView1 != nil){
+                tallyScores(peerID, playerScore: receivedPackage.getScore())
+                receivedGameOver = receivedGameOver! + 1
+            }
+            else{
+                println("Debug seems like this is a random nil package")
+            }
             
-                
-            //var tempString = ("\(peerDisplayName) score is: \(receivedPackage.getScore())")
-            //playerScores = playerScores + tempString + "\n"
-                
-            //tallies the number of players that have returned a gameover message
-            receivedGameOver = receivedGameOver! + 1
+            if(receivedGameOver == connectedPeers){
+               displayScores()
+            }
+        }
+        
+    }
+    
+    func displayScores(){
+        println("Our winner is: \(winnerArray[0].displayName_)")
+        for(var i = 0; i < winnerArray.count; i++){
+            winnerArray[i].setStarBoolean(true)
+        }
+        for(var a = 0; a < connectedPeers; a++){
+            switch a{
+            case 0:
+                if(butterView1.getStarBoolean()){
+                    starImage1.hidden = false;
+                }
+                player1ScoreLabel?.text = String(butterView1.getScore())
+                player1ScoreLabel?.hidden = false
+            case 1:
+                if(butterView2.getStarBoolean()){
+                    starImage2.hidden = false;
+                }
+                player2ScoreLabel?.text = String(butterView2.getScore())
+                player2ScoreLabel?.hidden = false
+            case 2:
+                if(butterView3.getStarBoolean()){
+                    starImage3.hidden = false;
+                }
+                player3ScoreLabel?.text = String(butterView3.getScore())
+                player3ScoreLabel?.hidden = false
+            case 3:
+                if(butterView4.getStarBoolean()){
+                    starImage4.hidden = false;
+                }
+                player4ScoreLabel?.text = String(butterView4.getScore())
+                player4ScoreLabel?.hidden = false
+            default:
+                println("default")
+            }
         }
     }
 

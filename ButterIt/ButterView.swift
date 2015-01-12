@@ -21,7 +21,11 @@ class ButterView: UIImageView {
     let maxScoopAmount: Double = 1000
     var roundStarted: Bool?
     
-    let scoopMultiplier = 3.0 // this is a game balancing constant that affects the rate at which butter is scooped
+    var score_: Int? = 0
+    
+    var starBoolean: Bool? = false
+    
+    let scoopMultiplier = 10.0 // this is a game balancing constant that affects the rate at which butter is scooped
     
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -41,6 +45,22 @@ class ButterView: UIImageView {
     
     func setRoundStarted(roundBool: Bool){
         roundStarted = roundBool
+    }
+    
+    func setScore(score: Int){
+        score_ = score
+    }
+    
+    func getScore() -> Int{
+        return score_!
+    }
+    
+    func setStarBoolean(bool: Bool){
+        starBoolean = bool
+    }
+    
+    func getStarBoolean() -> Bool{
+        return starBoolean!
     }
     
     func setPeerID(peerID: MCPeerID){

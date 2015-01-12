@@ -90,7 +90,9 @@ class ToastViewController: UIViewController {
         }
         else if(type == "gameover"){
             println("Are we here?")
-            gameOn = receivedPackage.getPlayBool()
+            //THIS BUG TOOK LIKE 2 DAYS TO FIX, WHY DOES IT NOT WORK ANYMORE?
+            //gameOn = receivedPackage.getPlayBool()
+            gameOn = false
             playerMessageLabel.text = "Time up!"
             sendScore(myPeerID!, score_: score_!)
         }
