@@ -1254,10 +1254,7 @@
         <image name="ToasterSwitch" width="27" height="28"/>
         <image name="bg_ipad" width="768" height="1024"/>
         <image name="bg_iphone" width="540" height="960"/>
-<<<<<<< HEAD
         <image name="bg_toastTransition" width="540" height="960"/>
-=======
         <image name="butter" width="261" height="350"/>
->>>>>>> FETCH_HEAD
     </resources>
 </document>
