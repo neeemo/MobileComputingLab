@@ -15,18 +15,11 @@ class ButterKnife {
     let maxButterAmount: Double = 1000
     let minButterAmount: Double = 0
     
-    /*init(start _start: CGPoint, end _end: CGPoint) {
-        start = _start
-        end = _end
-        butterAmount = 0
-    }*/
-    
-    //when scooping butter, adds the amount to the knife - returns maxButterAmount when knife can't hold more butter
-    
     func setButter(butterAmount: Double){
         butterAmount_ = butterAmount
     }
     
+        //when scooping butter, adds the amount to the knife - returns maxButterAmount when knife can't hold more butter
     func addButter(addButterAmount: Double) -> Double {
         butterAmount_ = butterAmount_ + addButterAmount
         
