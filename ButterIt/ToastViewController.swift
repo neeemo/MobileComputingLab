@@ -31,7 +31,8 @@ class ToastViewController: UIViewController {
     
     //drawing variables and connstants
     var lastPoint: CGPoint! //for drawing the butter lines
-    let butterWidth = 25 //the width of the butter strokes
+    let currentButterWidth = 45.0 //the width of the butter strokes, this changes based on the amount of butter
+    var minButterWidth = 15.0 // the smallest the butter stroke can get
     
     //gameplay variables
     var butterKnife = ButterKnife()
@@ -62,6 +63,13 @@ class ToastViewController: UIViewController {
         //debugAmountLabel.text = "Get Ready!"
         playerMessageLabel.text = "Waiting for game to start." //
         gameOn = true // toastController loaded, so player is now ready to play
+        
+        //debug code below
+        toastContainer.hidden = false
+        replaceToast()
+        score_ = 0 //resets player's score
+        playerMessageLabel.text = "" //erases text in the playerText
+        //debug code above
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,7 +112,7 @@ class ToastViewController: UIViewController {
         if(gameOn == true){
             lastPoint = touches.anyObject()?.locationInView(tempToastView)
             //gameplay testing line to add butter to knife
-            //butterKnife.addButter(1000)
+            butterKnife.addButter(1000)
         }
     }
     
@@ -119,15 +127,14 @@ class ToastViewController: UIViewController {
                 CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y)
                 CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint!.x, currentPoint!.y)
                 CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound)   //draws a rounded off line
-                CGContextSetLineWidth(UIGraphicsGetCurrentContext(), CGFloat(butterWidth))
+                CGContextSetLineWidth(UIGraphicsGetCurrentContext(), CGFloat(currentButterWidth))
                 CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1, 1, 0, 1.0) //arguments are RGB value, in this case, yellow
                 CGContextSetBlendMode(UIGraphicsGetCurrentContext(), kCGBlendModeNormal)
                 CGContextStrokePath(UIGraphicsGetCurrentContext())
                 tempToastView.image = UIGraphicsGetImageFromCurrentImageContext()
                 tempToastView.alpha = 0.5 //opacity level, set lower so that repeated strokes may overlap
                 
-                //code to remove butter from the butterKnife
-                
+                //code to remove butter from the butterKnife - function of butter width times distance
                 var distance = Double(hypot(currentPoint.x - lastPoint.x, currentPoint.y - lastPoint.y))
                 
                 UIGraphicsEndImageContext()
@@ -156,7 +163,7 @@ class ToastViewController: UIViewController {
             
             //When touch has ended, update host butterAmount
             //commented out for testing
-            sendData(myPeerID!, butterAmount_: butterKnife.butterAmount_)
+            //sendData(myPeerID!, butterAmount_: butterKnife.butterAmount_)
         }
         
     }
@@ -245,14 +252,13 @@ class ToastViewController: UIViewController {
     
     @IBAction func holdHerePressed() {
         //holdHereActive = true
-        println("Button pressed = \(holdHereActive)")
     }
     
     @IBAction func holdHereReleased() {
         //holdHereActive = false
-        println("Button pressed = \(holdHereActive)")
+        //println("Button pressed = \(holdHereActive)")
         var toastIsButtered = isItButtered()
-        println("Is it buttered? \(toastIsButtered)")
+        //println("Is it buttered? \(toastIsButtered)")
         
         //tests if toast is sufficiently buttered; if so, adds a point and gives a new piece of toast, if not, makes player wait
         if toastIsButtered {

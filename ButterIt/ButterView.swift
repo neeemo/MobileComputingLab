@@ -25,7 +25,11 @@ class ButterView: UIImageView {
     
     var starBoolean: Bool? = false
     
-    let scoopMultiplier = 10.0 // this is a game balancing constant that affects the rate at which butter is scooped
+    let scoopMultiplier = 50.0 // this is a game balancing constant that affects the rate at which butter is scooped
+    
+    //drawing variables
+    var lastPoint: CGPoint! //for drawing the butter lines
+
     
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -80,6 +84,7 @@ class ButterView: UIImageView {
         if(roundStarted == true){
             println("touch began in butterview")
             startTime = NSDate()
+            lastPoint = touches.anyObject()?.locationInView(self)
         }
     }
     
@@ -90,11 +95,38 @@ class ButterView: UIImageView {
                 let endTime = NSDate()
                 let timeInterval: Double = endTime.timeIntervalSinceDate(startTime); //Difference in seconds (double)
                 scoopAmount = scoopAmount + (timeInterval*scoopMultiplier)
+                drawLine(touches)
             }
             
             //println("Butter on player \(displayName_)'s knife = \(scoopAmount)")
         }
         
+    }
+    
+    func drawLine (touches: NSSet) {
+        var currentPoint: CGPoint! = touches.anyObject()?.locationInView(self)
+        
+        //drawing code, draws a line that follows the player's touches
+        UIGraphicsBeginImageContext(self.frame.size)
+        self.image?.drawInRect(CGRectMake(0, 0, self.frame.size.width, self.frame.size.height))
+        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y)
+        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint!.x, currentPoint!.y)
+        CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound)   //draws a rounded off line
+        CGContextSetLineWidth(UIGraphicsGetCurrentContext(), CGFloat(45))
+        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1, 1, 0, 1.0) //arguments are RGB value, in this case, yellow
+        CGContextSetBlendMode(UIGraphicsGetCurrentContext(), kCGBlendModeNormal)
+        CGContextStrokePath(UIGraphicsGetCurrentContext())
+        self.image = UIGraphicsGetImageFromCurrentImageContext()
+        self.alpha = 0.5 //opacity level, set lower so that repeated strokes may overlap
+        
+        //code to remove butter from the butterKnife - function of butter width times distance
+        var distance = Double(hypot(currentPoint.x - lastPoint.x, currentPoint.y - lastPoint.y))
+        
+        UIGraphicsEndImageContext()
+
+        
+        lastPoint = currentPoint
+
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
@@ -107,9 +139,8 @@ class ButterView: UIImageView {
                 //println("sending \(scoopAmount) to \(peerID_!)")
                 sendData(peerID_!, butterAmount_: scoopAmount)
             }
-            
         }
-        
+        self.image = nil
     }
     
     //Send data method to corresponding peerID, set to reliable datatransfer
