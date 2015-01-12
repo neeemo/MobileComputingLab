@@ -63,13 +63,6 @@ class ToastViewController: UIViewController {
         //debugAmountLabel.text = "Get Ready!"
         playerMessageLabel.text = "Waiting for game to start." //
         gameOn = true // toastController loaded, so player is now ready to play
-        
-        //debug code below
-        toastContainer.hidden = false
-        replaceToast()
-        score_ = 0 //resets player's score
-        playerMessageLabel.text = "" //erases text in the playerText
-        //debug code above
     }
     
     override func didReceiveMemoryWarning() {
@@ -112,7 +105,7 @@ class ToastViewController: UIViewController {
         if(gameOn == true){
             lastPoint = touches.anyObject()?.locationInView(tempToastView)
             //gameplay testing line to add butter to knife
-            butterKnife.addButter(1000)
+            //butterKnife.addButter(1000)
         }
     }
     

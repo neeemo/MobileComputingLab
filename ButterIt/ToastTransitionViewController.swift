@@ -13,7 +13,6 @@ class ToastTransitionViewController: UIViewController, UITextFieldDelegate {
     
     var appDelegate: AppDelegate? = UIApplication.sharedApplication().delegate as? AppDelegate
     
-    @IBOutlet weak var statusLabel: UILabel?
     @IBOutlet weak var usernameField: UITextField?
     @IBOutlet weak var readyLabel: UILabel?
     
@@ -67,7 +66,7 @@ class ToastTransitionViewController: UIViewController, UITextFieldDelegate {
         
         if state != MCSessionState.Connecting.rawValue {
             if state == MCSessionState.Connected.rawValue {
-                statusLabel?.text = "Waiting for host to start game!"
+                //statusLabel?.text = "Waiting for host to start game!"
             }
             var peersExist = appDelegate?.mcManager?.session.connectedPeers.count == 0
         }
