@@ -74,9 +74,9 @@ class ButterView: UIImageView {
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         if(roundStarted == true){
-            println("touch began in butterview")
             startTime = NSDate()
-            lastPoint = touches.anyObject()?.locationInView(self)
+            //lastPoint = touches.anyObject()?.locationInView(self)
+            //sendTouch()
         }
     }
     
@@ -87,14 +87,14 @@ class ButterView: UIImageView {
                 let endTime = NSDate()
                 let timeInterval: Double = endTime.timeIntervalSinceDate(startTime); //Difference in seconds (double)
                 scoopAmount = scoopAmount + (timeInterval*scoopMultiplier)
-                drawLine(touches)
+                //drawLine(touches)
             }
             
             //println("Butter on player \(displayName_)'s knife = \(scoopAmount)")
         }
         
     }
-    
+    /*
     func drawLine (touches: NSSet) {
         var currentPoint: CGPoint! = touches.anyObject()?.locationInView(self)
         
@@ -120,7 +120,7 @@ class ButterView: UIImageView {
         lastPoint = currentPoint
 
     }
-    
+    */
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         if(roundStarted == true){
             //println("\(displayName_) has stopped scooping")
@@ -131,8 +131,9 @@ class ButterView: UIImageView {
                 //println("sending \(scoopAmount) to \(peerID_!)")
                 sendData(peerID_!, butterAmount_: scoopAmount)
             }
+            //sendTouch()
         }
-        self.image = nil
+        //self.image = nil
     }
     
     //Send data method to corresponding peerID, set to reliable datatransfer
@@ -151,6 +152,23 @@ class ButterView: UIImageView {
             }
         }
     }
+    
+    /*
+    func sendTouch(){
+        if(peerID_ != nil){
+            var type = "touch"
+            var package = Package(type: type)
+            var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
+            var toPeer: NSArray = [hostPeerID_!]
+            
+            var error: NSError?
+            appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: toPeer, withMode: MCSessionSendDataMode.Reliable, error: &error)
+            if(error != nil){
+                println(error?.localizedDescription)
+            }
+        }
+    }
+    */
     
     //This method is called when data is received
     func didReceiveDataWithNotification(notification: NSNotification) {

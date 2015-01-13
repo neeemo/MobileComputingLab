@@ -36,7 +36,7 @@ class ToastViewController: UIViewController {
     
     //gameplay variables
     var butterKnife = ButterKnife()
-    var holdHereActive = true //boolean to see if the player is pressing on the Hold Here button
+    var holdHereActive = false //boolean to see if the player is pressing on the Hold Here button
     let minButterPercentage = 85 //the minimum amount of butter that must be spread on the toast for a successful buttering
     var canSpreadButter = true
     var timer: NSTimer = NSTimer()
@@ -244,11 +244,11 @@ class ToastViewController: UIViewController {
 
     
     @IBAction func holdHerePressed() {
-        //holdHereActive = true
+        holdHereActive = true
     }
     
     @IBAction func holdHereReleased() {
-        //holdHereActive = false
+        holdHereActive = false
         //println("Button pressed = \(holdHereActive)")
         var toastIsButtered = isItButtered()
         //println("Is it buttered? \(toastIsButtered)")

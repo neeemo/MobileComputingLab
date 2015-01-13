@@ -47,6 +47,11 @@ class ButterViewController: UIViewController {
     
     @IBOutlet weak var playButton: UIButton?
     
+    var player1touch: Bool = false
+    var player2touch: Bool = false
+    var player3touch: Bool = false
+    var player4touch: Bool = false
+    
     var startTime = NSTimeInterval()
     
     var countDownBool: Bool = true
@@ -123,6 +128,8 @@ class ButterViewController: UIViewController {
         
         connectedPeers = appDelegate?.mcManager?.getConnectedPeers().count
         
+        hostPeerID = appDelegate?.mcManager?.peerID
+        
         //adding a peerID/displayname to each butterview
         for(var i = 0; i < connectedPeers; i++){
             var player: MCPeerID? = appDelegate?.mcManager?.getConnectedPeer(i)
@@ -131,21 +138,25 @@ class ButterViewController: UIViewController {
                 player1Label?.text = player?.displayName
                 butterView1.setPeerID(player!)
                 butterView1.setName(player!.displayName)
+                butterView1.hostPeerID_ = hostPeerID
                 player1Label?.hidden = false
             case 1:
                 player2Label?.text = player?.displayName
                 butterView2.setPeerID(player!)
                 butterView2.setName(player!.displayName)
+                butterView2.hostPeerID_ = hostPeerID
                 player2Label?.hidden = false
             case 2:
                 player3Label?.text = player?.displayName
                 butterView3.setPeerID(player!)
                 butterView3.setName(player!.displayName)
+                butterView3.hostPeerID_ = hostPeerID
                 player3Label?.hidden = false
             case 3:
                 player4Label?.text = player?.displayName
                 butterView4.setPeerID(player!)
                 butterView4.setName(player!.displayName)
+                butterView4.hostPeerID_ = hostPeerID
                 player4Label?.hidden = false
             default:
                 println("must have an excecutable line")
@@ -241,6 +252,8 @@ class ButterViewController: UIViewController {
             println(error?.localizedDescription)
         }
     }
+    
+    //when this method is called we create a gameover package and sends it to all peers
     func gameOver(){
         var type = "gameover"
         var package = Package(type: type, sender: "butterHost", playBool: false)
@@ -257,32 +270,7 @@ class ButterViewController: UIViewController {
             println(error?.localizedDescription)
         }
     }
-    
-    /*
-    //when this method is called we create a gameover package and sends it to all peers
-    func gameOver(){
-        var type = "gameover"
-        var package = Package(type: type, sender: "butterHost", playBool: false)
-            
-        var dataToSend: NSData = NSKeyedArchiver.archivedDataWithRootObject(package)
-        var allPeers = appDelegate?.mcManager!.session.connectedPeers
-            
-        //print to see if we have peers connected (debug)
-        println("Sending Game Over to  #\(connectedPeers) devices.")
-            
-        var error: NSError?
-        appDelegate?.mcManager!.session.sendData(dataToSend, toPeers: allPeers, withMode: MCSessionSendDataMode.Reliable, error: &error)
-        if(error != nil){
-            println(error?.localizedDescription)
-        }
-        else if(error == nil) {
-            println("nil detected!")
-        }
-        
-        //debug code to check contents of butterArray
-        println("Number of items upon gameover packet created \(butterViewArray.count)")
-    }
-*/
+
     
     //when this method is called we create a roundbegin package and sends it to all peers
     func sendStartRound(){
@@ -379,6 +367,64 @@ class ButterViewController: UIViewController {
         var receivedPackage: Package = NSKeyedUnarchiver.unarchiveObjectWithData(receivedData) as Package
         var type = receivedPackage.getType()
 
+        //this code is not fully implemented yet.
+        /*
+        if(type == "touch"){
+            println("in touch")
+            if(butterView1 != nil){
+                if(peerID == butterView1.peerID_){
+                    if(player1touch == true){
+                        player1Label?.textColor = UIColor.blackColor()
+                        
+                        player1touch = false
+                    }
+                    else{
+                        player1Label?.textColor = UIColor.greenColor()
+                        
+                        player1touch = true
+                    }
+                }
+                else if(peerID == butterView2.peerID_){
+                    if(player2touch == true){
+                        player2Label?.textColor = UIColor.blackColor()
+                        
+                        player2touch = false
+                    }
+                    else{
+                        player2Label?.textColor = UIColor.greenColor()
+                        
+                        player2touch = true
+                    }
+                }
+                else if(peerID == butterView3.peerID_){
+                    if(player3touch == true){
+                        player3Label?.textColor = UIColor.blackColor()
+                        
+                        player3touch = false
+                    }
+                    else{
+                        player3Label?.textColor = UIColor.greenColor()
+                        
+                        player3touch = true
+                    }
+                }
+                else if(peerID == butterView4.peerID_){
+                    if(player4touch == true){
+                        player4Label?.textColor = UIColor.blackColor()
+                        
+                        player4touch = false
+                    }
+                    else{
+                        player4Label?.textColor = UIColor.greenColor()
+                        
+                        player4touch = true
+                    }
+                }
+            }
+
+        }
+         */
+        
         //if receives a gameover packet, requests the score from the toast client
         if(type == "gameover"){
             if(butterView1 != nil){

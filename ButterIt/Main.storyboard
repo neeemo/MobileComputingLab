@@ -22,9 +22,12 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Connected Players" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIP-U5-4WQ">
                                 <rect key="frame" x="87" y="121" width="146" height="21"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="328" y="339" width="206.5" height="22.5"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bring Players to the Table" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPn-TD-HLa">
                                 <rect key="frame" x="87" y="20" width="146" height="30"/>
@@ -54,16 +57,30 @@
                                     <action selector="playFunc:" destination="FfB-jL-fga" eventType="touchUpInside" id="u9Y-c8-eQc"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EEV-fH-Qjx">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EEV-fH-Qjx">
                                 <rect key="frame" x="40" y="150" width="240" height="330"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Zl0-Q5-uap"/>
+                                    <constraint firstAttribute="width" constant="250" id="jd4-dV-aLp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Zl0-Q5-uap"/>
+                                        <exclude reference="jd4-dV-aLp"/>
+                                    </mask>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="40" y="87" width="240" height="330"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                     <rect key="frame" x="400" y="400" width="0.0" height="0.0"/>
+                                    <mask key="constraints">
+                                        <include reference="Zl0-Q5-uap"/>
+                                        <include reference="jd4-dV-aLp"/>
+                                    </mask>
                                 </variation>
                             </textView>
                         </subviews>
@@ -79,19 +96,18 @@
                             <constraint firstAttribute="centerY" secondItem="Hl6-1c-Ass" secondAttribute="centerY" id="EFU-pg-E8g">
                                 <variation key="heightClass=regular-widthClass=regular" constant="250"/>
                             </constraint>
+                            <constraint firstItem="EEV-fH-Qjx" firstAttribute="top" secondItem="mNP-Ja-yaA" secondAttribute="topMargin" constant="450" id="Iz9-QN-eQK"/>
                             <constraint firstItem="BIP-U5-4WQ" firstAttribute="top" secondItem="wPn-TD-HLa" secondAttribute="bottom" constant="30" id="M86-2M-qzg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LaP-fM-XM3" secondAttribute="trailing" constant="20" id="NKo-5U-sar"/>
                             <constraint firstItem="UBb-Du-rA9" firstAttribute="top" secondItem="LaP-fM-XM3" secondAttribute="bottom" constant="40" id="Pyh-pC-sNx"/>
                             <constraint firstAttribute="centerY" secondItem="bcg-yV-Zk8" secondAttribute="centerY" id="Rqr-GE-bMK">
                                 <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
                             </constraint>
-                            <constraint firstAttribute="centerY" secondItem="BIP-U5-4WQ" secondAttribute="centerY" id="Rzc-Ek-8Wl">
-                                <variation key="heightClass=regular-widthClass=regular" constant="50"/>
-                            </constraint>
                             <constraint firstItem="EEV-fH-Qjx" firstAttribute="top" secondItem="BIP-U5-4WQ" secondAttribute="bottom" constant="15" id="Y7g-UA-tol"/>
                             <constraint firstAttribute="centerX" secondItem="wPn-TD-HLa" secondAttribute="centerX" id="Z6f-ix-oZg"/>
                             <constraint firstItem="UBb-Du-rA9" firstAttribute="top" secondItem="Hl6-1c-Ass" secondAttribute="bottom" constant="40" id="cpK-w8-M3e"/>
                             <constraint firstItem="Hl6-1c-Ass" firstAttribute="leading" secondItem="mNP-Ja-yaA" secondAttribute="leadingMargin" constant="20" id="kTY-o9-9Gm"/>
+                            <constraint firstItem="BIP-U5-4WQ" firstAttribute="top" secondItem="Hl6-1c-Ass" secondAttribute="bottom" constant="100" id="keN-Fl-u5o"/>
                             <constraint firstAttribute="centerX" secondItem="EEV-fH-Qjx" secondAttribute="centerX" id="kuL-Y7-S4b"/>
                             <constraint firstAttribute="centerX" secondItem="Hl6-1c-Ass" secondAttribute="centerX" id="r6D-XE-vgY"/>
                             <constraint firstAttribute="centerX" secondItem="LaP-fM-XM3" secondAttribute="centerX" id="ruD-By-0OL"/>
@@ -101,14 +117,15 @@
                                 <exclude reference="bcg-yV-Zk8"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Rzc-Ek-8Wl"/>
-                                <exclude reference="AbU-3m-WMy"/>
-                                <exclude reference="EFU-pg-E8g"/>
-                                <exclude reference="r6D-XE-vgY"/>
-                                <exclude reference="ACm-3G-h9w"/>
-                                <exclude reference="ruD-By-0OL"/>
                                 <exclude reference="8xX-Rd-fDc"/>
                                 <exclude reference="Rqr-GE-bMK"/>
+                                <exclude reference="EFU-pg-E8g"/>
+                                <exclude reference="r6D-XE-vgY"/>
+                                <exclude reference="keN-Fl-u5o"/>
+                                <exclude reference="AbU-3m-WMy"/>
+                                <exclude reference="Iz9-QN-eQK"/>
+                                <exclude reference="ACm-3G-h9w"/>
+                                <exclude reference="ruD-By-0OL"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -116,20 +133,21 @@
                                 <include reference="bcg-yV-Zk8"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="M86-2M-qzg"/>
-                                <include reference="Rzc-Ek-8Wl"/>
-                                <include reference="AbU-3m-WMy"/>
-                                <exclude reference="Y7g-UA-tol"/>
+                                <include reference="8xX-Rd-fDc"/>
+                                <include reference="Rqr-GE-bMK"/>
                                 <include reference="EFU-pg-E8g"/>
                                 <exclude reference="kTY-o9-9Gm"/>
                                 <include reference="r6D-XE-vgY"/>
+                                <exclude reference="M86-2M-qzg"/>
+                                <include reference="keN-Fl-u5o"/>
+                                <exclude reference="AbU-3m-WMy"/>
+                                <include reference="Iz9-QN-eQK"/>
+                                <exclude reference="Y7g-UA-tol"/>
                                 <include reference="ACm-3G-h9w"/>
                                 <exclude reference="NKo-5U-sar"/>
                                 <include reference="ruD-By-0OL"/>
                                 <exclude reference="Pyh-pC-sNx"/>
                                 <exclude reference="cpK-w8-M3e"/>
-                                <include reference="8xX-Rd-fDc"/>
-                                <include reference="Rqr-GE-bMK"/>
                             </mask>
                         </variation>
                     </view>
@@ -292,7 +310,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxB-dz-zW8" userLabel="playerMessageLabel">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" misplaced="YES">
@@ -573,7 +591,6 @@
                     </view>
                     <connections>
                         <outlet property="readyLabel" destination="GKG-Rc-iCW" id="t8k-yZ-HoG"/>
-                        <outlet property="statusLabel" destination="Jz0-I5-zyO" id="oug-mf-bM9"/>
                         <outlet property="switchConstraint" destination="yVj-hP-gkk" id="wxR-eG-GrU"/>
                         <outlet property="switchContainer" destination="Ia8-cF-GSd" id="2Sp-iK-79x"/>
                         <outlet property="toastConstraint" destination="4mj-dp-CqF" id="8Qd-bE-CTZ"/>
@@ -948,9 +965,6 @@
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="92"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="339.5" y="380.5" width="121.5" height="39"/>
-                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-th-bfr">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>

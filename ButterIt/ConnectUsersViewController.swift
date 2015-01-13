@@ -43,7 +43,7 @@ class ConnectUsersViewController: UIViewController, MCBrowserViewControllerDeleg
     }
     
     override func viewDidAppear(animated: Bool) {
-        //nothing atm
+        //nothing
     }
     
     //Play button called

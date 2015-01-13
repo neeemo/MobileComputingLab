@@ -38,6 +38,16 @@ class Package: NSObject, NSCoding {
         self.roundBegin = false
     }
     
+    init(type: String?){
+        self.type_ = type!
+        self.date_ = NSDate()
+        self.butterAmount = 0
+        self.sender_ = ""
+        self.playBool = false
+        self.score_ = 0
+        self.roundBegin = false
+    }
+    
     init(type: String?, sender: String?, playBool: Bool){
         self.type_ = type!
         self.date_ = NSDate()
