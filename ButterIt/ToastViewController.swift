@@ -62,7 +62,7 @@ class ToastViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         //debugAmountLabel.text = "Get Ready!"
         playerMessageLabel.text = "Waiting to Start." //
-        gameOn = true // toastController loaded, so player is now ready to play
+        //gameOn = true // toastController loaded, so player is now ready to play
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,9 +80,9 @@ class ToastViewController: UIViewController {
         var type = receivedPackage.getType()
         println("Toast received package! \(receivedPackage.getType())")
         if(type == "roundBegin") {
-            //debugAmountLabel.text = "Start!"
-            toastContainer.hidden = false
+            gameOn = true
             replaceToast()
+            toastContainer.hidden = false
             score_ = 0 //resets player's score
             playerMessageLabel.text = "" //erases text in the playerText
         }
@@ -90,11 +90,12 @@ class ToastViewController: UIViewController {
             butterKnife.setButter(receivedPackage.getButterAmount())
         }
         else if(type == "gameover"){
-            println("Are we here?")
             //THIS BUG TOOK LIKE 2 DAYS TO FIX, WHY DOES IT NOT WORK ANYMORE?
             //gameOn = receivedPackage.getPlayBool()
             gameOn = false
-            playerMessageLabel.text = "Time up!"
+            toastContainer.hidden = true
+            replaceToast()
+            playerMessageLabel.text = "Time is up!"
             sendScore(myPeerID!, score_: score_!)
         }
         
@@ -259,7 +260,7 @@ class ToastViewController: UIViewController {
             increaseScore() //score point(s) for player
 
         }
-        else {
+        else if(gameOn == true) {
             playerMessageLabel.text = "Not enough butter!" //lets the player know to add more butter
             makePlayerWait() //penalizes player for submitting insufficiently buttered toast
         }

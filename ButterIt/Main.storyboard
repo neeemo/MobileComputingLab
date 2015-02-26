@@ -117,15 +117,15 @@
                                 <exclude reference="bcg-yV-Zk8"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8xX-Rd-fDc"/>
-                                <exclude reference="Rqr-GE-bMK"/>
-                                <exclude reference="EFU-pg-E8g"/>
-                                <exclude reference="r6D-XE-vgY"/>
                                 <exclude reference="keN-Fl-u5o"/>
                                 <exclude reference="AbU-3m-WMy"/>
                                 <exclude reference="Iz9-QN-eQK"/>
+                                <exclude reference="EFU-pg-E8g"/>
+                                <exclude reference="r6D-XE-vgY"/>
                                 <exclude reference="ACm-3G-h9w"/>
                                 <exclude reference="ruD-By-0OL"/>
+                                <exclude reference="8xX-Rd-fDc"/>
+                                <exclude reference="Rqr-GE-bMK"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -133,21 +133,21 @@
                                 <include reference="bcg-yV-Zk8"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8xX-Rd-fDc"/>
-                                <include reference="Rqr-GE-bMK"/>
-                                <include reference="EFU-pg-E8g"/>
-                                <exclude reference="kTY-o9-9Gm"/>
-                                <include reference="r6D-XE-vgY"/>
                                 <exclude reference="M86-2M-qzg"/>
                                 <include reference="keN-Fl-u5o"/>
                                 <exclude reference="AbU-3m-WMy"/>
                                 <include reference="Iz9-QN-eQK"/>
                                 <exclude reference="Y7g-UA-tol"/>
+                                <include reference="EFU-pg-E8g"/>
+                                <exclude reference="kTY-o9-9Gm"/>
+                                <include reference="r6D-XE-vgY"/>
                                 <include reference="ACm-3G-h9w"/>
                                 <exclude reference="NKo-5U-sar"/>
                                 <include reference="ruD-By-0OL"/>
                                 <exclude reference="Pyh-pC-sNx"/>
                                 <exclude reference="cpK-w8-M3e"/>
+                                <include reference="8xX-Rd-fDc"/>
+                                <include reference="Rqr-GE-bMK"/>
                             </mask>
                         </variation>
                     </view>
@@ -160,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JU9-0K-cu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="315" y="234.75"/>
+            <point key="canvasLocation" x="291" y="677.25"/>
         </scene>
         <!--ToastViewController-->
         <scene sceneID="ufC-wZ-h7g">
@@ -601,7 +601,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zBS-U0-75Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216" y="1046.25"/>
+            <point key="canvasLocation" x="291" y="1395"/>
         </scene>
         <!--ButterViewController-->
         <scene sceneID="NAU-Hy-ZgV">

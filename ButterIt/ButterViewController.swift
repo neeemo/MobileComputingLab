@@ -116,6 +116,7 @@ class ButterViewController: UIViewController {
     }
     
     @IBAction func playButtonFunc(sender: UIButton){
+        reset()
         startCountDown()
         playButton?.hidden = true
     }
@@ -172,6 +173,13 @@ class ButterViewController: UIViewController {
         butterView4.setRoundStarted(true)
     }
     
+    func deactivateButterViews(){
+        butterView1.setRoundStarted(false)
+        butterView2.setRoundStarted(false)
+        butterView3.setRoundStarted(false)
+        butterView4.setRoundStarted(false)
+    }
+    
     //sets the countdown to 3 secs (2 sec delay) and starts the timer
     func startCountDown(){
         gameTime = 5
@@ -212,8 +220,7 @@ class ButterViewController: UIViewController {
         else if(countDownBool){
             stopTimer()
             //for debugging, changed gameTime from 52
-            gameTime = 52
-
+            gameTime = 22
             timerLabel?.textColor = UIColor.greenColor()
             timerLabel?.text = "GO!"
             startTimer()
@@ -224,8 +231,13 @@ class ButterViewController: UIViewController {
         }
         else{
             stopTimer()
+            timerLabel?.text = ""
+            timerLabel?.hidden = true
             hideButterGraphics(true)
             gameOver()
+            deactivateButterViews()
+            //this shows the playbutton, but more code needs to be added for a restart method.
+            playButton?.hidden = false
         }
     }
         
@@ -440,6 +452,21 @@ class ButterViewController: UIViewController {
             }
         }
         
+    }
+    
+    func reset(){
+        receivedGameOver = 0
+        countDownBool = true
+        timerLabel?.hidden = false
+        winnerArray.removeAll()
+        starImage1.hidden = true
+        player1ScoreLabel?.hidden = true
+        starImage2.hidden = true
+        player2ScoreLabel?.hidden = true
+        starImage3.hidden = true
+        player3ScoreLabel?.hidden = true
+        starImage4.hidden = true
+        player4ScoreLabel?.hidden = true
     }
     
     func displayScores(){
